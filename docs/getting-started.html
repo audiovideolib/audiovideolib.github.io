@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Getting started | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Getting started | AudioVideoLib ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/prijkes/AudioVideoLib/blob/master/docs/getting-started.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="getting-started">Getting started</h1>
+
+<h2 id="install">Install</h2>
+<pre><code>dotnet add package AudioVideoLib
+</code></pre>
+<p>Requires <strong>.NET 10</strong>. The package is MIT-licensed and ships with
+SourceLink + symbol packages so step-through debugging works from
+NuGet.</p>
+<h2 id="the-two-entry-points">The two entry points</h2>
+<p>AudioVideoLib has two orthogonal readers. Most callers use both.</p>
+<h3 id="audiotags--flat-tag-scanner"><code>AudioTags</code> — flat tag scanner</h3>
+<p>Finds tags that live at known byte positions (start or end of file):</p>
+<ul>
+<li>ID3v1 (v1.0, v1.1, 1.1 Extended / TAG+)</li>
+<li>ID3v2 (2.2.0, 2.2.1, 2.3.0, 2.4.0)</li>
+<li>APE (v1, v2)</li>
+<li>Lyrics3 (v1, v2)</li>
+<li>MusicMatch</li>
+</ul>
+<pre><code class="lang-csharp">using var fs = File.OpenRead(&quot;track.mp3&quot;);
+var tags = AudioTags.ReadStream(fs);
+
+foreach (var offset in tags)
+{
+    Console.WriteLine(
+        $&quot;{offset.AudioTag.GetType().Name} &quot;
+        + $&quot;at 0x{offset.StartOffset:X8}..0x{offset.EndOffset:X8} &quot;
+        + $&quot;({offset.TagOrigin})&quot;);
+}
+</code></pre>
+<h3 id="mediacontainers--container-probe"><code>MediaContainers</code> — container probe</h3>
+<p>Probes for container formats and returns whatever walker matches:</p>
+<ul>
+<li>MPEG audio (Layer I/II/III, v1/v2/2.5)</li>
+<li>FLAC</li>
+<li>RIFF / WAV, RIFX</li>
+<li>AIFF, AIFF-C</li>
+<li>OGG</li>
+<li>MP4 / M4A (ISO/IEC 14496-12 with iTunes-style metadata)</li>
+<li>ASF / WMA / WMV</li>
+<li>Matroska / WebM</li>
+<li>DSF (Sony), DFF (Philips)</li>
+</ul>
+<pre><code class="lang-csharp">fs.Position = 0;
+var streams = MediaContainers.ReadStream(fs);
+
+foreach (var stream in streams)
+{
+    if (stream is MpaStream mpa)
+    {
+        Console.WriteLine($&quot;MPEG: {mpa.Frames.Count()} frames, {mpa.TotalDuration:N0} ms&quot;);
+    }
+    else if (stream is FlacStream flac)
+    {
+        Console.WriteLine($&quot;FLAC: {flac.Frames.Count()} frames&quot;);
+    }
+    // … etc.
+}
+</code></pre>
+<h2 id="container-embedded-tags">Container-embedded tags</h2>
+<p>MP4, ASF, Matroska, WAV (LIST/INFO), AIFF (NAME/AUTH/ANNO/COMT), DSF, and
+DFF all carry metadata inside their container structure rather than at
+flat file positions. Those tags surface on the container walker, not
+through <code>AudioTags</code>:</p>
+<pre><code class="lang-csharp">if (streams.OfType&lt;Mp4Stream&gt;().FirstOrDefault() is { Tag: var m4a })
+{
+    Console.WriteLine($&quot;iTunes title: {m4a.Title}&quot;);
+}
+if (streams.OfType&lt;RiffStream&gt;().FirstOrDefault() is { InfoTag: var info } &amp;&amp; info is not null)
+{
+    Console.WriteLine($&quot;WAV INFO title: {info.Title}&quot;);
+}
+</code></pre>
+<h2 id="modifying-and-saving">Modifying and saving</h2>
+<p>Every tag model exposes a <code>ToByteArray()</code>. ID3v2 fields are frame-shaped, so
+edits go through <code>Id3v2TextFrame</code> (or one of the strongly-typed property
+setters that wraps it):</p>
+<pre><code class="lang-csharp">var id3v2 = tags.Select(o =&gt; o.AudioTag).OfType&lt;Id3v2Tag&gt;().First();
+var title = new Id3v2TextFrame(id3v2.Version, &quot;TIT2&quot;);
+title.Values.Add(&quot;New title&quot;);
+id3v2.TrackTitle = title;
+var rewrittenTag = id3v2.ToByteArray();
+</code></pre>
+<p>For container-embedded tags, the walker itself has <code>ToByteArray()</code> that
+rewrites the entire file with the updated metadata spliced in:</p>
+<pre><code class="lang-csharp">var mp4 = streams.OfType&lt;Mp4Stream&gt;().Single();
+mp4.Tag.Title = &quot;New title&quot;;
+File.WriteAllBytes(&quot;out.m4a&quot;, mp4.ToByteArray());
+</code></pre>
+<p>See <a href="round-trip.html">Round-trip semantics</a> for what's preserved and
+what's rebuilt.</p>
+<h2 id="combined-workflows">Combined workflows</h2>
+<h3 id="print-a-one-line-summary-for-a-file">Print a one-line summary for a file</h3>
+<p><code>AudioTags</code> and <code>MediaContainers</code> are designed to be called in sequence on
+the same stream:</p>
+<pre><code class="lang-csharp">using var fs = File.OpenRead(path);
+
+var tags = AudioTags.ReadStream(fs);
+var id3v2 = tags.Select(o =&gt; o.AudioTag).OfType&lt;Id3v2Tag&gt;().FirstOrDefault();
+var title = id3v2?.TrackTitle?.Values.FirstOrDefault();
+var artist = id3v2?.Artist?.Values.FirstOrDefault();
+
+fs.Position = 0;
+var streams = MediaContainers.ReadStream(fs);
+var totalMs = streams.Sum(s =&gt; s.TotalDuration);
+
+Console.WriteLine($&quot;{Path.GetFileName(path)}  {artist} – {title}  ({totalMs} ms)&quot;);
+</code></pre>
+<h3 id="migrate-metadata-between-formats">Migrate metadata between formats</h3>
+<p>Reading tags from one format and writing the equivalent tag in another is
+just two model walks. Here, ID3v2 → APEv2:</p>
+<pre><code class="lang-csharp">var ape = new ApeTag(ApeVersion.Version2);
+
+if (id3v2.TrackTitle is { } titleFrame)
+{
+    var item = new ApeUtf8Item(ape.Version, ApeItemKey.Title);
+    foreach (var v in titleFrame.Values) item.Values.Add(v);
+    ape.SetItem(item);
+}
+if (id3v2.Artist is { } artistFrame)
+{
+    var item = new ApeUtf8Item(ape.Version, ApeItemKey.Artist);
+    foreach (var v in artistFrame.Values) item.Values.Add(v);
+    ape.SetItem(item);
+}
+
+File.WriteAllBytes(&quot;track.ape-tag&quot;, ape.ToByteArray());
+</code></pre>
+<p>See <a href="examples.html">the full Examples page</a> for an end-to-end ID3v2 → APE
+migration that covers comments, composer, cover art, and free-form
+identifiers.</p>
+<h3 id="pull-cover-art-out-of-any-format">Pull cover art out of any format</h3>
+<p>Each tag/container exposes its own picture model — a tiny <code>OfType&lt;&gt;</code>
+chain handles them uniformly:</p>
+<pre><code class="lang-csharp">foreach (var apic in id3v2?.AttachedPictures ?? [])
+{
+    var ext = apic.ImageFormat.Split('/').Last();
+    File.WriteAllBytes($&quot;cover-{apic.PictureType}.{ext}&quot;, apic.PictureData);
+}
+
+foreach (var flac in streams.OfType&lt;FlacStream&gt;())
+{
+    foreach (var pic in flac.PictureMetadataBlocks)
+    {
+        var ext = pic.MimeType.Split('/').Last();
+        File.WriteAllBytes($&quot;cover-{pic.PictureType}.{ext}&quot;, pic.PictureData);
+    }
+}
+
+foreach (var mp4 in streams.OfType&lt;Mp4Stream&gt;())
+{
+    foreach (var cover in mp4.Tag.CoverArt)
+    {
+        File.WriteAllBytes($&quot;cover.{cover.Format.ToString().ToLowerInvariant()}&quot;, cover.Data);
+    }
+}
+</code></pre>
+<h2 id="non-fatal-parse-errors">Non-fatal parse errors</h2>
+<p>A single malformed frame or item no longer aborts the whole file. The
+library surfaces each failure via an event and skips the bad item:</p>
+<pre><code class="lang-csharp">var tags = new AudioTags();
+tags.Id3v2FrameParseError += (_, e) =&gt;
+    Console.Error.WriteLine($&quot;skipped ID3v2 frame at 0x{e.StartOffset:X8}: {e.Exception.Message}&quot;);
+tags.AudioTagParseError += (_, e) =&gt;
+    Console.Error.WriteLine($&quot;skipped {e.Reader.GetType().Name} at 0x{e.StartOffset:X8}: {e.Exception.Message}&quot;);
+tags.ReadTags(fs);
+</code></pre>
+<h2 id="next">Next</h2>
+<ul>
+<li><a href="tag-formats.html">Tag formats</a> — per-format deep dives.</li>
+<li><a href="container-formats.html">Container formats</a> — per-container deep dives.</li>
+<li><a href="extending.html">Extending</a> — wire up your own format.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/prijkes/AudioVideoLib/blob/master/docs/getting-started.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

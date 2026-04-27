@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class StreamBuffer | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class StreamBuffer | AudioVideoLib ">
+      
+      <meta name="description" content="Wrapper class around a stream to use as backing data with various ways to read and write.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/prijkes/AudioVideoLib/new/master/apiSpec/new?filename=AudioVideoLib_IO_StreamBuffer.md&amp;value=---%0Auid%3A%20AudioVideoLib.IO.StreamBuffer%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AudioVideoLib.IO.StreamBuffer">
+
+
+
+  <h1 id="AudioVideoLib_IO_StreamBuffer" data-uid="AudioVideoLib.IO.StreamBuffer" class="text-break">
+Class StreamBuffer  <a class="header-action link-secondary" title="View source" href="https://github.com/audiovideolib/AudioVideoLib/blob/master/AudioVideoLib/IO/StreamBufferWriter.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AudioVideoLib.html">AudioVideoLib</a>.<a class="xref" href="AudioVideoLib.IO.html">IO</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AudioVideoLib.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Wrapper class around a stream to use as backing data with various ways to read and write.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class StreamBuffer : Stream, IAsyncDisposable, IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.marshalbyrefobject">MarshalByRefObject</a></div>
+      <div><span class="xref">Stream</span></div>
+      <div><span class="xref">StreamBuffer</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iasyncdisposable">IAsyncDisposable</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.marshalbyrefobject.getlifetimeservice">MarshalByRefObject.GetLifetimeService()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.marshalbyrefobject.initializelifetimeservice">MarshalByRefObject.InitializeLifetimeService()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.-ctor.html#AudioVideoLib_IO_StreamBuffer__ctor">StreamBuffer()</a></dt>
+    <dd><p>Initializes a new instance of the <a class="xref" href="AudioVideoLib.IO.StreamBuffer.html">StreamBuffer</a> class
+with an expandable capacity initialized to 1024 bytes, using <span class="xref">System.IO.MemoryStream</span> as backing data.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.-ctor.html#AudioVideoLib_IO_StreamBuffer__ctor_System_Byte___">StreamBuffer(byte[])</a></dt>
+    <dd><p>Initializes a new instance of the <a class="xref" href="AudioVideoLib.IO.StreamBuffer.html">StreamBuffer</a> class
+based on the specified byte array with an expandable capacity, using <span class="xref">System.IO.MemoryStream</span> as backing data.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.-ctor.html#AudioVideoLib_IO_StreamBuffer__ctor_System_IO_Stream_">StreamBuffer(Stream)</a></dt>
+    <dd><p>Initializes a new instance of the <a class="xref" href="AudioVideoLib.IO.StreamBuffer.html">StreamBuffer</a> class and sets the specified stream to use as backing data.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.-ctor.html#AudioVideoLib_IO_StreamBuffer__ctor_System_Int32_">StreamBuffer(int)</a></dt>
+    <dd><p>Initializes a new instance of the <a class="xref" href="AudioVideoLib.IO.StreamBuffer.html">StreamBuffer</a> class
+with an expandable capacity initialized as specified, using <span class="xref">System.IO.MemoryStream</span> as backing data.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.Int16Size.html">Int16Size</a></dt>
+    <dd><p>Size of the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int16">short</a> data type.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.Int32Size.html">Int32Size</a></dt>
+    <dd><p>Size of the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a> data type.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.Int64Size.html">Int64Size</a></dt>
+    <dd><p>Size of the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a> data type.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.Int8Size.html">Int8Size</a></dt>
+    <dd><p>Size of the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a> data type.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.BaseStream.html#AudioVideoLib_IO_StreamBuffer_BaseStream">BaseStream</a></dt>
+    <dd><p>Gets the underlying base stream, if set.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.CanRead.html#AudioVideoLib_IO_StreamBuffer_CanRead">CanRead</a></dt>
+    <dd><p>When overridden in a derived class, gets a value indicating whether the current stream supports reading.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.CanSeek.html#AudioVideoLib_IO_StreamBuffer_CanSeek">CanSeek</a></dt>
+    <dd><p>When overridden in a derived class, gets a value indicating whether the current stream supports seeking.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.CanTimeout.html#AudioVideoLib_IO_StreamBuffer_CanTimeout">CanTimeout</a></dt>
+    <dd><p>Gets a value that determines whether the current stream can time out.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.CanWrite.html#AudioVideoLib_IO_StreamBuffer_CanWrite">CanWrite</a></dt>
+    <dd><p>When overridden in a derived class, gets a value indicating whether the current stream supports writing.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.Length.html#AudioVideoLib_IO_StreamBuffer_Length">Length</a></dt>
+    <dd><p>Gets the number of bytes within the stream.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.Position.html#AudioVideoLib_IO_StreamBuffer_Position">Position</a></dt>
+    <dd><p>When overridden in a derived class, gets or sets the position within the current stream.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadTimeout.html#AudioVideoLib_IO_StreamBuffer_ReadTimeout">ReadTimeout</a></dt>
+    <dd><p>Gets or sets a value, in milliseconds, that determines how long the stream will attempt to read before timing out.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.WriteTimeout.html#AudioVideoLib_IO_StreamBuffer_WriteTimeout">WriteTimeout</a></dt>
+    <dd><p>Gets or sets a value, in milliseconds, that determines how long the stream will attempt to write before timing out.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.BeginRead.html#AudioVideoLib_IO_StreamBuffer_BeginRead_System_Byte___System_Int32_System_Int32_System_AsyncCallback_System_Object_">BeginRead(byte[], int, int, AsyncCallback?, object?)</a></dt>
+    <dd><p>Begins an asynchronous read operation. (Consider using <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">ReadAsync(byte[], int, int)</a> instead.)</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.BeginWrite.html#AudioVideoLib_IO_StreamBuffer_BeginWrite_System_Byte___System_Int32_System_Int32_System_AsyncCallback_System_Object_">BeginWrite(byte[], int, int, AsyncCallback?, object?)</a></dt>
+    <dd><p>Begins an asynchronous write operation. (Consider using <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">WriteAsync(byte[], int, int)</a> instead.)</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.Close.html#AudioVideoLib_IO_StreamBuffer_Close">Close()</a></dt>
+    <dd><p>Closes the current stream and releases any resources (such as sockets and file handles) associated with the current stream.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.EndRead.html#AudioVideoLib_IO_StreamBuffer_EndRead_System_IAsyncResult_">EndRead(IAsyncResult)</a></dt>
+    <dd><p>Waits for the pending asynchronous read to complete. (Consider using <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">ReadAsync(byte[], int, int)</a> instead.)</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.EndWrite.html#AudioVideoLib_IO_StreamBuffer_EndWrite_System_IAsyncResult_">EndWrite(IAsyncResult)</a></dt>
+    <dd><p>Ends an asynchronous write operation. (Consider using <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">WriteAsync(byte[], int, int)</a> instead.)</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.Equals.html#AudioVideoLib_IO_StreamBuffer_Equals_System_Object_">Equals(object?)</a></dt>
+    <dd><p>Determines whether the specified object is equal to the current object.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.Flush.html#AudioVideoLib_IO_StreamBuffer_Flush">Flush()</a></dt>
+    <dd><p>When overridden in a derived class, clears all buffers for this stream and causes any buffered data to be written to the underlying device.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.GetHashCode.html#AudioVideoLib_IO_StreamBuffer_GetHashCode">GetHashCode()</a></dt>
+    <dd><p>Serves as the default hash function.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.GetTruncatedEncodedBytes.html#AudioVideoLib_IO_StreamBuffer_GetTruncatedEncodedBytes_System_String_System_Text_Encoding_System_Int32_">GetTruncatedEncodedBytes(string, Encoding, int)</a></dt>
+    <dd><p>Gets an encoded string using no more than the specified allowed bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.GetTruncatedEncodedString.html#AudioVideoLib_IO_StreamBuffer_GetTruncatedEncodedString_System_String_System_Text_Encoding_System_Int32_">GetTruncatedEncodedString(string, Encoding, int)</a></dt>
+    <dd><p>Gets an encoded string using no more than the specified allowed bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.PeekBigEndianInt32.html#AudioVideoLib_IO_StreamBuffer_PeekBigEndianInt32">PeekBigEndianInt32()</a></dt>
+    <dd><p>Reads a 32-bit big-endian integer from the stream <em>without</em> advancing the stream position.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.PeekByte.html#AudioVideoLib_IO_StreamBuffer_PeekByte">PeekByte()</a></dt>
+    <dd><p>Reads a byte from the stream <em>without</em> advancing the stream position.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.PeekRead.html#AudioVideoLib_IO_StreamBuffer_PeekRead_System_Byte___System_Int32_">PeekRead(byte[], int)</a></dt>
+    <dd><p>Reads up to <code class="paramref">count</code> bytes into the supplied buffer <em>without</em>
+advancing the stream position.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.PeekString.html#AudioVideoLib_IO_StreamBuffer_PeekString_System_Int32_System_Boolean_">PeekString(int, bool)</a></dt>
+    <dd><p>Reads a string of the given byte length from the stream using <span class="xref">System.Text.Encoding.ASCII</span>,
+<em>without</em> advancing the stream position.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.PeekString.html#AudioVideoLib_IO_StreamBuffer_PeekString_System_Int32_System_Text_Encoding_System_Boolean_">PeekString(int, Encoding, bool)</a></dt>
+    <dd><p>Reads a string of the given byte length from the stream using the specified encoding,
+<em>without</em> advancing the stream position.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.Read.html#AudioVideoLib_IO_StreamBuffer_Read_System_Byte___System_Int32_">Read(byte[], int)</a></dt>
+    <dd><p>Read specified amount of bytes from the stream, and stores it into the given buffer.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.Read.html#AudioVideoLib_IO_StreamBuffer_Read_System_Byte___System_Int32_System_Int32_">Read(byte[], int, int)</a></dt>
+    <dd><p>When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadBigEndianInt.html#AudioVideoLib_IO_StreamBuffer_ReadBigEndianInt_System_Int32_">ReadBigEndianInt(int)</a></dt>
+    <dd><p>Reads a 32-bit signed integer as big endian from the stream and advances the position within the stream by <code class="paramref">length</code> bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadBigEndianInt.html#AudioVideoLib_IO_StreamBuffer_ReadBigEndianInt_System_Int32_System_Int32__">ReadBigEndianInt(int, out int)</a></dt>
+    <dd><p>Reads a 32-bit signed integer as big endian from the stream and advances the position within the stream by <code class="paramref">length</code> bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadBigEndianInt16.html#AudioVideoLib_IO_StreamBuffer_ReadBigEndianInt16">ReadBigEndianInt16()</a></dt>
+    <dd><p>Reads a 16-bit signed integer as big endian from the stream and advances the position within the stream by two bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadBigEndianInt16.html#AudioVideoLib_IO_StreamBuffer_ReadBigEndianInt16_System_Int32__">ReadBigEndianInt16(out int)</a></dt>
+    <dd><p>Reads a 16-bit signed integer as big endian from the stream and advances the position within the stream by two bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadBigEndianInt32.html#AudioVideoLib_IO_StreamBuffer_ReadBigEndianInt32">ReadBigEndianInt32()</a></dt>
+    <dd><p>Reads a 32-bit signed integer as big endian from the stream and advances the position within the stream by four bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadBigEndianInt32.html#AudioVideoLib_IO_StreamBuffer_ReadBigEndianInt32_System_Int32__">ReadBigEndianInt32(out int)</a></dt>
+    <dd><p>Reads a 32-bit signed integer as big endian from the stream and advances the position within the stream by four bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadBigEndianInt64.html#AudioVideoLib_IO_StreamBuffer_ReadBigEndianInt64">ReadBigEndianInt64()</a></dt>
+    <dd><p>Reads a 64-bit signed integer as big endian from the stream and advances the position within the stream by eight bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadBigEndianInt64.html#AudioVideoLib_IO_StreamBuffer_ReadBigEndianInt64_System_Int32_">ReadBigEndianInt64(int)</a></dt>
+    <dd><p>Reads a 64-bit signed integer as big endian from the stream and advances the position within the stream by <code class="paramref">length</code> bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadBigEndianInt64.html#AudioVideoLib_IO_StreamBuffer_ReadBigEndianInt64_System_Int32_System_Int32__">ReadBigEndianInt64(int, out int)</a></dt>
+    <dd><p>Reads a 64-bit signed integer as big endian from the stream and advances the position within the stream by <code class="paramref">length</code> bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadBigEndianInt64.html#AudioVideoLib_IO_StreamBuffer_ReadBigEndianInt64_System_Int32__">ReadBigEndianInt64(out int)</a></dt>
+    <dd><p>Reads a 64-bit signed integer as big endian from the stream and advances the position within the stream by eight bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadByte.html#AudioVideoLib_IO_StreamBuffer_ReadByte">ReadByte()</a></dt>
+    <dd><p>Reads a byte from the stream and advances the position within the stream by one byte, or returns -1 if at the end of the stream.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadByte.html#AudioVideoLib_IO_StreamBuffer_ReadByte_System_Int32__">ReadByte(out int)</a></dt>
+    <dd><p>Reads a byte from the stream and advances the position within the stream by one byte, or returns -1 if at the end of the stream.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadDouble.html#AudioVideoLib_IO_StreamBuffer_ReadDouble">ReadDouble()</a></dt>
+    <dd><p>Reads a double-precision floating point number from the stream and advances the position within the stream by eight bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadDouble.html#AudioVideoLib_IO_StreamBuffer_ReadDouble_System_Int32__">ReadDouble(out int)</a></dt>
+    <dd><p>Reads a double-precision floating point number from the stream and advances the position within the stream by eight bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadFloat.html#AudioVideoLib_IO_StreamBuffer_ReadFloat">ReadFloat()</a></dt>
+    <dd><p>Reads a floating point number from the stream and advances the position within the stream by four bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadFloat.html#AudioVideoLib_IO_StreamBuffer_ReadFloat_System_Int32__">ReadFloat(out int)</a></dt>
+    <dd><p>Reads a floating point number from the stream and advances the position within the stream by four bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadInt.html#AudioVideoLib_IO_StreamBuffer_ReadInt_System_Int32_">ReadInt(int)</a></dt>
+    <dd><p>Reads a 32-bit signed integer from the stream and advances the position within the stream by <code class="paramref">length</code> bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadInt.html#AudioVideoLib_IO_StreamBuffer_ReadInt_System_Int32_System_Int32__">ReadInt(int, out int)</a></dt>
+    <dd><p>Reads a 32-bit signed integer from the stream and advances the position within the stream by <code class="paramref">length</code> bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadInt16.html#AudioVideoLib_IO_StreamBuffer_ReadInt16">ReadInt16()</a></dt>
+    <dd><p>Reads a 16-bit signed integer from the stream and advances the position within the stream by two bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadInt16.html#AudioVideoLib_IO_StreamBuffer_ReadInt16_System_Int32__">ReadInt16(out int)</a></dt>
+    <dd><p>Reads a 16-bit signed integer from the stream and advances the position within the stream by two bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadInt32.html#AudioVideoLib_IO_StreamBuffer_ReadInt32">ReadInt32()</a></dt>
+    <dd><p>Reads a 32-bit signed integer from the stream and advances the position within the stream by four bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadInt32.html#AudioVideoLib_IO_StreamBuffer_ReadInt32_System_Int32__">ReadInt32(out int)</a></dt>
+    <dd><p>Reads a 32-bit signed integer from the stream and advances the position within the stream by four bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadInt64.html#AudioVideoLib_IO_StreamBuffer_ReadInt64">ReadInt64()</a></dt>
+    <dd><p>Reads a 64-bit signed integer from the stream and advances the position within the stream by eight bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadInt64.html#AudioVideoLib_IO_StreamBuffer_ReadInt64_System_Int32_">ReadInt64(int)</a></dt>
+    <dd><p>Reads a 64-bit signed integer from the stream and advances the position within the stream by <code class="paramref">length</code> bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadInt64.html#AudioVideoLib_IO_StreamBuffer_ReadInt64_System_Int32_System_Int32__">ReadInt64(int, out int)</a></dt>
+    <dd><p>Reads a 64-bit signed integer from the stream and advances the position within the stream by <code class="paramref">length</code> bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadInt64.html#AudioVideoLib_IO_StreamBuffer_ReadInt64_System_Int32__">ReadInt64(out int)</a></dt>
+    <dd><p>Reads a 64-bit signed integer from the stream and advances the position within the stream by eight bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadLittleEndianInt16.html#AudioVideoLib_IO_StreamBuffer_ReadLittleEndianInt16">ReadLittleEndianInt16()</a></dt>
+    <dd><p>Reads a 16-bit signed integer as little endian from the stream and advances the position within the stream by two bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadLittleEndianInt16.html#AudioVideoLib_IO_StreamBuffer_ReadLittleEndianInt16_System_Int32__">ReadLittleEndianInt16(out int)</a></dt>
+    <dd><p>Reads a 16-bit signed integer as little endian from the stream and advances the position within the stream by two bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadLittleEndianInt32.html#AudioVideoLib_IO_StreamBuffer_ReadLittleEndianInt32">ReadLittleEndianInt32()</a></dt>
+    <dd><p>Reads a 32-bit signed integer as little endian from the stream and advances the position within the stream by four bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadLittleEndianInt64.html#AudioVideoLib_IO_StreamBuffer_ReadLittleEndianInt64">ReadLittleEndianInt64()</a></dt>
+    <dd><p>Reads a 64-bit signed integer as little endian from the stream and advances the position within the stream by eight bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadLittleEndianInt64.html#AudioVideoLib_IO_StreamBuffer_ReadLittleEndianInt64_System_Int32__">ReadLittleEndianInt64(out int)</a></dt>
+    <dd><p>Reads a 64-bit signed integer as little endian from the stream and advances the position within the stream by eight bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Int32_">ReadString(int)</a></dt>
+    <dd><p>Read amount of bytes from the stream as a string using the <span class="xref">System.Text.Encoding.ASCII</span> encoding.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Int32_System_Boolean_">ReadString(int, bool)</a></dt>
+    <dd><p>Read amount of bytes from the stream as a string using the <span class="xref">System.Text.Encoding.ASCII</span> encoding.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Int32_System_Boolean_System_Int32__">ReadString(int, bool, out int)</a></dt>
+    <dd><p>Read amount of bytes from the stream as a string using the <span class="xref">System.Text.Encoding.ASCII</span> encoding.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Int32_System_Int32__">ReadString(int, out int)</a></dt>
+    <dd><p>Read amount of bytes from the stream as a string using the <span class="xref">System.Text.Encoding.ASCII</span> encoding.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Int32_System_Text_Encoding_">ReadString(int, Encoding)</a></dt>
+    <dd><p>Read amount of bytes from the stream as the specified encoding.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Int32_System_Text_Encoding_System_Boolean_">ReadString(int, Encoding, bool)</a></dt>
+    <dd><p>Read amount of bytes from the stream as the specified encoding.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Int32_System_Text_Encoding_System_Boolean_System_Int32__">ReadString(int, Encoding, bool, out int)</a></dt>
+    <dd><p>Read amount of bytes from the stream as the specified encoding.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Int32_System_Text_Encoding_System_Int32__">ReadString(int, Encoding, out int)</a></dt>
+    <dd><p>Read amount of bytes from the stream as the specified encoding.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Text_Encoding_">ReadString(Encoding)</a></dt>
+    <dd><p>Read a string from the stream in the specified encoding until the string NULL-terminator is read or the end of file is reached.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Text_Encoding_System_Boolean_">ReadString(Encoding, bool)</a></dt>
+    <dd><p>Read a string from the stream in the specified encoding until the string NULL-terminator is read or the end of file is reached.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Text_Encoding_System_Boolean_System_Int32__">ReadString(Encoding, bool, out int)</a></dt>
+    <dd><p>Read a string from the stream in the specified encoding until the string terminator is read or the end of file is reached.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Text_Encoding_System_Char_">ReadString(Encoding, char)</a></dt>
+    <dd><p>Read a string from the stream in the specified encoding until the custom string terminator is read or the end of file is reached.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Text_Encoding_System_Char_System_Boolean_">ReadString(Encoding, char, bool)</a></dt>
+    <dd><p>Read a string from the stream in the specified encoding until the custom string terminator is read or the end of file is reached.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Text_Encoding_System_Char_System_Boolean_System_Int32__">ReadString(Encoding, char, bool, out int)</a></dt>
+    <dd><p>Read a string from the stream in the specified encoding until the custom string terminator is read or the end of file is reached.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Text_Encoding_System_Char_System_Int32__">ReadString(Encoding, char, out int)</a></dt>
+    <dd><p>Read a string from the stream in the specified encoding until the custom string terminator is read or the end of file is reached.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Text_Encoding_System_Int32__">ReadString(Encoding, out int)</a></dt>
+    <dd><p>Read a string from the stream in the specified encoding until the string NULL-terminator is read or the end of file is reached.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Text_Encoding_System_String_">ReadString(Encoding, string)</a></dt>
+    <dd><p>Read a string from the stream in the specified encoding until the custom string terminator is read or the end of file is reached.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Text_Encoding_System_String_System_Boolean_">ReadString(Encoding, string, bool)</a></dt>
+    <dd><p>Read a string from the stream in the specified encoding until the custom string terminator is read or the end of file is reached.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Text_Encoding_System_String_System_Boolean_System_Int32__">ReadString(Encoding, string, bool, out int)</a></dt>
+    <dd><p>Read a string from the stream in the specified encoding until the custom string terminator is read or the end of file is reached.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadString.html#AudioVideoLib_IO_StreamBuffer_ReadString_System_Text_Encoding_System_String_System_Int32__">ReadString(Encoding, string, out int)</a></dt>
+    <dd><p>Read a string from the stream in the specified encoding until the custom string terminator is read or the end of file is reached.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadUnaryInt.html#AudioVideoLib_IO_StreamBuffer_ReadUnaryInt">ReadUnaryInt()</a></dt>
+    <dd><p>Reads a 32-bit signed integer as unary.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ReadUnaryInt.html#AudioVideoLib_IO_StreamBuffer_ReadUnaryInt_System_Int32__">ReadUnaryInt(out int)</a></dt>
+    <dd><p>Reads a 32-bit signed integer as unary.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.Seek.html#AudioVideoLib_IO_StreamBuffer_Seek_System_Int64_System_IO_SeekOrigin_">Seek(long, SeekOrigin)</a></dt>
+    <dd><p>When overridden in a derived class, sets the position within the current stream.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.SequenceEqual.html#AudioVideoLib_IO_StreamBuffer_SequenceEqual_System_Byte___System_Byte___">SequenceEqual(byte[], byte[])</a></dt>
+    <dd><p>Determines whether the specified arrays are equal by comparing the elements.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.SequenceEqual.html#AudioVideoLib_IO_StreamBuffer_SequenceEqual_System_ReadOnlySpan_System_Byte__System_ReadOnlySpan_System_Byte__">SequenceEqual(ReadOnlySpan&lt;byte&gt;, ReadOnlySpan&lt;byte&gt;)</a></dt>
+    <dd><p>Determines whether two byte spans are equal.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.SetLength.html#AudioVideoLib_IO_StreamBuffer_SetLength_System_Int64_">SetLength(long)</a></dt>
+    <dd><p>When overridden in a derived class, sets the length of the current stream.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.SwitchEndianness.html#AudioVideoLib_IO_StreamBuffer_SwitchEndianness_System_Byte___">SwitchEndianness(byte[])</a></dt>
+    <dd><p>Reverses the byte order of an array in place (e.g. for big-endian / little-endian conversion).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.SwitchEndianness.html#AudioVideoLib_IO_StreamBuffer_SwitchEndianness_System_Int16_">SwitchEndianness(short)</a></dt>
+    <dd><p>Switches the endianness of the value.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.SwitchEndianness.html#AudioVideoLib_IO_StreamBuffer_SwitchEndianness_System_Int32_">SwitchEndianness(int)</a></dt>
+    <dd><p>Switches the endianness of the value.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.SwitchEndianness.html#AudioVideoLib_IO_StreamBuffer_SwitchEndianness_System_Int64_">SwitchEndianness(long)</a></dt>
+    <dd><p>Switches the endianness of the value.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.SwitchEndianness.html#AudioVideoLib_IO_StreamBuffer_SwitchEndianness_System_Int64_System_Int32_">SwitchEndianness(long, int)</a></dt>
+    <dd><p>Switches the endianness of the value.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.SwitchEndianness.html#AudioVideoLib_IO_StreamBuffer_SwitchEndianness_System_Span_System_Byte__">SwitchEndianness(Span&lt;byte&gt;)</a></dt>
+    <dd><p>Reverses the byte order of a span in place (e.g. for big-endian / little-endian conversion).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ToByteArray.html#AudioVideoLib_IO_StreamBuffer_ToByteArray">ToByteArray()</a></dt>
+    <dd><p>Writes the whole stream to a byte array; starting from the beginning of the stream.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.ToString.html#AudioVideoLib_IO_StreamBuffer_ToString">ToString()</a></dt>
+    <dd><p>Returns a string that represents the current object.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.Write.html#AudioVideoLib_IO_StreamBuffer_Write_System_Byte___">Write(byte[])</a></dt>
+    <dd><p>Writes the buffer to the current stream.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.Write.html#AudioVideoLib_IO_StreamBuffer_Write_System_Byte___System_Int32_">Write(byte[], int)</a></dt>
+    <dd><p>Writes a block of bytes to the current stream using data read from buffer.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.Write.html#AudioVideoLib_IO_StreamBuffer_Write_System_Byte___System_Int32_System_Int32_">Write(byte[], int, int)</a></dt>
+    <dd><p>When overridden in a derived class, writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.WriteBigEndianBytes.html#AudioVideoLib_IO_StreamBuffer_WriteBigEndianBytes_System_Int16_">WriteBigEndianBytes(short)</a></dt>
+    <dd><p>Writes a 16-bit signed integer as big endian to the current position in the stream and advances the position within the stream by 2 bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.WriteBigEndianBytes.html#AudioVideoLib_IO_StreamBuffer_WriteBigEndianBytes_System_Int32_">WriteBigEndianBytes(int)</a></dt>
+    <dd><p>Writes a 32-bit signed integer as big endian to the current position in the stream and advances the position within the stream by 4 bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.WriteBigEndianBytes.html#AudioVideoLib_IO_StreamBuffer_WriteBigEndianBytes_System_Int64_">WriteBigEndianBytes(long)</a></dt>
+    <dd><p>Writes a 64-bit signed integer as big endian to the current position in the stream and advances the position within the stream by 8 bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.WriteBigEndianBytes.html#AudioVideoLib_IO_StreamBuffer_WriteBigEndianBytes_System_Int64_System_Int32_">WriteBigEndianBytes(long, int)</a></dt>
+    <dd><p>Writes a 64-bit signed integer as big endian to the current position in the stream
+and advances the position within the stream by <code class="paramref">size</code> bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.WriteBigEndianInt16.html#AudioVideoLib_IO_StreamBuffer_WriteBigEndianInt16_System_Int16_">WriteBigEndianInt16(short)</a></dt>
+    <dd><p>Writes a 16-bit signed integer as big endian to the current position in the stream and advances the position within the stream by two bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.WriteBigEndianInt32.html#AudioVideoLib_IO_StreamBuffer_WriteBigEndianInt32_System_Int32_">WriteBigEndianInt32(int)</a></dt>
+    <dd><p>Writes a 32-bit signed integer as big endian to the current position in the stream and advances the position within the stream by four bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.WriteBigEndianInt64.html#AudioVideoLib_IO_StreamBuffer_WriteBigEndianInt64_System_Int64_">WriteBigEndianInt64(long)</a></dt>
+    <dd><p>Writes a 64-bit signed integer as big endian to the current position in the stream and advances the position within the stream by eight bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.WriteByte.html#AudioVideoLib_IO_StreamBuffer_WriteByte_System_Byte_">WriteByte(byte)</a></dt>
+    <dd><p>Writes a byte to the current position in the stream
+and advances the position within the stream by one byte.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.WriteBytes.html#AudioVideoLib_IO_StreamBuffer_WriteBytes_System_Int64_System_Int32_">WriteBytes(long, int)</a></dt>
+    <dd><p>Writes bytes to the current position in the stream and advances the position within the stream by <code class="paramref">size</code> bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.WriteDouble.html#AudioVideoLib_IO_StreamBuffer_WriteDouble_System_Double_">WriteDouble(double)</a></dt>
+    <dd><p>Writes a double-precision floating point number to the current position in the stream and advances the position within the stream by eight bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.WriteFloat.html#AudioVideoLib_IO_StreamBuffer_WriteFloat_System_Single_">WriteFloat(float)</a></dt>
+    <dd><p>Writes a float to the current position in the stream and advances the position within the stream by four bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.WriteInt.html#AudioVideoLib_IO_StreamBuffer_WriteInt_System_Int32_">WriteInt(int)</a></dt>
+    <dd><p>Writes a 32-bit signed integer to the current position in the stream and advances the position within the stream by four bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.WritePadding.html#AudioVideoLib_IO_StreamBuffer_WritePadding_System_Byte_System_Int32_">WritePadding(byte, int)</a></dt>
+    <dd><p>Writes padding to the current position in the stream and advances the position within the stream by <code class="paramref">length</code> bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.WriteShort.html#AudioVideoLib_IO_StreamBuffer_WriteShort_System_Int16_">WriteShort(short)</a></dt>
+    <dd><p>Writes a short to the current position in the stream and advances the position within the stream by two bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.WriteString.html#AudioVideoLib_IO_StreamBuffer_WriteString_System_String_">WriteString(string?)</a></dt>
+    <dd><p>Writes a string to the buffer using the <span class="xref">System.Text.Encoding.ASCII</span> encoding.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.WriteString.html#AudioVideoLib_IO_StreamBuffer_WriteString_System_String_System_Text_Encoding_">WriteString(string?, Encoding)</a></dt>
+    <dd><p>Writes the string to the buffer using the encoding supplied.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.WriteString.html#AudioVideoLib_IO_StreamBuffer_WriteString_System_String_System_Text_Encoding_System_Int32_">WriteString(string?, Encoding, int)</a></dt>
+    <dd><p>Writes a truncated string to the buffer using the encoding provided.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.StreamBuffer.WriteUnaryInt.html#AudioVideoLib_IO_StreamBuffer_WriteUnaryInt_System_Int32_">WriteUnaryInt(int)</a></dt>
+    <dd><p>Writes a 32-bit signed integer as unary to the current position in the stream and advances the position by <code class="paramref">length</code> / 8 bytes.</p>
+</dd>
+  </dl>
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/audiovideolib/AudioVideoLib/blob/master/AudioVideoLib/IO/StreamBufferWriter.cs/#L9" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Migrate ID3v2 → APEv2 alongside the original file | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Migrate ID3v2 → APEv2 alongside the original file | AudioVideoLib ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/prijkes/AudioVideoLib/blob/master/docs/examples/id3v2-to-ape.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="migrate-id3v2--apev2-alongside-the-original-file">Migrate ID3v2 → APEv2 alongside the original file</h1>
+
+<p>Reads the ID3v2 tag from each input file and emits a sidecar <code>.apev2</code>
+binary containing the equivalent APEv2 tag. Demonstrates the
+two-model walk that underpins format-to-format conversion.</p>
+<pre><code class="lang-csharp">using System;
+using System.IO;
+using System.Linq;
+
+using AudioVideoLib.Tags;
+
+if (args.Length != 1 || !Directory.Exists(args[0]))
+{
+    Console.Error.WriteLine(&quot;Usage: id3v2-to-ape &lt;directory&gt;&quot;);
+    return 1;
+}
+
+foreach (var path in Directory.EnumerateFiles(args[0], &quot;*.mp3&quot;))
+{
+    using var fs = File.OpenRead(path);
+    var tags = AudioTags.ReadStream(fs);
+    if (tags.Select(o =&gt; o.AudioTag).OfType&lt;Id3v2Tag&gt;().FirstOrDefault() is not { } id3v2)
+    {
+        continue;
+    }
+
+    var ape = new ApeTag(ApeVersion.Version2) { UseHeader = true, UseFooter = true };
+
+    Copy(id3v2.TrackTitle,    ape, ApeItemKey.Title);
+    Copy(id3v2.Artist,        ape, ApeItemKey.Artist);
+    Copy(id3v2.AlbumTitle,    ape, ApeItemKey.AlbumName);
+    Copy(id3v2.ComposerName,  ape, ApeItemKey.Composer);
+    Copy(id3v2.ConductorName, ape, ApeItemKey.Conductor);
+    Copy(id3v2.RecordingTime, ape, ApeItemKey.Year);
+    Copy(id3v2.YearRecording, ape, ApeItemKey.Year);
+
+    foreach (var apic in id3v2.AttachedPictures)
+    {
+        var key = apic.PictureType == Id3v2AttachedPictureType.CoverFront
+            ? &quot;Cover Art (Front)&quot;
+            : $&quot;Cover Art ({apic.PictureType})&quot;;
+        ape.SetItem(new ApeBinaryItem(ape.Version, key) { Data = apic.PictureData });
+    }
+
+    File.WriteAllBytes(Path.ChangeExtension(path, &quot;.apev2&quot;), ape.ToByteArray());
+}
+
+return 0;
+
+static void Copy(Id3v2TextFrame? source, ApeTag ape, ApeItemKey key)
+{
+    if (source is null || source.Values.Count == 0) return;
+    var item = new ApeUtf8Item(ape.Version, key);
+    foreach (var v in source.Values) item.Values.Add(v);
+    ape.SetItem(item);
+}
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/prijkes/AudioVideoLib/blob/master/docs/examples/id3v2-to-ape.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

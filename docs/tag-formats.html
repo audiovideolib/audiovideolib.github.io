@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Tag formats | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Tag formats | AudioVideoLib ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/prijkes/AudioVideoLib/blob/master/docs/tag-formats.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="tag-formats">Tag formats</h1>
+
+<p>AudioVideoLib reads and writes a wide range of audio metadata formats.
+Pick a format below for its on-disk shape, the public API surface, the
+quirks worth knowing, and the round-trip behaviour.</p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Where it lives</th>
+<th>Surfaced on</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="tag-formats/id3v1.html">ID3v1</a></td>
+<td>last 128 bytes of the file (+ optional 227-byte TAG+)</td>
+<td><code>AudioTags</code> → <code>Id3v1Tag</code></td>
+</tr>
+<tr>
+<td><a href="tag-formats/id3v2.html">ID3v2</a></td>
+<td>start (or end, 2.4) — frame-based, versions 2.2 / 2.3 / 2.4</td>
+<td><code>AudioTags</code> → <code>Id3v2Tag</code></td>
+</tr>
+<tr>
+<td><a href="tag-formats/ape.html">APE</a></td>
+<td>end (v1 / v2) or start (v2 only)</td>
+<td><code>AudioTags</code> → <code>ApeTag</code></td>
+</tr>
+<tr>
+<td><a href="tag-formats/lyrics3.html">Lyrics3</a></td>
+<td>end-of-file wrapper, before any ID3v1</td>
+<td><code>AudioTags</code> → <code>Lyrics3Tag</code> / <code>Lyrics3v2Tag</code></td>
+</tr>
+<tr>
+<td><a href="tag-formats/musicmatch.html">MusicMatch</a></td>
+<td>trailing 8 KB+ block</td>
+<td><code>AudioTags</code> → <code>MusicMatchTag</code></td>
+</tr>
+<tr>
+<td><a href="tag-formats/vorbis-comments.html">Vorbis Comments</a></td>
+<td>inside FLAC's <code>VORBIS_COMMENT</code> block / OGG vorbis-comment packet</td>
+<td><code>FlacStream.VorbisCommentsMetadataBlock</code></td>
+</tr>
+<tr>
+<td><a href="tag-formats/mp4-itunes.html">MP4 / iTunes ilst</a></td>
+<td><code>moov.udta.meta.ilst</code> inside MP4 / M4A</td>
+<td><code>Mp4Stream.Tag</code></td>
+</tr>
+<tr>
+<td><a href="tag-formats/asf.html">ASF / WMA</a></td>
+<td>ASF Header Object (CDO + ECDO + MO/MLO)</td>
+<td><code>AsfStream.MetadataTag</code></td>
+</tr>
+<tr>
+<td><a href="tag-formats/matroska.html">Matroska / WebM</a></td>
+<td><code>Segment.Tags</code> inside Matroska / WebM</td>
+<td><code>MatroskaStream.Tag</code></td>
+</tr>
+<tr>
+<td><a href="tag-formats/wav-aiff-chunks.html">WAV / AIFF chunks</a></td>
+<td><code>LIST INFO</code>, <code>bext</code>, <code>iXML</code>, <code>id3 </code>, AIFF text chunks</td>
+<td><code>RiffStream.*</code>, <code>AiffStream.TextChunks</code></td>
+</tr>
+<tr>
+<td><a href="tag-formats/dsf-dff.html">DSF / DFF</a></td>
+<td>embedded ID3v2 inside DSD audio containers</td>
+<td><code>DsfStream.EmbeddedId3v2</code>, <code>DffStream.EmbeddedId3v2</code></td>
+</tr>
+</tbody>
+</table>
+<p>For the difference between flat-position tags (handled by <code>AudioTags</code>)
+and container-embedded tags (surfaced on a <code>MediaContainers</code> walker),
+see <a href="getting-started.html#container-embedded-tags">Getting started</a>. For
+what <code>ToByteArray()</code> guarantees, see
+<a href="round-trip.html">Round-trip semantics</a>.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/prijkes/AudioVideoLib/blob/master/docs/tag-formats.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

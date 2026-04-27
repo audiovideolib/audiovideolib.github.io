@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Release notes | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Release notes | AudioVideoLib ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/prijkes/AudioVideoLib/blob/master/docs/release-notes.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="release-notes">Release notes</h1>
+
+<p>Change categories follow <a href="https://keepachangelog.com/">Keep a Changelog</a>:
+<strong>Added</strong>, <strong>Changed</strong>, <strong>Fixed</strong>, <strong>Breaking</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Highlights</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#070--2026-04-27"><code>0.7.0</code></a></td>
+<td>2026-04-27</td>
+<td><code>Mp4Stream</code> and <code>AsfStream</code> complete the streaming refactor — every splice rewriter now operates without buffering the source file.</td>
+</tr>
+<tr>
+<td><a href="#060--2026-04-27"><code>0.6.0</code></a></td>
+<td>2026-04-27</td>
+<td>Large-file performance: streaming Matroska reader/writer (40 GB MKV is now viable); <code>ISourceReader</code> random-access abstraction; ID3v2 read-path allocation fixes.</td>
+</tr>
+<tr>
+<td><a href="#050--2026-04-27"><code>0.5.0</code></a></td>
+<td>2026-04-27</td>
+<td><code>WriteTo(Stream)</code> is now the canonical serialisation primitive; <code>ToByteArray</code> becomes an extension-method convenience.</td>
+</tr>
+<tr>
+<td><a href="#040--2026-04-26"><code>0.4.0</code></a></td>
+<td>2026-04-26</td>
+<td>Streaming write API; magic-byte fast path; structured parse errors; async entry points; assorted API cleanup.</td>
+</tr>
+<tr>
+<td><a href="#030--2026-04-25"><code>0.3.0</code></a></td>
+<td>2026-04-25</td>
+<td><code>IAudioStream</code> → <code>IMediaContainer</code> rename.</td>
+</tr>
+<tr>
+<td><a href="#020--2026-04-19"><code>0.2.0</code></a></td>
+<td>2026-04-19</td>
+<td>Nine new tag/container formats; non-fatal parse errors; per-field encoding for ID3v1.</td>
+</tr>
+<tr>
+<td><a href="#010--2026-04-17"><code>0.1.0</code></a></td>
+<td>2026-04-17</td>
+<td>Initial release.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="070--2026-04-27">0.7.0 — 2026-04-27</h2>
+<blockquote>
+<p>Mechanical mirror of the 0.6.0 Matroska refactor applied to the
+remaining splice rewriters. <code>Mp4Stream</code> and <code>AsfStream</code> now keep an
+<code>ISourceReader</code> reference instead of buffering the source file, and
+<code>WriteTo(Stream)</code> streams unchanged regions directly from source to
+destination. All five splice rewriters are now large-file-friendly.</p>
+</blockquote>
+<h3 id="changed">Changed</h3>
+<ul>
+<li><strong><code>Mp4Stream</code> no longer buffers the input.</strong> The walker reads
+structurally from the live stream during <code>ReadStream</code> (mdat is
+seeked past, never copied), and <code>WriteTo(Stream)</code> streams head + new
+ilst + tail directly. The patches to ancestor box headers
+(<code>moov</code> / <code>udta</code> / <code>meta</code>) are emitted segmentally, so even
+non-faststart files (mdat first, moov last) write in bounded
+memory regardless of file size. Internal offset fields widened from
+<code>int</code> to <code>long</code> for proper 64-bit file support.</li>
+<li><strong><code>AsfStream</code> no longer buffers the entire file.</strong> Only the small
+Header Object is materialised in memory; the multi-GB Data Object +
+Index Object that follows is streamed straight through to the
+destination at write time. ASF parse helpers consume
+<code>ReadOnlySpan&lt;byte&gt;</code> directly.</li>
+</ul>
+<h3 id="breaking">Breaking</h3>
+<ul>
+<li><strong><code>Mp4Stream</code> and <code>AsfStream</code> lifetime contract:</strong> the source
+<code>Stream</code> passed to <code>ReadStream</code> must stay alive until <code>WriteTo</code> /
+<code>ToByteArray</code> finishes — same change <code>MatroskaStream</code> got in 0.6.0.
+Most callers wrap in a <code>using</code> block that already covers the full
+lifetime.</li>
+<li><strong>Both classes now implement <code>IDisposable</code></strong> to release their
+<code>ISourceReader</code>. The user's source stream is <strong>not</strong> closed; it
+remains caller-owned.</li>
+</ul>
+<blockquote>
+<p>The remaining DSF and DFF walkers were already selective (they
+capture chunk metadata at parse time, not the whole file) and don't
+need the refactor.</p>
+</blockquote>
+<hr>
+<h2 id="060--2026-04-27">0.6.0 — 2026-04-27</h2>
+<blockquote>
+<p>Large-file performance round. <code>MatroskaStream</code> no longer copies the
+entire input file into memory — a 40 GB MKV that previously peaked
+around <strong>120 GB RAM</strong> during a tag edit now stays in the <strong>low MB</strong>
+range, with the unchanged regions streamed directly from source to
+destination. Plus a sweep of allocation hotspots in the read path.</p>
+</blockquote>
+<h3 id="added">Added</h3>
+<ul>
+<li><strong><code>ISourceReader</code></strong> — random-access read facade with two
+implementations: <code>MemorySourceReader</code> (wraps a <code>byte[]</code>) and
+<code>StreamSourceReader</code> (wraps a seekable <code>Stream</code>). Splice-rewriter
+walkers use this to copy unchanged byte ranges from source to
+destination at write time without materialising the full file.</li>
+</ul>
+<h3 id="changed-1">Changed</h3>
+<ul>
+<li><strong><code>MatroskaStream</code> no longer buffers the source file.</strong>
+<code>ReadStream</code> now wraps the supplied stream in a
+<code>StreamSourceReader</code> and walks the structure on the live stream
+(Cluster / BlockGroup payloads are seeked past, never copied).
+<code>WriteTo(Stream)</code> streams head + new Tags + tail directly. Peak
+memory drops from O(file size) to O(metadata) on edits.</li>
+<li><strong>ID3v2 CRC validation</strong> (<code>Id3v2TagReader</code>) no longer materialises
+the whole tag-bearing stream three times via
+<code>ToByteArray().Skip().Take().ToArray()</code>. The CRC is now hashed
+incrementally over a 4 KB stack-allocated chunk.</li>
+<li><strong><code>StreamBufferReader.ReadString</code></strong> uses <code>ArrayPool&lt;byte&gt;</code> and span
+slicing for BOM stripping — no extra buffer allocation per call.
+Hot for ID3v2 frame parsing where dozens of short reads happen per
+frame.</li>
+<li><strong><code>Id3v2FrameReader.ReadIdentifier</code></strong> stack-allocates the 4-byte
+identifier buffer instead of <code>new byte[4]</code> per frame.</li>
+</ul>
+<h3 id="breaking-1">Breaking</h3>
+<ul>
+<li><strong><code>MatroskaStream</code> lifetime contract:</strong> the source <code>Stream</code> passed
+to <code>ReadStream</code> must stay alive until <code>WriteTo</code> / <code>ToByteArray</code>
+finishes — the walker reads from it on demand at write time. The
+previous behaviour of capturing all bytes up-front is gone (it's
+what made multi-GB files unworkable). Most callers use
+<code>using var fs = File.OpenRead(...); var info = AudioInfo.Analyse(fs); info.Save(...)</code>
+inside the <code>using</code> already, which works as expected.</li>
+<li><strong><code>MatroskaStream</code> now implements <code>IDisposable</code></strong> — its
+<code>ISourceReader</code> is disposed on <code>Dispose</code>. The user's source stream
+is <strong>not</strong> closed; that remains caller-owned.</li>
+</ul>
+<h3 id="queued-for-follow-up-not-in-this-release">Queued for follow-up (not in this release)</h3>
+<ul>
+<li><strong><code>Mp4Stream</code></strong> still buffers the full input. Same refactor pattern
+as MatroskaStream applies; deferred to a separate release for
+reviewability.</li>
+<li><strong><code>AsfStream</code></strong> likewise. Recursive Header-Object walker makes the
+refactor more involved.</li>
+</ul>
+<hr>
+<h2 id="050--2026-04-27">0.5.0 — 2026-04-27</h2>
+<blockquote>
+<p>The serialisation abstraction is flipped: <code>WriteTo(Stream)</code> is now
+the canonical primitive every implementer must provide, and
+<code>ToByteArray</code> / <code>GetSerializedSize</code> / <code>TryWriteTo</code> /
+<code>WriteTo(IBufferWriter&lt;byte&gt;)</code> are extension-method convenience
+wrappers. The streaming method is no longer a default-impl that
+secretly allocates a full byte array first.</p>
+</blockquote>
+<h3 id="breaking-2">Breaking</h3>
+<ul>
+<li><strong><code>IAudioTag.ToByteArray()</code> is no longer a member</strong> of the
+interface. The buffer-shaped helper now lives on
+<code>IAudioTagExtensions.ToByteArray(this IAudioTag)</code>. Call sites that
+do <code>tag.ToByteArray()</code> continue to work because extension-method
+binding picks up the static type. <strong>Implementers</strong> must now provide
+<code>void WriteTo(Stream destination)</code> instead of
+<code>byte[] ToByteArray()</code>. Concrete classes that want a faster direct
+buffer path may also expose their own <code>byte[] ToByteArray()</code>
+instance method, which shadows the extension method for
+concrete-typed call sites.</li>
+<li><strong><code>IMediaContainer.ToByteArray()</code></strong> moves to
+<code>IMediaContainerExtensions.ToByteArray(this IMediaContainer)</code>. Same
+rules.</li>
+</ul>
+<h3 id="changed-2">Changed</h3>
+<ul>
+<li>All bundled implementers (<code>Id3v1Tag</code>, <code>Id3v2Tag</code>, <code>ApeTag</code>,
+<code>Lyrics3Tag</code>, <code>Lyrics3v2Tag</code>, <code>MusicMatchTag</code>, every
+<code>IMediaContainer</code> walker) converted to override <code>WriteTo(Stream)</code>.
+The splice rewriters (<code>Mp4Stream</code>, <code>AsfStream</code>, <code>MatroskaStream</code>,
+<code>DsfStream</code>, <code>DffStream</code>) keep an instance-method
+<code>byte[] ToByteArray()</code> as the buffer fast path.</li>
+</ul>
+<blockquote>
+<p><strong>Migration:</strong> the only call-site change is for <em>implementers</em> of
+<code>IAudioTag</code> / <code>IMediaContainer</code>. Rename your
+<code>byte[] ToByteArray()</code> to <code>void WriteTo(Stream destination)</code> and
+replace the final <code>return bytes;</code> with
+<code>destination.Write(bytes, 0, bytes.Length);</code>. Consumers that just
+<em>call</em> <code>tag.ToByteArray()</code> need no change — the extension method
+matches the existing call shape.</p>
+</blockquote>
+<hr>
+<h2 id="040--2026-04-26">0.4.0 — 2026-04-26</h2>
+<blockquote>
+<p>Performance, ergonomics, and API surface clean-up. Streaming write
+hooks across <code>IAudioTag</code> / <code>IMediaContainer</code>, magic-byte container
+dispatch, structured parse-error classification, async overloads at
+the public entry points, plus a sweep of small API gaps that bit
+real callers.</p>
+</blockquote>
+<h3 id="added-1">Added</h3>
+<ul>
+<li><strong>Streaming write surface</strong> on <code>IAudioTag</code> and <code>IMediaContainer</code>:
+<code>WriteTo(Stream)</code>, <code>WriteTo(IBufferWriter&lt;byte&gt;)</code>,
+<code>TryWriteTo(Span&lt;byte&gt;, out int)</code>, <code>GetSerializedSize()</code>. Default
+implementations forward to <code>ToByteArray()</code> for back-compat.</li>
+<li><strong><code>ReadOnlySpan&lt;byte&gt;</code> parse overloads</strong> on <code>Mp4MetaTag.Parse</code>,
+<code>RiffInfoTag.Parse</code> / <code>FromListPayload</code>, <code>BwfBextChunk.Parse</code>,
+<code>IxmlChunk.Parse</code>, <code>AsfMetadataTag.ParseContentDescription</code> /
+<code>ParseExtendedContentDescription</code> / <code>ParseMetadata</code>,
+<code>AiffTextChunks.ReadText</code> / <code>ReadComments</code>. Each <code>byte[]</code> overload
+is a one-line wrapper around the new <code>ReadOnlySpan&lt;byte&gt;</code> overload.</li>
+<li><strong>Streaming <code>WriteTo(Stream)</code> overrides</strong> on <code>MpaStream</code> (frame-by-frame),
+<code>FlacStream</code> (magic + blocks + frames), and <code>Mp4Stream</code> (chunked head +
+new ilst + tail). Halves peak memory on edits to large files.</li>
+<li><strong>Magic-byte fast path</strong> in <code>MediaContainers.ReadStreams</code>. Files with
+recognisable signatures (FLAC / OGG / WAV / RIFX / AIFF / DSF / DFF /
+Matroska / ASF / MP4) dispatch to the matching walker in O(1)
+instead of probing every walker at every byte position.</li>
+<li><strong>Strict scan mode</strong> — <code>AudioTags.MaxTagSpacingLength</code> and
+<code>MediaContainers.MaxStreamSpacingLength</code> accept <code>0</code> (a new <code>Strict</code>
+constant) to skip the byte-by-byte rescan and only check the
+canonical anchor positions. Useful for clean / pipeline-controlled
+inputs where the rescan is pure overhead.</li>
+<li><strong>Structured parse errors</strong> — <code>AudioTagParseErrorEventArgs.Kind</code> and
+<code>Id3v2FrameParseErrorEventArgs.Kind</code> (both typed as
+<code>AudioTagParseErrorKind</code>) classify the failure as
+<code>Truncated</code> / <code>MalformedData</code> / <code>UnsupportedVersion</code> /
+<code>InvalidArgument</code> / <code>Unknown</code>, so callers can dispatch without
+parsing the exception message.</li>
+<li><strong><code>AudioTags.RemoveTag</code> / <code>RemoveTags&lt;T&gt;</code> / <code>Clear</code></strong> — closing the
+obvious gap next to the existing <code>AddTag</code>.</li>
+<li><strong><code>AudioInfo.Save(Stream)</code></strong> for streaming output.</li>
+<li><strong>Async entry points</strong> — <code>AudioInfo.AnalyseAsync</code>, <code>SaveAsync</code>,
+<code>AudioTags.ReadStreamAsync</code>, <code>MediaContainers.ReadStreamAsync</code>.
+Currently <code>Task.Run</code> wrappers around the sync code; honestly
+documented as not-yet-truly-async pending a reader-chain refactor.</li>
+<li><strong><code>Strict</code> and <code>Default</code> named constants</strong> on the spacing-length
+knobs for readability.</li>
+</ul>
+<h3 id="changed-3">Changed</h3>
+<ul>
+<li><strong><code>Mp4Stream.Tag</code> / <code>MatroskaStream.Tag</code> / <code>AsfStream.MetadataTag</code></strong>
+are now publicly settable. <code>null</code> is treated as &quot;clear all metadata&quot;
+— assigning resets to a fresh empty model. Previously these were
+<code>private set;</code>, forcing callers to mutate in place.</li>
+<li><strong><code>IAudioTag</code> / <code>IMediaContainer.GetEnumerator</code></strong> typed
+<code>IEnumerator&lt;T&gt;</code> is now public; the non-generic version is the
+explicit interface implementation. <code>foreach (var x in tags)</code> now
+binds <code>x</code> to the typed element instead of <code>object</code>.</li>
+<li><strong><code>AudioInfo.Save(string, bool overwrite = true)</code></strong> — overwrite is
+now the default. The previous behaviour of throwing on existing files
+is reachable via <code>overwrite: false</code>, which yields an <code>IOException</code>
+rather than the previous <code>ApplicationException</code>.</li>
+<li><strong>Throw type for &quot;file already exists&quot;</strong> changed from
+<code>ApplicationException</code> to <code>IOException</code>.</li>
+</ul>
+<h3 id="breaking-3">Breaking</h3>
+<ul>
+<li><strong><code>IAudioTagWriter</code> interface removed.</strong> It was an empty marker;
+serialisation lives on <code>IAudioTag.ToByteArray()</code> / the new
+<code>WriteTo(Stream)</code> overloads. Any code referencing
+<code>IAudioTagWriter</code> should drop the reference; no concrete behaviour
+changes.</li>
+</ul>
+<blockquote>
+<p><strong>Migration:</strong> the new <code>WriteTo</code> / <code>TryWriteTo</code> / <code>GetSerializedSize</code>
+members on <code>IAudioTag</code> and <code>IMediaContainer</code> are default-implemented,
+so existing implementers stay source-compatible.</p>
+</blockquote>
+<hr>
+<h2 id="030--2026-04-25">0.3.0 — 2026-04-25</h2>
+<blockquote>
+<p>Naming-only release. The <code>IAudioStream</code> family is renamed to
+<code>IMediaContainer</code> to reflect that those types describe a <em>media
+container walker</em> — MP4 / Matroska / ASF carry video and metadata
+alongside audio, and the audio-centric name was misleading.</p>
+</blockquote>
+<h3 id="breaking-4">Breaking</h3>
+<table>
+<thead>
+<tr>
+<th>Before (<code>0.2.0</code>)</th>
+<th>After (<code>0.3.0</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IAudioStream</code></td>
+<td><code>IMediaContainer</code></td>
+</tr>
+<tr>
+<td><code>AudioStreams</code> (collection / factory)</td>
+<td><code>MediaContainers</code></td>
+</tr>
+<tr>
+<td><code>AudioStreamParseEventArgs</code></td>
+<td><code>MediaContainerParseEventArgs</code></td>
+</tr>
+<tr>
+<td><code>AudioStreamParsedEventArgs</code></td>
+<td><code>MediaContainerParsedEventArgs</code></td>
+</tr>
+<tr>
+<td><code>AudioStreams.AudioStreamParse</code> (event)</td>
+<td><code>MediaContainers.MediaContainerParse</code></td>
+</tr>
+<tr>
+<td><code>AudioStreams.AudioStreamParsed</code> (event)</td>
+<td><code>MediaContainers.MediaContainerParsed</code></td>
+</tr>
+<tr>
+<td><code>IAudioStream.TotalAudioLength</code> (property)</td>
+<td><code>IMediaContainer.TotalDuration</code></td>
+</tr>
+<tr>
+<td><code>IAudioStream.TotalAudioSize</code> (property)</td>
+<td><code>IMediaContainer.TotalMediaSize</code></td>
+</tr>
+</tbody>
+</table>
+<p>The tag APIs — <code>AudioTags</code>, <code>IAudioTag</code>, <code>IAudioTagReader</code>,
+<code>IAudioTagOffset</code>, <code>AudioTagOffset</code>, and their event args — are
+<strong>unchanged</strong>. Tags genuinely are audio-format concepts (ID3, APE,
+Lyrics3, MusicMatch), so the &quot;audio&quot; prefix stays accurate there.</p>
+<blockquote>
+<p><strong>Migration:</strong> one <code>sed</code> pass handles most projects.</p>
+<pre><code class="lang-bash">sed -i -E '
+  s/\bIAudioStream\b/IMediaContainer/g
+  s/\bAudioStreams\b/MediaContainers/g
+  s/\bTotalAudioLength\b/TotalDuration/g
+  s/\bTotalAudioSize\b/TotalMediaSize/g
+  s/AudioStreamParseEventArgs/MediaContainerParseEventArgs/g
+  s/AudioStreamParsedEventArgs/MediaContainerParsedEventArgs/g
+' **/*.cs
+</code></pre>
+</blockquote>
+<hr>
+<h2 id="020--2026-04-19">0.2.0 — 2026-04-19</h2>
+<blockquote>
+<p>Nine additional metadata formats round-trip end-to-end. Parse failures
+are now non-fatal — a single malformed frame no longer aborts the
+file. ID3v1 finally handles real-world per-field encodings.</p>
+</blockquote>
+<h3 id="added--new-tag--container-formats">Added — new tag / container formats</h3>
+<p>Round-trip read + write support for:</p>
+<ul>
+<li><strong>WAV <code>LIST INFO</code></strong> — standard key/value metadata (<code>INAM</code>, <code>IART</code>,
+<code>IPRD</code>, <code>ICRD</code>, <code>ICMT</code>, <code>IGNR</code>, <code>ITRK</code>, <code>IENG</code>, <code>ISFT</code>, <code>ICOP</code>, …).</li>
+<li><strong>ID3v2-in-WAV</strong> — full ID3v2 tag inside a WAV <code>id3 </code> / <code>ID3 </code> chunk.</li>
+<li><strong>BWF <code>bext</code> chunk</strong> — broadcast Wave v0/v1/v2 with loudness fields
+and CodingHistory.</li>
+<li><strong>iXML chunk</strong> — film/audio production metadata with BOM-preserving
+byte-identical round-trip.</li>
+<li><strong>AIFF text chunks</strong> — NAME / AUTH / ANNO / COMT (timestamped).</li>
+<li><strong>DSF / DFF</strong> — Sony / Philips DSD audio containers with embedded
+ID3v2.</li>
+<li><strong>MP4 / M4A iTunes ilst</strong> — strongly-typed ilst items (text,
+<code>trkn</code>/<code>disk</code>, <code>tmpo</code>, <code>cpil</code>, <code>covr</code> JPEG/PNG, free-form <code>----</code>),
+with a splice-in writer that patches enclosing parent sizes.</li>
+<li><strong>ASF / WMA</strong> — Content Description + Extended Content Description +
+Metadata + Metadata Library objects; <code>AsfTypedValue</code> tagged union.</li>
+<li><strong>Matroska / WebM</strong> — <code>Tags</code> / <code>Tag</code> / <code>SimpleTag</code> (with nesting,
+<code>TagBinary</code>, <code>TargetTypeValue</code>), Duration extraction, splice-rewrite
+writer.</li>
+</ul>
+<h3 id="added--id3v1-per-field-encoding">Added — ID3v1 per-field encoding</h3>
+<p>Each ID3v1 field is now stored as raw <code>byte[]</code> with a per-field
+<code>Encoding</code> override. The reader auto-detects UTF-8 per field. The
+Studio's ID3v1 editor gets a per-field encoding picker for Title /
+Artist / Album / Comment.</p>
+<h3 id="changed--non-fatal-parse-errors">Changed — non-fatal parse errors</h3>
+<p>A single malformed frame or item no longer aborts the whole file.
+<code>AudioTags.AudioTagParseError</code> and <code>AudioTags.Id3v2FrameParseError</code>
+surface the failure; the scanner continues.</p>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>APE items were parsed but never attached to the tag</strong> —
+<code>ApeTag.Items</code> was always empty because <code>ApeTagReader</code> built the list
+locally and never called <code>tag.SetItems(items)</code>.</li>
+<li><strong>Multiple APE tags in one file</strong> — now get a tab each in the Studio.</li>
+<li><strong>ID3v2 ISO 639-2/T language codes</strong> (<code>nld</code>, <code>deu</code>, <code>fra</code>, <code>ces</code>,
+<code>zho</code>, …) accepted alongside the /B variants.</li>
+<li><strong>URL-link frame (<code>WOAF</code> etc.) <code>Data</code> getter</strong> no longer throws
+<code>ArgumentNullException</code> on a just-added frame with unset <code>Url</code>.</li>
+<li><strong>OGG page CRC</strong> recomputed on write.</li>
+</ul>
+<h3 id="tests">Tests</h3>
+<p>802 → 1064 passing (+262), covering each new format's read and
+round-trip paths plus the per-field encoding auto-detection.</p>
+<hr>
+<h2 id="010--2026-04-17">0.1.0 — 2026-04-17</h2>
+<p>Initial release.</p>
+<ul>
+<li><strong>Containers:</strong> MPEG audio, FLAC, RIFF/WAV, AIFF, OGG.</li>
+<li><strong>Tags:</strong> ID3v1, ID3v2 (2.2–2.4), APE (v1/v2), Lyrics3 (v1/v2),
+MusicMatch, Vorbis Comments.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/prijkes/AudioVideoLib/blob/master/docs/release-notes.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Find files missing required tags | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Find files missing required tags | AudioVideoLib ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/prijkes/AudioVideoLib/blob/master/docs/examples/find-missing-tags.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="find-files-missing-required-tags">Find files missing required tags</h1>
+
+<p>Walks a directory and prints any audio file whose ID3v2 tag is missing
+a Title or an Artist. Easy to extend for &quot;all files without cover
+art&quot;, &quot;files using ID3v2.2 we want to upgrade&quot;, etc. Demonstrates the
+<code>Id3v2Tag</code> strongly-typed properties + the <code>AttachedPictures</code> collection.</p>
+<pre><code class="lang-csharp">using System;
+using System.IO;
+using System.Linq;
+
+using AudioVideoLib.Tags;
+
+if (args.Length != 1 || !Directory.Exists(args[0]))
+{
+    Console.Error.WriteLine(&quot;Usage: find-missing-tags &lt;directory&gt;&quot;);
+    return 1;
+}
+
+var problems = 0;
+
+foreach (var path in Directory.EnumerateFiles(args[0], &quot;*.mp3&quot;, SearchOption.AllDirectories))
+{
+    using var fs = File.OpenRead(path);
+    var tags = AudioTags.ReadStream(fs);
+    var id3v2 = tags.Select(o =&gt; o.AudioTag).OfType&lt;Id3v2Tag&gt;().FirstOrDefault();
+
+    var missing = new List&lt;string&gt;();
+
+    if (id3v2 is null)
+    {
+        missing.Add(&quot;no ID3v2 tag&quot;);
+    }
+    else
+    {
+        if (string.IsNullOrEmpty(id3v2.TrackTitle?.Values.FirstOrDefault())) missing.Add(&quot;Title&quot;);
+        if (string.IsNullOrEmpty(id3v2.Artist?.Values.FirstOrDefault()))     missing.Add(&quot;Artist&quot;);
+        if (string.IsNullOrEmpty(id3v2.AlbumTitle?.Values.FirstOrDefault())) missing.Add(&quot;Album&quot;);
+        if (id3v2.AttachedPictures.Count == 0)                                missing.Add(&quot;Cover&quot;);
+    }
+
+    if (missing.Count &gt; 0)
+    {
+        Console.WriteLine($&quot;{path}  --  missing: {string.Join(&quot;, &quot;, missing)}&quot;);
+        problems++;
+    }
+}
+
+Console.Error.WriteLine($&quot;{problems} file(s) flagged.&quot;);
+return problems == 0 ? 0 : 1;
+</code></pre>
+<p>Returning a non-zero exit code on flagged files makes this drop-in to
+a CI step that audits a music library before release.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/prijkes/AudioVideoLib/blob/master/docs/examples/find-missing-tags.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class AsfMetadataTag | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AsfMetadataTag | AudioVideoLib ">
+      
+      <meta name="description" content="Strongly-typed model of the metadata that can appear inside an ASF Header Object: the fixed-schema Content Description Object (CDO), the Extended Content Description Object (ECDO) of typed key/value pairs, and the Metadata Object (MO) / Metadata Library Object (MLO) collections.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/prijkes/AudioVideoLib/new/master/apiSpec/new?filename=AudioVideoLib_Tags_AsfMetadataTag.md&amp;value=---%0Auid%3A%20AudioVideoLib.Tags.AsfMetadataTag%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AudioVideoLib.Tags.AsfMetadataTag">
+
+
+
+  <h1 id="AudioVideoLib_Tags_AsfMetadataTag" data-uid="AudioVideoLib.Tags.AsfMetadataTag" class="text-break">
+Class AsfMetadataTag  <a class="header-action link-secondary" title="View source" href="https://github.com/audiovideolib/AudioVideoLib/blob/master/AudioVideoLib/Tags/AsfMetadataTag.cs/#L163"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AudioVideoLib.html">AudioVideoLib</a>.<a class="xref" href="AudioVideoLib.Tags.html">Tags</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AudioVideoLib.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Strongly-typed model of the metadata that can appear inside an ASF Header Object: the fixed-schema
+Content Description Object (CDO), the Extended Content Description Object (ECDO) of typed
+key/value pairs, and the Metadata Object (MO) / Metadata Library Object (MLO) collections.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class AsfMetadataTag</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AsfMetadataTag</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.ContentDescriptionObjectGuid.html">ContentDescriptionObjectGuid</a></dt>
+    <dd><p>Content Description Object GUID: <code>75B22633-668E-11CF-A6D9-00AA0062CE6C</code>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.ExtendedContentDescriptionObjectGuid.html">ExtendedContentDescriptionObjectGuid</a></dt>
+    <dd><p>Extended Content Description Object GUID: <code>D2D0A440-E307-11D2-97F0-00A0C95EA850</code>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.FilePropertiesObjectGuid.html">FilePropertiesObjectGuid</a></dt>
+    <dd><p>File Properties Object GUID: <code>8CABDCA1-A947-11CF-8EE4-00C00C205365</code>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.HeaderExtensionObjectGuid.html">HeaderExtensionObjectGuid</a></dt>
+    <dd><p>Header Extension Object GUID: <code>5FBF03B5-A92E-11CF-8EE3-00C00C205365</code>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.HeaderObjectGuid.html">HeaderObjectGuid</a></dt>
+    <dd><p>ASF Header Object GUID: <code>75B22630-668E-11CF-A6D9-00AA0062CE6C</code>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.MetadataLibraryObjectGuid.html">MetadataLibraryObjectGuid</a></dt>
+    <dd><p>Metadata Library Object GUID: <code>44231C94-9498-49D1-A141-1D134E457054</code>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.MetadataObjectGuid.html">MetadataObjectGuid</a></dt>
+    <dd><p>Metadata Object GUID: <code>C5F8CBEA-5BAF-4877-8467-AA8C44FA4CCA</code>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.StreamPropertiesObjectGuid.html">StreamPropertiesObjectGuid</a></dt>
+    <dd><p>Stream Properties Object GUID: <code>B7DC0791-A9B7-11CF-8EE6-00C00C205365</code>.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.Author.html#AudioVideoLib_Tags_AsfMetadataTag_Author">Author</a></dt>
+    <dd><p>Gets or sets the Author field from the Content Description Object.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.Copyright.html#AudioVideoLib_Tags_AsfMetadataTag_Copyright">Copyright</a></dt>
+    <dd><p>Gets or sets the Copyright field from the Content Description Object.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.Description.html#AudioVideoLib_Tags_AsfMetadataTag_Description">Description</a></dt>
+    <dd><p>Gets or sets the Description field from the Content Description Object.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.Extended.html#AudioVideoLib_Tags_AsfMetadataTag_Extended">Extended</a></dt>
+    <dd><p>Gets the Extended Content Description Object items as a dictionary keyed by name. When a name
+appears more than once the first occurrence wins; use <a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.ExtendedItems.html#AudioVideoLib_Tags_AsfMetadataTag_ExtendedItems">ExtendedItems</a> for the full list.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.ExtendedItems.html#AudioVideoLib_Tags_AsfMetadataTag_ExtendedItems">ExtendedItems</a></dt>
+    <dd><p>Gets the parsed Extended Content Description Object items as an ordered list of name/value pairs.
+Duplicate names are preserved in file order.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.HasContentDescription.html#AudioVideoLib_Tags_AsfMetadataTag_HasContentDescription">HasContentDescription</a></dt>
+    <dd><p>Gets a value indicating whether any field of the Content Description Object is populated.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.MetadataItems.html#AudioVideoLib_Tags_AsfMetadataTag_MetadataItems">MetadataItems</a></dt>
+    <dd><p>Gets the parsed Metadata Object items.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.MetadataLibraryItems.html#AudioVideoLib_Tags_AsfMetadataTag_MetadataLibraryItems">MetadataLibraryItems</a></dt>
+    <dd><p>Gets the parsed Metadata Library Object items.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.Rating.html#AudioVideoLib_Tags_AsfMetadataTag_Rating">Rating</a></dt>
+    <dd><p>Gets or sets the Rating field from the Content Description Object.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.Title.html#AudioVideoLib_Tags_AsfMetadataTag_Title">Title</a></dt>
+    <dd><p>Gets or sets the Title field from the Content Description Object.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.AddExtended.html#AudioVideoLib_Tags_AsfMetadataTag_AddExtended_System_String_AudioVideoLib_Tags_AsfTypedValue_">AddExtended(string, AsfTypedValue)</a></dt>
+    <dd><p>Adds an item to the Extended Content Description Object collection.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.AddMetadata.html#AudioVideoLib_Tags_AsfMetadataTag_AddMetadata_AudioVideoLib_Tags_AsfMetadataItem_">AddMetadata(AsfMetadataItem)</a></dt>
+    <dd><p>Adds an item to the Metadata Object collection.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.AddMetadataLibrary.html#AudioVideoLib_Tags_AsfMetadataTag_AddMetadataLibrary_AudioVideoLib_Tags_AsfMetadataItem_">AddMetadataLibrary(AsfMetadataItem)</a></dt>
+    <dd><p>Adds an item to the Metadata Library Object collection.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.BuildContentDescriptionPayload.html#AudioVideoLib_Tags_AsfMetadataTag_BuildContentDescriptionPayload">BuildContentDescriptionPayload()</a></dt>
+    <dd><p>Builds the Content Description Object payload (no object header).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.BuildExtendedContentDescriptionPayload.html#AudioVideoLib_Tags_AsfMetadataTag_BuildExtendedContentDescriptionPayload">BuildExtendedContentDescriptionPayload()</a></dt>
+    <dd><p>Builds the Extended Content Description Object payload (no object header).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.BuildMetadataPayload.html#AudioVideoLib_Tags_AsfMetadataTag_BuildMetadataPayload_System_Collections_Generic_IReadOnlyList_AudioVideoLib_Tags_AsfMetadataItem__">BuildMetadataPayload(IReadOnlyList&lt;AsfMetadataItem&gt;)</a></dt>
+    <dd><p>Builds a Metadata Object or Metadata Library Object payload (no object header).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.EncodeUnicodeString.html#AudioVideoLib_Tags_AsfMetadataTag_EncodeUnicodeString_System_String_">EncodeUnicodeString(string)</a></dt>
+    <dd><p>Encodes a string as UTF-16LE bytes followed by a 2-byte null terminator.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.ParseContentDescription.html#AudioVideoLib_Tags_AsfMetadataTag_ParseContentDescription_System_Byte___">ParseContentDescription(byte[])</a></dt>
+    <dd><p>Parses a Content Description Object payload (after the 24-byte object header) into this tag.
+Sets <a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.Title.html#AudioVideoLib_Tags_AsfMetadataTag_Title">Title</a>, <a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.Author.html#AudioVideoLib_Tags_AsfMetadataTag_Author">Author</a>, <a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.Copyright.html#AudioVideoLib_Tags_AsfMetadataTag_Copyright">Copyright</a>, <a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.Description.html#AudioVideoLib_Tags_AsfMetadataTag_Description">Description</a>,
+and <a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.Rating.html#AudioVideoLib_Tags_AsfMetadataTag_Rating">Rating</a>. Returns silently when the payload is too short to hold the five length WORDs.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.ParseContentDescription.html#AudioVideoLib_Tags_AsfMetadataTag_ParseContentDescription_System_ReadOnlySpan_System_Byte__">ParseContentDescription(ReadOnlySpan&lt;byte&gt;)</a></dt>
+    <dd><p>Parses a Content Description Object payload (after the 24-byte object header) into this tag.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.ParseExtendedContentDescription.html#AudioVideoLib_Tags_AsfMetadataTag_ParseExtendedContentDescription_System_Byte___">ParseExtendedContentDescription(byte[])</a></dt>
+    <dd><p>Parses an Extended Content Description Object payload (after the 24-byte object header).
+Items are appended to <a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.ExtendedItems.html#AudioVideoLib_Tags_AsfMetadataTag_ExtendedItems">ExtendedItems</a> in file order. Truncated payloads stop the
+walk early without throwing.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.ParseExtendedContentDescription.html#AudioVideoLib_Tags_AsfMetadataTag_ParseExtendedContentDescription_System_ReadOnlySpan_System_Byte__">ParseExtendedContentDescription(ReadOnlySpan&lt;byte&gt;)</a></dt>
+    <dd><p>Parses an Extended Content Description Object payload (after the 24-byte object header).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.ParseMetadata.html#AudioVideoLib_Tags_AsfMetadataTag_ParseMetadata_System_Byte___System_Boolean_">ParseMetadata(byte[], bool)</a></dt>
+    <dd><p>Parses a Metadata Object or Metadata Library Object payload (after the 24-byte object header).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.ParseMetadata.html#AudioVideoLib_Tags_AsfMetadataTag_ParseMetadata_System_ReadOnlySpan_System_Byte__System_Boolean_">ParseMetadata(ReadOnlySpan&lt;byte&gt;, bool)</a></dt>
+    <dd><p>Parses a Metadata Object or Metadata Library Object payload (after the 24-byte object header).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.ToByteArrays.html#AudioVideoLib_Tags_AsfMetadataTag_ToByteArrays">ToByteArrays()</a></dt>
+    <dd><p>Serialises the tag's four metadata-bearing objects to byte arrays in canonical order:
+CDO, ECDO, MO, MLO. Each entry is a complete ASF object (24-byte header + payload). Objects
+whose source collection is empty are omitted.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.U16Le.html#AudioVideoLib_Tags_AsfMetadataTag_U16Le_System_UInt16_">U16Le(ushort)</a></dt>
+    <dd><p>Returns a 2-byte little-endian encoding of <code class="paramref">value</code>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.U32Le.html#AudioVideoLib_Tags_AsfMetadataTag_U32Le_System_UInt32_">U32Le(uint)</a></dt>
+    <dd><p>Returns a 4-byte little-endian encoding of <code class="paramref">value</code>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.U64Le.html#AudioVideoLib_Tags_AsfMetadataTag_U64Le_System_UInt64_">U64Le(ulong)</a></dt>
+    <dd><p>Returns an 8-byte little-endian encoding of <code class="paramref">value</code>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.AsfMetadataTag.WrapObject.html#AudioVideoLib_Tags_AsfMetadataTag_WrapObject_System_Guid_System_Byte___">WrapObject(Guid, byte[])</a></dt>
+    <dd><p>Wraps a payload in a complete ASF object header (16-byte GUID + 8-byte little-endian size).</p>
+</dd>
+  </dl>
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/audiovideolib/AudioVideoLib/blob/master/AudioVideoLib/Tags/AsfMetadataTag.cs/#L163" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

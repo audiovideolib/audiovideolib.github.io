@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Round-trip semantics | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Round-trip semantics | AudioVideoLib ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/prijkes/AudioVideoLib/blob/master/docs/round-trip.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="round-trip-semantics">Round-trip semantics</h1>
+
+<p>What does &quot;write the tag back&quot; actually guarantee? This page spells out
+the guarantees and limitations per format.</p>
+<h2 id="general-rule">General rule</h2>
+<p>Every tag / chunk / box type has a <code>ToByteArray()</code> (or a container-level
+writer). For a tag that is read and immediately written back with no
+changes, the bytes are byte-identical <strong>unless a section below says
+otherwise</strong>. When fields are edited, the library re-encodes only the
+changed field and rewrites the enclosing container's size / count /
+offset fields.</p>
+<h2 id="id3v1">ID3v1</h2>
+<ul>
+<li><strong>Read then write, no edits:</strong> byte-identical — raw per-field bytes are
+the source of truth.</li>
+<li><strong>Field edited:</strong> just that field is re-encoded via its effective
+per-field <code>Encoding</code>. Others are written verbatim.</li>
+<li><strong>Gotcha:</strong> the v1 spec is silent on encoding. If you read a UTF-8
+tag (auto-detected), edit the title, and save, the title is
+re-encoded as UTF-8 — which is what the file already used, so this is
+what you want. If you <em>want</em> to convert to Latin-1, set
+<code>TrackTitleEncoding = Encoding.Latin1</code> before assigning.</li>
+</ul>
+<h2 id="id3v2">ID3v2</h2>
+<ul>
+<li><strong>Read then write, no edits:</strong> byte-identical for frames the library
+fully round-trips. Some exotic frames may only preserve their raw
+bytes rather than the structured decomposition.</li>
+<li><strong>Extended header CRC:</strong> recomputed on every write if the flag is set.</li>
+<li><strong>Unsynchronization:</strong> re-applied on write when the flag is set.</li>
+<li><strong>Footer:</strong> preserved if <code>UseFooter</code> is true (2.4 only).</li>
+</ul>
+<pre><code class="lang-csharp">// Read-then-write with no edits is byte-identical to the input bytes within
+// the tag's [StartOffset .. EndOffset] window.
+using var fs = File.OpenRead(&quot;track.mp3&quot;);
+var tags = AudioTags.ReadStream(fs);
+var offset = tags.First(t =&gt; t.AudioTag is Id3v2Tag);
+var id3v2 = (Id3v2Tag)offset.AudioTag;
+var rewritten = id3v2.ToByteArray();
+
+// Now edit one frame and re-emit; only the affected frame and the tag
+// header's size field change.
+var artist = id3v2.Artist ?? new Id3v2TextFrame(id3v2.Version, &quot;TPE1&quot;);
+artist.Values.Clear();
+artist.Values.Add(&quot;Different artist&quot;);
+id3v2.Artist = artist;
+File.WriteAllBytes(&quot;tag.id3v2&quot;, id3v2.ToByteArray());
+</code></pre>
+<h2 id="ape">APE</h2>
+<ul>
+<li>Byte-identical round-trip for read-then-write-no-edits.</li>
+<li>Item count + tag size fields in header and footer are recomputed on
+every write.</li>
+</ul>
+<h2 id="lyrics3">Lyrics3</h2>
+<p>v1 and v2 round-trip faithfully. The v2 size suffix (6 ASCII digits
+before the <code>LYRICS200</code> footer) is recomputed on write.</p>
+<h2 id="musicmatch">MusicMatch</h2>
+<p>Read-only in the Studio. Library exposes the model but no Save-friendly
+editor ships yet.</p>
+<h2 id="vorbis-comments">Vorbis Comments</h2>
+<ul>
+<li><strong>Standalone (OGG):</strong> edits recompute the page CRC when the Studio
+writes the OGG back.</li>
+<li><strong>Inside FLAC:</strong> edits recompute the metadata block length; the
+<code>is-last</code> flag on the now-last block is adjusted if the edit changed
+the block count.</li>
+</ul>
+<h2 id="mp4--itunes">MP4 / iTunes</h2>
+<ul>
+<li><strong>ilst splice:</strong> <code>Mp4Stream.ToByteArray()</code> reads the original bytes
+into memory, locates the existing ilst (or walks <code>moov → udta → meta</code>
+creating the chain if absent), and splices in the serialized new
+ilst, patching the enclosing atom sizes (<code>ilst</code>, <code>meta</code>, <code>udta</code>,
+<code>moov</code>) in-place.</li>
+</ul>
+<pre><code class="lang-csharp">// Splice an MP4 metadata change without touching the audio sample tables.
+var mp4 = MediaContainers.ReadStream(fs).OfType&lt;Mp4Stream&gt;().Single();
+mp4.Tag.Title = &quot;Edited&quot;;
+File.WriteAllBytes(&quot;out.m4a&quot;, mp4.ToByteArray());  // entire file, with ilst rewritten
+</code></pre>
+<ul>
+<li><strong><code>stco</code> / <code>co64</code> audio offsets:</strong> when <code>moov</code> is after <code>mdat</code> (the
+common QuickTime layout), shrinking or growing the metadata doesn't
+move the audio, so these tables stay valid. When <code>moov</code> is before
+<code>mdat</code> (Apple's streaming-friendly &quot;faststart&quot; layout), changing
+metadata size <em>would</em> invalidate them — the library does not
+currently rewrite those tables, so for faststart files you should
+either not change metadata size (the library will try to match the
+old size where possible by padding with a <code>free</code> atom) or expect
+playback offsets to break.</li>
+<li><strong>Atom size encoding:</strong> the walker handles <code>size == 0</code> (to EOF),
+<code>size == 1</code> (64-bit extended size on the next 8 bytes), and the
+normal 32-bit size. On write, the library uses the minimal encoding
+that fits.</li>
+</ul>
+<h2 id="asf--wma">ASF / WMA</h2>
+<ul>
+<li><strong>Splice rewriter:</strong> original bytes are captured up front. Replaced
+objects (Content Description Object, Extended Content Description
+Object — matched by GUID) are swapped for freshly serialized
+payloads. All other objects (File Properties, Header Extension, Data,
+Index) are preserved verbatim.</li>
+<li><strong>Header Object size + child count</strong> are recomputed.</li>
+<li><strong>Metadata Object / Metadata Library Object</strong> currently round-trip
+through synthesised files but a real file's existing Header
+Extension is preserved as-is (not re-emitted from the model). That's
+a follow-up item.</li>
+</ul>
+<h2 id="matroska--webm">Matroska / WebM</h2>
+<ul>
+<li><strong>Splice rewriter:</strong> reads the original bytes, locates the existing
+<code>Tags</code> element inside the first Segment, splices in new bytes, and
+patches the Segment's size VINT.</li>
+<li><strong>Segment size VINT length is preserved</strong>, which keeps Cluster /
+Cues offsets valid. If the new Tags element is larger than the
+original plus any following Void element can accommodate, the rest
+of the segment would shift — in that case we fall back to appending
+a fresh Tags element before the end of the segment.</li>
+<li><strong>SeekHead</strong> entries that point at the old Tags offset are not
+currently updated. Players that rely on SeekHead-only indexing may
+miss the new tags; players that walk the segment linearly will find
+them. Follow-up item.</li>
+</ul>
+<h2 id="wav--aiff-container-chunks">WAV / AIFF container chunks</h2>
+<ul>
+<li><strong>LIST INFO, BWF <code>bext</code>, iXML, AIFF text chunks:</strong> round-trip
+faithfully. <code>bext</code> v0/v1/v2 all preserved.</li>
+<li><strong>iXML:</strong> <code>ToByteArray()</code> returns the raw captured payload (BOM
+preserved), giving byte-identical round-trip for unmodified iXML.
+A <code>ToByteArray(includeBom)</code> overload re-serializes from the parsed
+XML string when callers want canonical output.</li>
+<li><strong>WAV with embedded <code>id3 </code> chunk:</strong> the chunk's payload is a
+complete ID3v2 tag — round-trip is byte-identical if you don't
+touch the ID3v2, and re-encodes the ID3v2 payload if you do.</li>
+</ul>
+<h2 id="dsf--dff">DSF / DFF</h2>
+<ul>
+<li><code>DsfStream.ToByteArray()</code> regenerates the DSD header so the file
+size + metadata pointer match current state. Audio payload bytes
+are captured at read time and written back verbatim.</li>
+<li><code>DffStream.ToByteArray()</code> re-emits the FRM8 form with every captured
+sub-chunk.</li>
+</ul>
+<h2 id="what-never-round-trips-byte-identically">What never round-trips byte-identically</h2>
+<ul>
+<li>Tags where a CRC is only present on write (e.g. ID3v2 extended
+header CRC) will match on repeated writes but may differ from a
+file produced by a different writer that used a different CRC seed.
+The values are semantically equal but not always bitwise-equal to
+arbitrary third-party output.</li>
+<li>OGG page CRCs are recomputed on every write — same caveat.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/prijkes/AudioVideoLib/blob/master/docs/round-trip.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

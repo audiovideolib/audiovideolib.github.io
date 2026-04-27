@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class AiffStream | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AiffStream | AudioVideoLib ">
+      
+      <meta name="description" content="Minimal structural walker for AIFF and AIFF-C containers. Does not decode audio samples.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/prijkes/AudioVideoLib/new/master/apiSpec/new?filename=AudioVideoLib_IO_AiffStream.md&amp;value=---%0Auid%3A%20AudioVideoLib.IO.AiffStream%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AudioVideoLib.IO.AiffStream">
+
+
+
+  <h1 id="AudioVideoLib_IO_AiffStream" data-uid="AudioVideoLib.IO.AiffStream" class="text-break">
+Class AiffStream  <a class="header-action link-secondary" title="View source" href="https://github.com/audiovideolib/AudioVideoLib/blob/master/AudioVideoLib/IO/AiffStream.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AudioVideoLib.html">AudioVideoLib</a>.<a class="xref" href="AudioVideoLib.IO.html">IO</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AudioVideoLib.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Minimal structural walker for AIFF and AIFF-C containers. Does not decode audio samples.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class AiffStream : IMediaContainer</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AiffStream</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="AudioVideoLib.IO.IMediaContainer.html">IMediaContainer</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="AudioVideoLib.IO.IMediaContainerExtensions.GetSerializedSize.html#AudioVideoLib_IO_IMediaContainerExtensions_GetSerializedSize_AudioVideoLib_IO_IMediaContainer_">IMediaContainerExtensions.GetSerializedSize(IMediaContainer)</a>
+  </div>
+  <div>
+      <a class="xref" href="AudioVideoLib.IO.IMediaContainerExtensions.ToByteArray.html#AudioVideoLib_IO_IMediaContainerExtensions_ToByteArray_AudioVideoLib_IO_IMediaContainer_">IMediaContainerExtensions.ToByteArray(IMediaContainer)</a>
+  </div>
+  <div>
+      <a class="xref" href="AudioVideoLib.IO.IMediaContainerExtensions.TryWriteTo.html#AudioVideoLib_IO_IMediaContainerExtensions_TryWriteTo_AudioVideoLib_IO_IMediaContainer_System_Span_System_Byte__System_Int32__">IMediaContainerExtensions.TryWriteTo(IMediaContainer, Span&lt;byte&gt;, out int)</a>
+  </div>
+  <div>
+      <a class="xref" href="AudioVideoLib.IO.IMediaContainerExtensions.WriteTo.html#AudioVideoLib_IO_IMediaContainerExtensions_WriteTo_AudioVideoLib_IO_IMediaContainer_System_Buffers_IBufferWriter_System_Byte__">IMediaContainerExtensions.WriteTo(IMediaContainer, IBufferWriter&lt;byte&gt;)</a>
+  </div>
+  </dd></dl>
+
+
+
+  <h2 id="AudioVideoLib_IO_AiffStream_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>The walker captures the <code>COMM</code> chunk needed to report format parameters and locates the
+<code>SSND</code> chunk, while recording every other chunk structurally without materialising its payload.
+Sample rate is decoded from the 80-bit IEEE 754 extended-precision value stored by the AIFF spec.</p>
+</div>
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.AiffStream.Channels.html#AudioVideoLib_IO_AiffStream_Channels">Channels</a></dt>
+    <dd><p>Gets the channel count from the <code>COMM</code> chunk.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.AiffStream.Chunks.html#AudioVideoLib_IO_AiffStream_Chunks">Chunks</a></dt>
+    <dd><p>Gets the chunks discovered inside the AIFF container, in file order.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.AiffStream.Compression.html#AudioVideoLib_IO_AiffStream_Compression">Compression</a></dt>
+    <dd><p>Gets the four-character compression identifier from an AIFF-C <code>COMM</code> chunk, or <code>null</code> for plain AIFF.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.AiffStream.EndOffset.html#AudioVideoLib_IO_AiffStream_EndOffset">EndOffset</a></dt>
+    <dd><p>Gets the end offset of the <a class="xref" href="AudioVideoLib.IO.IMediaContainer.html">IMediaContainer</a>, where it ends in the stream.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.AiffStream.FormatType.html#AudioVideoLib_IO_AiffStream_FormatType">FormatType</a></dt>
+    <dd><p>Gets the four-character form type, either <code>&quot;AIFF&quot;</code> or <code>&quot;AIFC&quot;</code>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.AiffStream.MaxFrameSpacingLength.html#AudioVideoLib_IO_AiffStream_MaxFrameSpacingLength">MaxFrameSpacingLength</a></dt>
+    <dd><p>Gets or sets the max length of spacing, in bytes, between 2 frames when searching for frames.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.AiffStream.SampleFrames.html#AudioVideoLib_IO_AiffStream_SampleFrames">SampleFrames</a></dt>
+    <dd><p>Gets the total number of sample frames from the <code>COMM</code> chunk.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.AiffStream.SampleRate.html#AudioVideoLib_IO_AiffStream_SampleRate">SampleRate</a></dt>
+    <dd><p>Gets the sample rate in Hz, decoded from the 80-bit IEEE 754 extended-precision value in the <code>COMM</code> chunk.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.AiffStream.SampleSize.html#AudioVideoLib_IO_AiffStream_SampleSize">SampleSize</a></dt>
+    <dd><p>Gets the number of bits per sample from the <code>COMM</code> chunk.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.AiffStream.SsndOffset.html#AudioVideoLib_IO_AiffStream_SsndOffset">SsndOffset</a></dt>
+    <dd><p>Gets the absolute offset of the <code>SSND</code> chunk's payload, or 0 if the chunk is absent.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.AiffStream.SsndSize.html#AudioVideoLib_IO_AiffStream_SsndSize">SsndSize</a></dt>
+    <dd><p>Gets the size of the <code>SSND</code> chunk's payload in bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.AiffStream.StartOffset.html#AudioVideoLib_IO_AiffStream_StartOffset">StartOffset</a></dt>
+    <dd><p>Gets the start offset of the <a class="xref" href="AudioVideoLib.IO.IMediaContainer.html">IMediaContainer</a>, where it starts in the stream.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.AiffStream.TextChunks.html#AudioVideoLib_IO_AiffStream_TextChunks">TextChunks</a></dt>
+    <dd><p>Gets the bundle of standard AIFF text chunks (<code>NAME</code>, <code>AUTH</code>, <code>ANNO</code>, <code>COMT</code>)
+discovered while walking the container, or <code>null</code> if none were present.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.AiffStream.TotalDuration.html#AudioVideoLib_IO_AiffStream_TotalDuration">TotalDuration</a></dt>
+    <dd><p>Gets the total length of audio in milliseconds.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.AiffStream.TotalMediaSize.html#AudioVideoLib_IO_AiffStream_TotalMediaSize">TotalMediaSize</a></dt>
+    <dd><p>Gets the total size of audio data in bytes.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.AiffStream.ReadStream.html#AudioVideoLib_IO_AiffStream_ReadStream_System_IO_Stream_">ReadStream(Stream)</a></dt>
+    <dd><p>Reads the audio stream from the stream.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.IO.AiffStream.WriteTo.html#AudioVideoLib_IO_AiffStream_WriteTo_System_IO_Stream_">WriteTo(Stream)</a></dt>
+    <dd><p>Writes the serialised form of this container to the supplied <code class="paramref">destination</code>.</p>
+</dd>
+  </dl>
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/audiovideolib/AudioVideoLib/blob/master/AudioVideoLib/IO/AiffStream.cs/#L18" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

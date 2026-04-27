@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class MpaFrame | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class MpaFrame | AudioVideoLib ">
+      
+      <meta name="description" content="Public class for MPEG audio frames. An MPEG audio file consists out of frames. Each frame contains of a header followed by the audio data.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/prijkes/AudioVideoLib/new/master/apiSpec/new?filename=AudioVideoLib_Formats_MpaFrame.md&amp;value=---%0Auid%3A%20AudioVideoLib.Formats.MpaFrame%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AudioVideoLib.Formats.MpaFrame">
+
+
+
+  <h1 id="AudioVideoLib_Formats_MpaFrame" data-uid="AudioVideoLib.Formats.MpaFrame" class="text-break">
+Class MpaFrame  <a class="header-action link-secondary" title="View source" href="https://github.com/audiovideolib/AudioVideoLib/blob/master/AudioVideoLib/Formats/MpaSubbandQuantization.cs/#L7"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AudioVideoLib.html">AudioVideoLib</a>.<a class="xref" href="AudioVideoLib.Formats.html">Formats</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AudioVideoLib.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Public class for MPEG audio frames.
+An MPEG audio file consists out of frames. Each frame contains of a header followed by the audio data.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class MpaFrame : IAudioFrame</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">MpaFrame</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="AudioVideoLib.Formats.IAudioFrame.html">IAudioFrame</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.FrameHeaderSize.html">FrameHeaderSize</a></dt>
+    <dd><p>A MPEGFrame header is always 4 bytes.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.AudioData.html#AudioVideoLib_Formats_MpaFrame_AudioData">AudioData</a></dt>
+    <dd><p>Gets the audio data.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.AudioDataLength.html#AudioVideoLib_Formats_MpaFrame_AudioDataLength">AudioDataLength</a></dt>
+    <dd><p>Gets the length of the audio data, in bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.AudioLength.html#AudioVideoLib_Formats_MpaFrame_AudioLength">AudioLength</a></dt>
+    <dd><p>Gets the length of audio, in milliseconds.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.AudioVersion.html#AudioVideoLib_Formats_MpaFrame_AudioVersion">AudioVersion</a></dt>
+    <dd><p>Gets the audio version used in this frame.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.Bitrate.html#AudioVideoLib_Formats_MpaFrame_Bitrate">Bitrate</a></dt>
+    <dd><p>Gets the bitrate of the audio, in KBit.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.BitrateInBitsPerSecond.html#AudioVideoLib_Formats_MpaFrame_BitrateInBitsPerSecond">BitrateInBitsPerSecond</a></dt>
+    <dd><p>Gets the bitrate in bits per second of the audio.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.BitrateInBytesPerSecond.html#AudioVideoLib_Formats_MpaFrame_BitrateInBytesPerSecond">BitrateInBytesPerSecond</a></dt>
+    <dd><p>Gets the bitrate in bytes per second of the audio.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.ChannelMode.html#AudioVideoLib_Formats_MpaFrame_ChannelMode">ChannelMode</a></dt>
+    <dd><p>Gets the channel mode this frame is encoded in.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.Crc.html#AudioVideoLib_Formats_MpaFrame_Crc">Crc</a></dt>
+    <dd><p>Gets the CRC value of the frame.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.Emphasis.html#AudioVideoLib_Formats_MpaFrame_Emphasis">Emphasis</a></dt>
+    <dd><p>Gets the Emphasis used for this MPEG frame.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.EndOffset.html#AudioVideoLib_Formats_MpaFrame_EndOffset">EndOffset</a></dt>
+    <dd><p>Gets the end offset of the <a class="xref" href="AudioVideoLib.Formats.IAudioFrame.html">IAudioFrame</a>, where it ends in the stream.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.FrameLength.html#AudioVideoLib_Formats_MpaFrame_FrameLength">FrameLength</a></dt>
+    <dd><p>Gets the frame length, in bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.FrameSize.html#AudioVideoLib_Formats_MpaFrame_FrameSize">FrameSize</a></dt>
+    <dd><p>Gets the frame size of the current frame, this is the number of samples contained in the frame.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.FrameSizeMultiplier.html#AudioVideoLib_Formats_MpaFrame_FrameSizeMultiplier">FrameSizeMultiplier</a></dt>
+    <dd><p>Gets the frame multiplier size of the current frame.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.IsCopyrighted.html#AudioVideoLib_Formats_MpaFrame_IsCopyrighted">IsCopyrighted</a></dt>
+    <dd><p>Gets a value indicating whether this frame is has the copyright flag set.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.IsCrcProtected.html#AudioVideoLib_Formats_MpaFrame_IsCrcProtected">IsCrcProtected</a></dt>
+    <dd><p>Gets a value indicating whether this MPEG frame is protected by a CRC that's appended after the header.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.IsMono.html#AudioVideoLib_Formats_MpaFrame_IsMono">IsMono</a></dt>
+    <dd><p>Gets a value indicating whether this frame is in mono.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.IsOriginalMedia.html#AudioVideoLib_Formats_MpaFrame_IsOriginalMedia">IsOriginalMedia</a></dt>
+    <dd><p>Gets a value indicating whether the MPEG frame is from the original media.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.IsPadded.html#AudioVideoLib_Formats_MpaFrame_IsPadded">IsPadded</a></dt>
+    <dd><p>Gets a value indicating whether the MPEG frame is padded with an extra slot or not.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.IsPrivateBitSet.html#AudioVideoLib_Formats_MpaFrame_IsPrivateBitSet">IsPrivateBitSet</a></dt>
+    <dd><p>Gets a value indicating whether the private bit is set for this frame.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.IsValidBitrate.html#AudioVideoLib_Formats_MpaFrame_IsValidBitrate">IsValidBitrate</a></dt>
+    <dd><p>Gets a value indicating whether the bitrate is valid.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.IsValidSampingRate.html#AudioVideoLib_Formats_MpaFrame_IsValidSampingRate">IsValidSampingRate</a></dt>
+    <dd><p>Gets a value indicating whether the valid sampling rate is valid.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.LayerVersion.html#AudioVideoLib_Formats_MpaFrame_LayerVersion">LayerVersion</a></dt>
+    <dd><p>Gets the layer version used in this frame.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.ModeExtension.html#AudioVideoLib_Formats_MpaFrame_ModeExtension">ModeExtension</a></dt>
+    <dd><p>Gets the Mode extension used for this MPEG frame.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.SampleSize.html#AudioVideoLib_Formats_MpaFrame_SampleSize">SampleSize</a></dt>
+    <dd><p>Gets the size of a sample, in bits.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.SamplingRate.html#AudioVideoLib_Formats_MpaFrame_SamplingRate">SamplingRate</a></dt>
+    <dd><p>Gets the sampling rate per second in Hz of the audio.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.SideInfoSize.html#AudioVideoLib_Formats_MpaFrame_SideInfoSize">SideInfoSize</a></dt>
+    <dd><p>Gets the size of the side info.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.SlotSize.html#AudioVideoLib_Formats_MpaFrame_SlotSize">SlotSize</a></dt>
+    <dd><p>Gets the size of the slot of the current frame.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.StartOffset.html#AudioVideoLib_Formats_MpaFrame_StartOffset">StartOffset</a></dt>
+    <dd><p>Gets the start offset of the <a class="xref" href="AudioVideoLib.Formats.IAudioFrame.html">IAudioFrame</a>, where it starts in the stream.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.CalculateCrc.html#AudioVideoLib_Formats_MpaFrame_CalculateCrc">CalculateCrc()</a></dt>
+    <dd><p>Calculates the CRC of the <a class="xref" href="AudioVideoLib.Formats.MpaFrame.html">MpaFrame</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.ReadFrame.html#AudioVideoLib_Formats_MpaFrame_ReadFrame_System_IO_Stream_">ReadFrame(Stream)</a></dt>
+    <dd><p>Reads a <a class="xref" href="AudioVideoLib.Formats.MpaFrame.html">MpaFrame</a> from a <span class="xref">System.IO.Stream</span>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.MpaFrame.ToByteArray.html#AudioVideoLib_Formats_MpaFrame_ToByteArray">ToByteArray()</a></dt>
+    <dd><p>Returns the frame in a byte array.</p>
+</dd>
+  </dl>
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/audiovideolib/AudioVideoLib/blob/master/AudioVideoLib/Formats/MpaSubbandQuantization.cs/#L7" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

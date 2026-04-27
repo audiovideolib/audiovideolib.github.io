@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ApeTag | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ApeTag | AudioVideoLib ">
+      
+      <meta name="description" content="Class to store an APE tag.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/prijkes/AudioVideoLib/new/master/apiSpec/new?filename=AudioVideoLib_Tags_ApeTag.md&amp;value=---%0Auid%3A%20AudioVideoLib.Tags.ApeTag%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AudioVideoLib.Tags.ApeTag">
+
+
+
+  <h1 id="AudioVideoLib_Tags_ApeTag" data-uid="AudioVideoLib.Tags.ApeTag" class="text-break">
+Class ApeTag  <a class="header-action link-secondary" title="View source" href="https://github.com/audiovideolib/AudioVideoLib/blob/master/AudioVideoLib/Tags/ApeTag.cs/#L19"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AudioVideoLib.html">AudioVideoLib</a>.<a class="xref" href="AudioVideoLib.Tags.html">Tags</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AudioVideoLib.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Class to store an APE tag.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class ApeTag : IAudioTag, IEquatable&lt;IAudioTag&gt;</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ApeTag</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="AudioVideoLib.Tags.IAudioTag.html">IAudioTag</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="AudioVideoLib.Tags.IAudioTag.html">IAudioTag</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="AudioVideoLib.Tags.IAudioTagExtensions.GetSerializedSize.html#AudioVideoLib_Tags_IAudioTagExtensions_GetSerializedSize_AudioVideoLib_Tags_IAudioTag_">IAudioTagExtensions.GetSerializedSize(IAudioTag)</a>
+  </div>
+  <div>
+      <a class="xref" href="AudioVideoLib.Tags.IAudioTagExtensions.ToByteArray.html#AudioVideoLib_Tags_IAudioTagExtensions_ToByteArray_AudioVideoLib_Tags_IAudioTag_">IAudioTagExtensions.ToByteArray(IAudioTag)</a>
+  </div>
+  <div>
+      <a class="xref" href="AudioVideoLib.Tags.IAudioTagExtensions.TryWriteTo.html#AudioVideoLib_Tags_IAudioTagExtensions_TryWriteTo_AudioVideoLib_Tags_IAudioTag_System_Span_System_Byte__System_Int32__">IAudioTagExtensions.TryWriteTo(IAudioTag, Span&lt;byte&gt;, out int)</a>
+  </div>
+  <div>
+      <a class="xref" href="AudioVideoLib.Tags.IAudioTagExtensions.WriteTo.html#AudioVideoLib_Tags_IAudioTagExtensions_WriteTo_AudioVideoLib_Tags_IAudioTag_System_Buffers_IBufferWriter_System_Byte__">IAudioTagExtensions.WriteTo(IAudioTag, IBufferWriter&lt;byte&gt;)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.-ctor.html#AudioVideoLib_Tags_ApeTag__ctor">ApeTag()</a></dt>
+    <dd><p>Initializes a new instance of the <a class="xref" href="AudioVideoLib.Tags.ApeTag.html">ApeTag</a> class.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.-ctor.html#AudioVideoLib_Tags_ApeTag__ctor_AudioVideoLib_Tags_ApeVersion_">ApeTag(ApeVersion)</a></dt>
+    <dd><p>Initializes a new instance of the <a class="xref" href="AudioVideoLib.Tags.ApeTag.html">ApeTag</a> class.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.-ctor.html#AudioVideoLib_Tags_ApeTag__ctor_AudioVideoLib_Tags_ApeVersion_System_Int32_">ApeTag(ApeVersion, int)</a></dt>
+    <dd><p>Initializes a new instance of the <a class="xref" href="AudioVideoLib.Tags.ApeTag.html">ApeTag</a> class.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.FooterSize.html">FooterSize</a></dt>
+    <dd><p>Size of the footer, in bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.HeaderSize.html">HeaderSize</a></dt>
+    <dd><p>Size of the header, in bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.MaxAllowedFields.html">MaxAllowedFields</a></dt>
+    <dd><p>Max number of allowed <a class="xref" href="AudioVideoLib.Tags.ApeItem.html">ApeItem</a>s in a tag.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.MaxAllowedSize.html">MaxAllowedSize</a></dt>
+    <dd><p>Max allowed size for a <a class="xref" href="AudioVideoLib.Tags.ApeTag.html">ApeTag</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.TagIdentifier.html">TagIdentifier</a></dt>
+    <dd><p>Gets the identifier of the <a class="xref" href="AudioVideoLib.Tags.ApeTag.html">ApeTag</a>.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.AbstractLink.html#AudioVideoLib_Tags_ApeTag_AbstractLink">AbstractLink</a></dt>
+    <dd><p>Gets or sets an abstract <a class="xref" href="AudioVideoLib.Tags.ApeLocatorItem.html">ApeLocatorItem</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.AlbumArtist.html#AudioVideoLib_Tags_ApeTag_AlbumArtist">AlbumArtist</a></dt>
+    <dd><p>Gets or sets the artist of the album.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.AlbumName.html#AudioVideoLib_Tags_ApeTag_AlbumName">AlbumName</a></dt>
+    <dd><p>Gets or sets the name of the album.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.Artist.html#AudioVideoLib_Tags_ApeTag_Artist">Artist</a></dt>
+    <dd><p>Gets or sets the artist.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.BarCodeIdentifier.html#AudioVideoLib_Tags_ApeTag_BarCodeIdentifier">BarCodeIdentifier</a></dt>
+    <dd><p>Gets or sets a bar code identifier.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.CatalogNumber.html#AudioVideoLib_Tags_ApeTag_CatalogNumber">CatalogNumber</a></dt>
+    <dd><p>Gets or sets the catalog number.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.Comments.html#AudioVideoLib_Tags_ApeTag_Comments">Comments</a></dt>
+    <dd><p>Gets or sets user comments.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.Composer.html#AudioVideoLib_Tags_ApeTag_Composer">Composer</a></dt>
+    <dd><p>Gets or sets the composer.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.Conductor.html#AudioVideoLib_Tags_ApeTag_Conductor">Conductor</a></dt>
+    <dd><p>Gets or sets the conductor.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.CopyrightHolder.html#AudioVideoLib_Tags_ApeTag_CopyrightHolder">CopyrightHolder</a></dt>
+    <dd><p>Gets or sets the copyright holder.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.DebutAlbumName.html#AudioVideoLib_Tags_ApeTag_DebutAlbumName">DebutAlbumName</a></dt>
+    <dd><p>Gets or sets the name of the debut album.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.DiscNumber.html#AudioVideoLib_Tags_ApeTag_DiscNumber">DiscNumber</a></dt>
+    <dd><p>Gets or sets the disc number.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.DiscographyLink.html#AudioVideoLib_Tags_ApeTag_DiscographyLink">DiscographyLink</a></dt>
+    <dd><p>Gets or sets a link to the discography.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.Dummy.html#AudioVideoLib_Tags_ApeTag_Dummy">Dummy</a></dt>
+    <dd><p>Gets or sets the dummy.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.FileLocation.html#AudioVideoLib_Tags_ApeTag_FileLocation">FileLocation</a></dt>
+    <dd><p>Gets or sets the location of the file.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.Genre.html#AudioVideoLib_Tags_ApeTag_Genre">Genre</a></dt>
+    <dd><p>Gets or sets the genre.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.IndexTimes.html#AudioVideoLib_Tags_ApeTag_IndexTimes">IndexTimes</a></dt>
+    <dd><p>Gets or sets the index times.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.InternationalStandardBookNumber.html#AudioVideoLib_Tags_ApeTag_InternationalStandardBookNumber">InternationalStandardBookNumber</a></dt>
+    <dd><p>Gets or sets the international standard book number.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.InternationalStandardRecordingNumber.html#AudioVideoLib_Tags_ApeTag_InternationalStandardRecordingNumber">InternationalStandardRecordingNumber</a></dt>
+    <dd><p>Gets or sets the international standard recording number.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.IntroPlay.html#AudioVideoLib_Tags_ApeTag_IntroPlay">IntroPlay</a></dt>
+    <dd><p>Gets or sets the intro play.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.IsHeader.html#AudioVideoLib_Tags_ApeTag_IsHeader">IsHeader</a></dt>
+    <dd><p>Gets or sets a value indicating whether the header is a header or footer.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.IsReadOnly.html#AudioVideoLib_Tags_ApeTag_IsReadOnly">IsReadOnly</a></dt>
+    <dd><p>Gets or sets a value indicating whether the <a class="xref" href="AudioVideoLib.Tags.ApeTag.html">ApeTag</a> is read only or read/write.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.Items.html#AudioVideoLib_Tags_ApeTag_Items">Items</a></dt>
+    <dd><p>Gets the <a class="xref" href="AudioVideoLib.Tags.ApeItem.html">ApeItem</a>s in the <a class="xref" href="AudioVideoLib.Tags.ApeTag.html">ApeTag</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.LabelCode.html#AudioVideoLib_Tags_ApeTag_LabelCode">LabelCode</a></dt>
+    <dd><p>Gets or sets the label code.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.Language.html#AudioVideoLib_Tags_ApeTag_Language">Language</a></dt>
+    <dd><p>Gets or sets the language.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.Media.html#AudioVideoLib_Tags_ApeTag_Media">Media</a></dt>
+    <dd><p>Gets or sets the media.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.PublicationRightHolder.html#AudioVideoLib_Tags_ApeTag_PublicationRightHolder">PublicationRightHolder</a></dt>
+    <dd><p>Gets or sets the publication right holder.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.Publisher.html#AudioVideoLib_Tags_ApeTag_Publisher">Publisher</a></dt>
+    <dd><p>Gets or sets the publisher.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.RecordDate.html#AudioVideoLib_Tags_ApeTag_RecordDate">RecordDate</a></dt>
+    <dd><p>Gets or sets the record date.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.RecordLocation.html#AudioVideoLib_Tags_ApeTag_RecordLocation">RecordLocation</a></dt>
+    <dd><p>Gets or sets the record location.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.Related.html#AudioVideoLib_Tags_ApeTag_Related">Related</a></dt>
+    <dd><p>Gets or sets the related.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.ReleaseDate.html#AudioVideoLib_Tags_ApeTag_ReleaseDate">ReleaseDate</a></dt>
+    <dd><p>Gets or sets the release date.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.ReplayGainAlbumGain.html#AudioVideoLib_Tags_ApeTag_ReplayGainAlbumGain">ReplayGainAlbumGain</a></dt>
+    <dd><p>Gets or sets the replay gain album gain.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.ReplayGainAlbumPeak.html#AudioVideoLib_Tags_ApeTag_ReplayGainAlbumPeak">ReplayGainAlbumPeak</a></dt>
+    <dd><p>Gets or sets the replay gain album peak.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.ReplayGainTrackGain.html#AudioVideoLib_Tags_ApeTag_ReplayGainTrackGain">ReplayGainTrackGain</a></dt>
+    <dd><p>Gets or sets the replay gain track gain.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.ReplayGainTrackPeak.html#AudioVideoLib_Tags_ApeTag_ReplayGainTrackPeak">ReplayGainTrackPeak</a></dt>
+    <dd><p>Gets or sets the replay gain track peak.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.Subtitle.html#AudioVideoLib_Tags_ApeTag_Subtitle">Subtitle</a></dt>
+    <dd><p>Gets or sets the subtitle.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.Title.html#AudioVideoLib_Tags_ApeTag_Title">Title</a></dt>
+    <dd><p>Gets or sets the title.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.TrackNumber.html#AudioVideoLib_Tags_ApeTag_TrackNumber">TrackNumber</a></dt>
+    <dd><p>Gets or sets the track number.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.UseFooter.html#AudioVideoLib_Tags_ApeTag_UseFooter">UseFooter</a></dt>
+    <dd><p>Gets or sets a value indicating whether a footer should be added to the <a class="xref" href="AudioVideoLib.Tags.ApeTag.html">ApeTag</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.UseHeader.html#AudioVideoLib_Tags_ApeTag_UseHeader">UseHeader</a></dt>
+    <dd><p>Gets or sets a value indicating whether a header should be added to the <a class="xref" href="AudioVideoLib.Tags.ApeTag.html">ApeTag</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.Version.html#AudioVideoLib_Tags_ApeTag_Version">Version</a></dt>
+    <dd><p>Gets the version of the <a class="xref" href="AudioVideoLib.Tags.ApeTag.html">ApeTag</a>.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.Equals.html#AudioVideoLib_Tags_ApeTag_Equals_AudioVideoLib_Tags_ApeTag_">Equals(ApeTag?)</a></dt>
+    <dd><p>Equals the specified <a class="xref" href="AudioVideoLib.Tags.ApeTag.html">ApeTag</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.Equals.html#AudioVideoLib_Tags_ApeTag_Equals_AudioVideoLib_Tags_IAudioTag_">Equals(IAudioTag?)</a></dt>
+    <dd><p>Indicates whether the current object is equal to another object of the same type.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.Equals.html#AudioVideoLib_Tags_ApeTag_Equals_System_Object_">Equals(object?)</a></dt>
+    <dd><p>Determines whether the specified object is equal to the current object.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.GetHashCode.html#AudioVideoLib_Tags_ApeTag_GetHashCode">GetHashCode()</a></dt>
+    <dd><p>Serves as a hash function for a particular type.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.GetItem.html#AudioVideoLib_Tags_ApeTag_GetItem_AudioVideoLib_Tags_ApeItemKey_">GetItem(ApeItemKey)</a></dt>
+    <dd><p>Gets the <a class="xref" href="AudioVideoLib.Tags.ApeItem.html">ApeItem</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.GetItem.html#AudioVideoLib_Tags_ApeTag_GetItem_System_String_">GetItem(string)</a></dt>
+    <dd><p>Gets the <a class="xref" href="AudioVideoLib.Tags.ApeItem.html">ApeItem</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.GetItem.html#AudioVideoLib_Tags_ApeTag_GetItem__1">GetItem&lt;T&gt;()</a></dt>
+    <dd><p>Gets the first item of type T.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.GetItem.html#AudioVideoLib_Tags_ApeTag_GetItem__1_AudioVideoLib_Tags_ApeItemKey_">GetItem&lt;T&gt;(ApeItemKey)</a></dt>
+    <dd><p>Gets the <a class="xref" href="AudioVideoLib.Tags.ApeItem.html">ApeItem</a> with the specified <code class="paramref">key</code> cast to the
+requested concrete <code class="typeparamref">T</code>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.GetItems.html#AudioVideoLib_Tags_ApeTag_GetItems__1">GetItems&lt;T&gt;()</a></dt>
+    <dd><p>Gets all items of type T.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.IsValidIsbn10.html#AudioVideoLib_Tags_ApeTag_IsValidIsbn10_System_String_">IsValidIsbn10(string)</a></dt>
+    <dd><p>Determines whether the value is a valid ISBN-10 number.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.RemoveItem.html#AudioVideoLib_Tags_ApeTag_RemoveItem_AudioVideoLib_Tags_ApeItem_">RemoveItem(ApeItem?)</a></dt>
+    <dd><p>Removes the item.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.RemoveItem.html#AudioVideoLib_Tags_ApeTag_RemoveItem_System_String_">RemoveItem(string)</a></dt>
+    <dd><p>Removes the first item with the same key.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.RemoveItems.html#AudioVideoLib_Tags_ApeTag_RemoveItems_System_Collections_Generic_IEnumerable_AudioVideoLib_Tags_ApeItem__">RemoveItems(IEnumerable&lt;ApeItem&gt;)</a></dt>
+    <dd><p>Removes the items.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.RemoveItems.html#AudioVideoLib_Tags_ApeTag_RemoveItems_System_String_">RemoveItems(string)</a></dt>
+    <dd><p>Removes all items with the same key.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.RemoveItems.html#AudioVideoLib_Tags_ApeTag_RemoveItems__1">RemoveItems&lt;T&gt;()</a></dt>
+    <dd><p>Removes all items of type T.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.SetItem.html#AudioVideoLib_Tags_ApeTag_SetItem_AudioVideoLib_Tags_ApeItem_">SetItem(ApeItem?)</a></dt>
+    <dd><p>Updates the first item with a matching key if found; else, adds a new item.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.SetItems.html#AudioVideoLib_Tags_ApeTag_SetItems_System_Collections_Generic_IEnumerable_AudioVideoLib_Tags_ApeItem__">SetItems(IEnumerable&lt;ApeItem&gt;)</a></dt>
+    <dd><p>Updates a list of items if found; else, adds it.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.ToString.html#AudioVideoLib_Tags_ApeTag_ToString">ToString()</a></dt>
+    <dd><p>Returns a string that represents the current object.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.ApeTag.WriteTo.html#AudioVideoLib_Tags_ApeTag_WriteTo_System_IO_Stream_">WriteTo(Stream)</a></dt>
+    <dd><p>Writes the serialised form of this tag to the supplied <code class="paramref">destination</code>.</p>
+</dd>
+  </dl>
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/audiovideolib/AudioVideoLib/blob/master/AudioVideoLib/Tags/ApeTag.cs/#L19" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

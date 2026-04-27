@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>FlacStream | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="FlacStream | AudioVideoLib ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/prijkes/AudioVideoLib/blob/master/docs/container-formats/flacstream.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="flacstream">FlacStream</h1>
+
+<p>Walks the FLAC metadata blocks (<code>STREAMINFO</code>, <code>APPLICATION</code>, <code>PADDING</code>,
+<code>SEEKTABLE</code>, <code>VORBIS_COMMENT</code>, <code>CUESHEET</code>, <code>PICTURE</code>) followed by frames.
+<code>FlacStream.MetadataBlocks</code> surfaces the blocks; the Vorbis Comment
+block holds the tag text via <code>VorbisComments</code>.</p>
+<h2 id="on-disk-layout">On-disk layout</h2>
+<p>FLAC (Free Lossless Audio Codec, defined in RFC 9639) is built around
+a linear sequence of metadata blocks followed by audio frames. The
+file begins with a 4-byte magic identifier <code>fLaC</code>, after which zero
+or more metadata blocks precede the audio frame stream.</p>
+<p>Each metadata block opens with a 4-byte header: the first byte
+contains a 1-bit &quot;last block&quot; flag and a 7-bit block-type identifier;
+the next three bytes encode the block length in big-endian form.
+Block types include STREAMINFO (essential audio parameters),
+VORBIS_COMMENT (text tags), SEEKTABLE (sample-accurate seek points),
+CUESHEET (CD-style cue points), PICTURE (embedded images), PADDING,
+and APPLICATION. STREAMINFO conventionally appears first and supplies
+the sample rate, channel count, bit depth, and total sample count
+needed to decode the stream.</p>
+<p>The frame stream begins immediately after the block flagged as last.
+Each frame contains a sync code and audio samples; frames may not
+align to metadata-block boundaries, and the walker tolerates small
+spacing gaps during parsing.</p>
+<p><code>FlacStream.MetadataBlocks</code> surfaces every block as an enumerable;
+the typed accessors <code>StreamInfoMetadataBlocks</code>,
+<code>VorbisCommentsMetadataBlock</code>, and <code>PictureMetadataBlocks</code> reach
+specific block types directly.</p>
+<pre><code class="lang-csharp">var flac = streams.OfType&lt;FlacStream&gt;().First();
+
+foreach (var block in flac.MetadataBlocks)
+{
+    Console.WriteLine(block.BlockType);
+}
+
+var info = flac.StreamInfoMetadataBlocks.FirstOrDefault();
+if (info is not null)
+{
+    Console.WriteLine($&quot;{info.SampleRate} Hz, {info.Channels} ch, {info.BitsPerSample}-bit, {info.TotalSamples} samples&quot;);
+}
+
+foreach (var pic in flac.PictureMetadataBlocks)
+{
+    var ext = pic.MimeType.Split('/').Last();
+    File.WriteAllBytes($&quot;flac-{pic.PictureType}.{ext}&quot;, pic.PictureData);
+}
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/prijkes/AudioVideoLib/blob/master/docs/container-formats/flacstream.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Id3v2Tag | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Id3v2Tag | AudioVideoLib ">
+      
+      <meta name="description" content="Class to store an Id3v2 tag.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/prijkes/AudioVideoLib/new/master/apiSpec/new?filename=AudioVideoLib_Tags_Id3v2Tag.md&amp;value=---%0Auid%3A%20AudioVideoLib.Tags.Id3v2Tag%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AudioVideoLib.Tags.Id3v2Tag">
+
+
+
+  <h1 id="AudioVideoLib_Tags_Id3v2Tag" data-uid="AudioVideoLib.Tags.Id3v2Tag" class="text-break">
+Class Id3v2Tag  <a class="header-action link-secondary" title="View source" href="https://github.com/audiovideolib/AudioVideoLib/blob/master/AudioVideoLib/Tags/Id3v2Tag.Serialization.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AudioVideoLib.html">AudioVideoLib</a>.<a class="xref" href="AudioVideoLib.Tags.html">Tags</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AudioVideoLib.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Class to store an Id3v2 tag.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class Id3v2Tag : IAudioTag, IEquatable&lt;IAudioTag&gt;</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Id3v2Tag</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="AudioVideoLib.Tags.IAudioTag.html">IAudioTag</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="AudioVideoLib.Tags.IAudioTag.html">IAudioTag</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="AudioVideoLib.Tags.IAudioTagExtensions.GetSerializedSize.html#AudioVideoLib_Tags_IAudioTagExtensions_GetSerializedSize_AudioVideoLib_Tags_IAudioTag_">IAudioTagExtensions.GetSerializedSize(IAudioTag)</a>
+  </div>
+  <div>
+      <a class="xref" href="AudioVideoLib.Tags.IAudioTagExtensions.ToByteArray.html#AudioVideoLib_Tags_IAudioTagExtensions_ToByteArray_AudioVideoLib_Tags_IAudioTag_">IAudioTagExtensions.ToByteArray(IAudioTag)</a>
+  </div>
+  <div>
+      <a class="xref" href="AudioVideoLib.Tags.IAudioTagExtensions.TryWriteTo.html#AudioVideoLib_Tags_IAudioTagExtensions_TryWriteTo_AudioVideoLib_Tags_IAudioTag_System_Span_System_Byte__System_Int32__">IAudioTagExtensions.TryWriteTo(IAudioTag, Span&lt;byte&gt;, out int)</a>
+  </div>
+  <div>
+      <a class="xref" href="AudioVideoLib.Tags.IAudioTagExtensions.WriteTo.html#AudioVideoLib_Tags_IAudioTagExtensions_WriteTo_AudioVideoLib_Tags_IAudioTag_System_Buffers_IBufferWriter_System_Byte__">IAudioTagExtensions.WriteTo(IAudioTag, IBufferWriter&lt;byte&gt;)</a>
+  </div>
+  </dd></dl>
+
+
+
+  <h2 id="AudioVideoLib_Tags_Id3v2Tag_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>an <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a> contains a header, <a class="xref" href="AudioVideoLib.Tags.Id3v2Frame.html">Id3v2Frame</a>s and optional <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.PaddingSize.html#AudioVideoLib_Tags_Id3v2Tag_PaddingSize">PaddingSize</a>.</p>
+</div>
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.-ctor.html#AudioVideoLib_Tags_Id3v2Tag__ctor">Id3v2Tag()</a></dt>
+    <dd><p>Initializes a new instance of the <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a> class.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.-ctor.html#AudioVideoLib_Tags_Id3v2Tag__ctor_AudioVideoLib_Tags_Id3v2Version_">Id3v2Tag(Id3v2Version)</a></dt>
+    <dd><p>Initializes a new instance of the <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a> class.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.-ctor.html#AudioVideoLib_Tags_Id3v2Tag__ctor_AudioVideoLib_Tags_Id3v2Version_System_Int32_">Id3v2Tag(Id3v2Version, int)</a></dt>
+    <dd><p>Initializes a new instance of the <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a> class.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.FooterIdentifier.html">FooterIdentifier</a></dt>
+    <dd><p>The footer identifier for an <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.FooterSize.html">FooterSize</a></dt>
+    <dd><p>The size of the <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a> footer, in bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.HeaderIdentifier.html">HeaderIdentifier</a></dt>
+    <dd><p>The header identifier for an <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a>.
+The first three bytes of the tag are always &quot;ID3&quot; to indicate that this is an ID3 tag.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.HeaderSize.html">HeaderSize</a></dt>
+    <dd><p>The size of the <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a> header, in bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.MaxAllowedFrames.html">MaxAllowedFrames</a></dt>
+    <dd><p>The max amounts of <a class="xref" href="AudioVideoLib.Tags.Id3v2Frame.html">Id3v2Frame</a>s an <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a> can have.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.MaxAllowedSize.html">MaxAllowedSize</a></dt>
+    <dd><p>The max size the <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a> can be.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.AlbumSortOrder.html#AudioVideoLib_Tags_Id3v2Tag_AlbumSortOrder">AlbumSortOrder</a></dt>
+    <dd><p>Gets or sets the album sort order.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.AlbumTitle.html#AudioVideoLib_Tags_Id3v2Tag_AlbumTitle">AlbumTitle</a></dt>
+    <dd><p>Gets or sets the album title.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.Artist.html#AudioVideoLib_Tags_Id3v2Tag_Artist">Artist</a></dt>
+    <dd><p>Gets or sets the artist.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.ArtistExtra.html#AudioVideoLib_Tags_Id3v2Tag_ArtistExtra">ArtistExtra</a></dt>
+    <dd><p>Gets or sets the artist extra.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.AttachedPictures.html#AudioVideoLib_Tags_Id3v2Tag_AttachedPictures">AttachedPictures</a></dt>
+    <dd><p>Gets or sets a list of attached pictures.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.AudioEncryptions.html#AudioVideoLib_Tags_Id3v2Tag_AudioEncryptions">AudioEncryptions</a></dt>
+    <dd><p>Gets or sets a list of audio encryptions.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.AudioSeekPointIndex.html#AudioVideoLib_Tags_Id3v2Tag_AudioSeekPointIndex">AudioSeekPointIndex</a></dt>
+    <dd><p>Gets or sets the audio seek point index.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.AudioSize.html#AudioVideoLib_Tags_Id3v2Tag_AudioSize">AudioSize</a></dt>
+    <dd><p>Gets or sets the size of the audio.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.BeatsPerMinute.html#AudioVideoLib_Tags_Id3v2Tag_BeatsPerMinute">BeatsPerMinute</a></dt>
+    <dd><p>Gets or sets the beats per minute.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.Comments.html#AudioVideoLib_Tags_Id3v2Tag_Comments">Comments</a></dt>
+    <dd><p>Gets or sets a list of comments.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.Commercial.html#AudioVideoLib_Tags_Id3v2Tag_Commercial">Commercial</a></dt>
+    <dd><p>Gets or sets the commercial frame.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.CommercialInformations.html#AudioVideoLib_Tags_Id3v2Tag_CommercialInformations">CommercialInformations</a></dt>
+    <dd><p>Gets or sets a collection of commercial information.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.ComposerName.html#AudioVideoLib_Tags_Id3v2Tag_ComposerName">ComposerName</a></dt>
+    <dd><p>Gets or sets the name of the composer.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.CompressedDataMeta.html#AudioVideoLib_Tags_Id3v2Tag_CompressedDataMeta">CompressedDataMeta</a></dt>
+    <dd><p>Gets or sets the audio seek point index.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.ConductorName.html#AudioVideoLib_Tags_Id3v2Tag_ConductorName">ConductorName</a></dt>
+    <dd><p>Gets or sets the name of the conductor.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.ContentGroupDescription.html#AudioVideoLib_Tags_Id3v2Tag_ContentGroupDescription">ContentGroupDescription</a></dt>
+    <dd><p>Gets or sets the content group description.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.ContentType.html#AudioVideoLib_Tags_Id3v2Tag_ContentType">ContentType</a></dt>
+    <dd><p>Gets or sets the type of the content.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.CopyrightInformation.html#AudioVideoLib_Tags_Id3v2Tag_CopyrightInformation">CopyrightInformation</a></dt>
+    <dd><p>Gets or sets the copyright information.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.CopyrightMessage.html#AudioVideoLib_Tags_Id3v2Tag_CopyrightMessage">CopyrightMessage</a></dt>
+    <dd><p>Gets or sets the copyright message.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.DateRecording.html#AudioVideoLib_Tags_Id3v2Tag_DateRecording">DateRecording</a></dt>
+    <dd><p>Gets or sets the date for the recording.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.EncodedBy.html#AudioVideoLib_Tags_Id3v2Tag_EncodedBy">EncodedBy</a></dt>
+    <dd><p>Gets or sets the encoded by.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.EncodingSettingsUsed.html#AudioVideoLib_Tags_Id3v2Tag_EncodingSettingsUsed">EncodingSettingsUsed</a></dt>
+    <dd><p>Gets or sets the encoding settings used.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.EncodingTime.html#AudioVideoLib_Tags_Id3v2Tag_EncodingTime">EncodingTime</a></dt>
+    <dd><p>Gets or sets the encoding time.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.EncryptedMetaFrames.html#AudioVideoLib_Tags_Id3v2Tag_EncryptedMetaFrames">EncryptedMetaFrames</a></dt>
+    <dd><p>Gets or sets a list of encrypted meta frames.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.EncryptionMethodRegistrations.html#AudioVideoLib_Tags_Id3v2Tag_EncryptionMethodRegistrations">EncryptionMethodRegistrations</a></dt>
+    <dd><p>Gets or sets a list of encryption method registrations.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.Equalisation.html#AudioVideoLib_Tags_Id3v2Tag_Equalisation">Equalisation</a></dt>
+    <dd><p>Gets or sets the equalisation.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.Equalisation2.html#AudioVideoLib_Tags_Id3v2Tag_Equalisation2">Equalisation2</a></dt>
+    <dd><p>Gets or sets a list equalisation (2).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.EventTimingCodes.html#AudioVideoLib_Tags_Id3v2Tag_EventTimingCodes">EventTimingCodes</a></dt>
+    <dd><p>Gets or sets the event timing codes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.ExperimentalRelativeVolumeAdjustment2.html#AudioVideoLib_Tags_Id3v2Tag_ExperimentalRelativeVolumeAdjustment2">ExperimentalRelativeVolumeAdjustment2</a></dt>
+    <dd><p>Gets or sets a list of experimental relative volume adjustment (2).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.ExtendedHeader.html#AudioVideoLib_Tags_Id3v2Tag_ExtendedHeader">ExtendedHeader</a></dt>
+    <dd><p>Gets or sets the extended header.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.FileOwner.html#AudioVideoLib_Tags_Id3v2Tag_FileOwner">FileOwner</a></dt>
+    <dd><p>Gets or sets the file owner.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.FileType.html#AudioVideoLib_Tags_Id3v2Tag_FileType">FileType</a></dt>
+    <dd><p>Gets or sets the type of the file.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.Flags.html#AudioVideoLib_Tags_Id3v2Tag_Flags">Flags</a></dt>
+    <dd><p>Gets or sets the flags of the <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.Frames.html#AudioVideoLib_Tags_Id3v2Tag_Frames">Frames</a></dt>
+    <dd><p>Gets a read-only list of frames in the tag.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GeneralEncapsulatedObjects.html#AudioVideoLib_Tags_Id3v2Tag_GeneralEncapsulatedObjects">GeneralEncapsulatedObjects</a></dt>
+    <dd><p>Gets or sets a list of general encapsulated objects.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GroupIdentificationRegistrations.html#AudioVideoLib_Tags_Id3v2Tag_GroupIdentificationRegistrations">GroupIdentificationRegistrations</a></dt>
+    <dd><p>Gets or sets a list of group identification registrations.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.InitialKey.html#AudioVideoLib_Tags_Id3v2Tag_InitialKey">InitialKey</a></dt>
+    <dd><p>Gets or sets the initial key.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.InternationalStandardRecordingCode.html#AudioVideoLib_Tags_Id3v2Tag_InternationalStandardRecordingCode">InternationalStandardRecordingCode</a></dt>
+    <dd><p>Gets or sets the international standard recording code.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.InternetRadioStationName.html#AudioVideoLib_Tags_Id3v2Tag_InternetRadioStationName">InternetRadioStationName</a></dt>
+    <dd><p>Gets or sets the name of the internet radio station.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.InternetRadioStationOwner.html#AudioVideoLib_Tags_Id3v2Tag_InternetRadioStationOwner">InternetRadioStationOwner</a></dt>
+    <dd><p>Gets or sets the internet radio station owner.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.InvolvedPeopleList.html#AudioVideoLib_Tags_Id3v2Tag_InvolvedPeopleList">InvolvedPeopleList</a></dt>
+    <dd><p>Gets or sets a list of involved people.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.InvolvedPeopleList2.html#AudioVideoLib_Tags_Id3v2Tag_InvolvedPeopleList2">InvolvedPeopleList2</a></dt>
+    <dd><p>Gets or sets the involved people list.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.Length.html#AudioVideoLib_Tags_Id3v2Tag_Length">Length</a></dt>
+    <dd><p>Gets or sets the length.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.LinkedInformations.html#AudioVideoLib_Tags_Id3v2Tag_LinkedInformations">LinkedInformations</a></dt>
+    <dd><p>Gets or sets a list of linked information.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.MediaType.html#AudioVideoLib_Tags_Id3v2Tag_MediaType">MediaType</a></dt>
+    <dd><p>Gets or sets the type of the media.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.ModifiedBy.html#AudioVideoLib_Tags_Id3v2Tag_ModifiedBy">ModifiedBy</a></dt>
+    <dd><p>Gets or sets the modified by.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.Mood.html#AudioVideoLib_Tags_Id3v2Tag_Mood">Mood</a></dt>
+    <dd><p>Gets or sets the mood.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.MpegLocationLookupTable.html#AudioVideoLib_Tags_Id3v2Tag_MpegLocationLookupTable">MpegLocationLookupTable</a></dt>
+    <dd><p>Gets or sets the MPEG location lookup table.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.MusicCdIdentifier.html#AudioVideoLib_Tags_Id3v2Tag_MusicCdIdentifier">MusicCdIdentifier</a></dt>
+    <dd><p>Gets or sets the music CD identifier.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.MusicianCreditsList.html#AudioVideoLib_Tags_Id3v2Tag_MusicianCreditsList">MusicianCreditsList</a></dt>
+    <dd><p>Gets or sets the musician credits list.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.OfficialArtistWebpage.html#AudioVideoLib_Tags_Id3v2Tag_OfficialArtistWebpage">OfficialArtistWebpage</a></dt>
+    <dd><p>Gets or sets the official artist webpage.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.OfficialAudioFileWebpage.html#AudioVideoLib_Tags_Id3v2Tag_OfficialAudioFileWebpage">OfficialAudioFileWebpage</a></dt>
+    <dd><p>Gets or sets the official audio file webpage.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.OfficialAudioSource.html#AudioVideoLib_Tags_Id3v2Tag_OfficialAudioSource">OfficialAudioSource</a></dt>
+    <dd><p>Gets or sets the official audio source.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.OfficialInternetRadioStationHomepage.html#AudioVideoLib_Tags_Id3v2Tag_OfficialInternetRadioStationHomepage">OfficialInternetRadioStationHomepage</a></dt>
+    <dd><p>Gets or sets the official internet radio station homepage.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.OriginalAlbumTitle.html#AudioVideoLib_Tags_Id3v2Tag_OriginalAlbumTitle">OriginalAlbumTitle</a></dt>
+    <dd><p>Gets or sets the original album title.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.OriginalArtist.html#AudioVideoLib_Tags_Id3v2Tag_OriginalArtist">OriginalArtist</a></dt>
+    <dd><p>Gets or sets the original artist.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.OriginalFilename.html#AudioVideoLib_Tags_Id3v2Tag_OriginalFilename">OriginalFilename</a></dt>
+    <dd><p>Gets or sets the original filename.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.OriginalReleaseTime.html#AudioVideoLib_Tags_Id3v2Tag_OriginalReleaseTime">OriginalReleaseTime</a></dt>
+    <dd><p>Gets or sets the original release time.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.OriginalReleaseYear.html#AudioVideoLib_Tags_Id3v2Tag_OriginalReleaseYear">OriginalReleaseYear</a></dt>
+    <dd><p>Gets or sets the original release year.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.OriginalTextWriter.html#AudioVideoLib_Tags_Id3v2Tag_OriginalTextWriter">OriginalTextWriter</a></dt>
+    <dd><p>Gets or sets the original text writer.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.Ownership.html#AudioVideoLib_Tags_Id3v2Tag_Ownership">Ownership</a></dt>
+    <dd><p>Gets or sets the ownership.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.PaddingSize.html#AudioVideoLib_Tags_Id3v2Tag_PaddingSize">PaddingSize</a></dt>
+    <dd><p>Gets or sets the amount of bytes to use as padding.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.PartOfSet.html#AudioVideoLib_Tags_Id3v2Tag_PartOfSet">PartOfSet</a></dt>
+    <dd><p>Gets or sets the part of set.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.PaymentWebpage.html#AudioVideoLib_Tags_Id3v2Tag_PaymentWebpage">PaymentWebpage</a></dt>
+    <dd><p>Gets or sets the payment webpage.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.PerformerSortOrder.html#AudioVideoLib_Tags_Id3v2Tag_PerformerSortOrder">PerformerSortOrder</a></dt>
+    <dd><p>Gets or sets the performer sort order.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.PlayCounter.html#AudioVideoLib_Tags_Id3v2Tag_PlayCounter">PlayCounter</a></dt>
+    <dd><p>Gets or sets the play counter.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.PlaylistDelay.html#AudioVideoLib_Tags_Id3v2Tag_PlaylistDelay">PlaylistDelay</a></dt>
+    <dd><p>Gets or sets the playlist delay.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.Popularimeters.html#AudioVideoLib_Tags_Id3v2Tag_Popularimeters">Popularimeters</a></dt>
+    <dd><p>Gets or sets a list of popularimeters in the tag.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.PositionSynchronization.html#AudioVideoLib_Tags_Id3v2Tag_PositionSynchronization">PositionSynchronization</a></dt>
+    <dd><p>Gets or sets the position synchronization.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.PreserveFramesAfterFileAlteration.html#AudioVideoLib_Tags_Id3v2Tag_PreserveFramesAfterFileAlteration">PreserveFramesAfterFileAlteration</a></dt>
+    <dd><p>Gets or sets a value indicating whether to preserve frames after file alteration.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.PreserveFramesAfterTagAlteration.html#AudioVideoLib_Tags_Id3v2Tag_PreserveFramesAfterTagAlteration">PreserveFramesAfterTagAlteration</a></dt>
+    <dd><p>Gets or sets a value indicating whether to preserve frames after tag alteration.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.PrivateFrames.html#AudioVideoLib_Tags_Id3v2Tag_PrivateFrames">PrivateFrames</a></dt>
+    <dd><p>Gets or sets a list of private frames.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.ProducedNote.html#AudioVideoLib_Tags_Id3v2Tag_ProducedNote">ProducedNote</a></dt>
+    <dd><p>Gets or sets the produced note.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.Publisher.html#AudioVideoLib_Tags_Id3v2Tag_Publisher">Publisher</a></dt>
+    <dd><p>Gets or sets the publisher.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.PublishersOfficialWebpage.html#AudioVideoLib_Tags_Id3v2Tag_PublishersOfficialWebpage">PublishersOfficialWebpage</a></dt>
+    <dd><p>Gets or sets the publishers official webpage.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.RecommendedBufferSize.html#AudioVideoLib_Tags_Id3v2Tag_RecommendedBufferSize">RecommendedBufferSize</a></dt>
+    <dd><p>Gets or sets the size of the recommended buffer.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.RecordingDates.html#AudioVideoLib_Tags_Id3v2Tag_RecordingDates">RecordingDates</a></dt>
+    <dd><p>Gets or sets the recording dates.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.RecordingTime.html#AudioVideoLib_Tags_Id3v2Tag_RecordingTime">RecordingTime</a></dt>
+    <dd><p>Gets or sets the recording time.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.RelativeVolumeAdjustment.html#AudioVideoLib_Tags_Id3v2Tag_RelativeVolumeAdjustment">RelativeVolumeAdjustment</a></dt>
+    <dd><p>Gets or sets the relative volume adjustment.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.RelativeVolumeAdjustment2.html#AudioVideoLib_Tags_Id3v2Tag_RelativeVolumeAdjustment2">RelativeVolumeAdjustment2</a></dt>
+    <dd><p>Gets or sets a list of relative volume adjustment (2).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.ReleaseTime.html#AudioVideoLib_Tags_Id3v2Tag_ReleaseTime">ReleaseTime</a></dt>
+    <dd><p>Gets or sets the release time.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.Reverb.html#AudioVideoLib_Tags_Id3v2Tag_Reverb">Reverb</a></dt>
+    <dd><p>Gets or sets the reverb.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.Seek.html#AudioVideoLib_Tags_Id3v2Tag_Seek">Seek</a></dt>
+    <dd><p>Gets or sets the seek frame.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.SetSubtitle.html#AudioVideoLib_Tags_Id3v2Tag_SetSubtitle">SetSubtitle</a></dt>
+    <dd><p>Gets or sets the set subtitle.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.Signatures.html#AudioVideoLib_Tags_Id3v2Tag_Signatures">Signatures</a></dt>
+    <dd><p>Gets or sets a list of signatures.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.SyncedTempoCodes.html#AudioVideoLib_Tags_Id3v2Tag_SyncedTempoCodes">SyncedTempoCodes</a></dt>
+    <dd><p>Gets or sets the synced tempo codes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.SynchronizedLyrics.html#AudioVideoLib_Tags_Id3v2Tag_SynchronizedLyrics">SynchronizedLyrics</a></dt>
+    <dd><p>Gets or sets a list of synchronized lyrics.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.TagIsExperimental.html#AudioVideoLib_Tags_Id3v2Tag_TagIsExperimental">TagIsExperimental</a></dt>
+    <dd><p>Gets or sets a value indicating whether the <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a> is in experimental stage.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.TaggingTime.html#AudioVideoLib_Tags_Id3v2Tag_TaggingTime">TaggingTime</a></dt>
+    <dd><p>Gets or sets the tagging time.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.TermsOfUse.html#AudioVideoLib_Tags_Id3v2Tag_TermsOfUse">TermsOfUse</a></dt>
+    <dd><p>Gets or sets the terms of use.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.TextLanguages.html#AudioVideoLib_Tags_Id3v2Tag_TextLanguages">TextLanguages</a></dt>
+    <dd><p>Gets or sets the text language.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.TextWriter.html#AudioVideoLib_Tags_Id3v2Tag_TextWriter">TextWriter</a></dt>
+    <dd><p>Gets or sets the text writer.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.TimeRecording.html#AudioVideoLib_Tags_Id3v2Tag_TimeRecording">TimeRecording</a></dt>
+    <dd><p>Gets or sets the time for the recording.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.TitleSortOrder.html#AudioVideoLib_Tags_Id3v2Tag_TitleSortOrder">TitleSortOrder</a></dt>
+    <dd><p>Gets or sets the title sort order.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.TrackNumber.html#AudioVideoLib_Tags_Id3v2Tag_TrackNumber">TrackNumber</a></dt>
+    <dd><p>Gets or sets the track number.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.TrackTitle.html#AudioVideoLib_Tags_Id3v2Tag_TrackTitle">TrackTitle</a></dt>
+    <dd><p>Gets or sets the track title.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.TrackTitleDescription.html#AudioVideoLib_Tags_Id3v2Tag_TrackTitleDescription">TrackTitleDescription</a></dt>
+    <dd><p>Gets or sets the track title description.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.UniqueFileIdentifiers.html#AudioVideoLib_Tags_Id3v2Tag_UniqueFileIdentifiers">UniqueFileIdentifiers</a></dt>
+    <dd><p>Gets or sets a list of unique file identifiers.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.UnsychronizedLyrics.html#AudioVideoLib_Tags_Id3v2Tag_UnsychronizedLyrics">UnsychronizedLyrics</a></dt>
+    <dd><p>Gets or sets a list of unsynchronized lyrics.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.UseCompression.html#AudioVideoLib_Tags_Id3v2Tag_UseCompression">UseCompression</a></dt>
+    <dd><p>Gets or sets a value indicating whether compression should be used.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.UseExtendedHeader.html#AudioVideoLib_Tags_Id3v2Tag_UseExtendedHeader">UseExtendedHeader</a></dt>
+    <dd><p>Gets a value indicating whether an extended header should be added to the <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.UseFooter.html#AudioVideoLib_Tags_Id3v2Tag_UseFooter">UseFooter</a></dt>
+    <dd><p>Gets or sets a value indicating whether a footer should be added to the <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.UseHeader.html#AudioVideoLib_Tags_Id3v2Tag_UseHeader">UseHeader</a></dt>
+    <dd><p>Gets or sets a value indicating whether a header should be added to the <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.UseUnsynchronization.html#AudioVideoLib_Tags_Id3v2Tag_UseUnsynchronization">UseUnsynchronization</a></dt>
+    <dd><p>Gets or sets a value indicating whether the <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a> uses unsynchronization.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.UserDefinedTextInformations.html#AudioVideoLib_Tags_Id3v2Tag_UserDefinedTextInformations">UserDefinedTextInformations</a></dt>
+    <dd><p>Gets or sets a list of user defined text information.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.UserDefinedUrlLinks.html#AudioVideoLib_Tags_Id3v2Tag_UserDefinedUrlLinks">UserDefinedUrlLinks</a></dt>
+    <dd><p>Gets or sets a list of user defined URL links.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.Version.html#AudioVideoLib_Tags_Id3v2Tag_Version">Version</a></dt>
+    <dd><p>Gets or sets the version of the <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.YearRecording.html#AudioVideoLib_Tags_Id3v2Tag_YearRecording">YearRecording</a></dt>
+    <dd><p>Gets or sets the year of the recording.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.CalculateCrc32.html#AudioVideoLib_Tags_Id3v2Tag_CalculateCrc32">CalculateCrc32()</a></dt>
+    <dd><p>Calculates the CRC32 of the <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.Equals.html#AudioVideoLib_Tags_Id3v2Tag_Equals_AudioVideoLib_Tags_IAudioTag_">Equals(IAudioTag?)</a></dt>
+    <dd><p>Indicates whether the current object is equal to another object of the same type.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.Equals.html#AudioVideoLib_Tags_Id3v2Tag_Equals_AudioVideoLib_Tags_Id3v2Tag_">Equals(Id3v2Tag?)</a></dt>
+    <dd><p>Equals the specified <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.Equals.html#AudioVideoLib_Tags_Id3v2Tag_Equals_System_Object_">Equals(object?)</a></dt>
+    <dd><p>Determines whether the specified object is equal to the current object.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GetFrame.html#AudioVideoLib_Tags_Id3v2Tag_GetFrame__1">GetFrame&lt;T&gt;()</a></dt>
+    <dd><p>Gets the first frame of type T.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GetFrame.html#AudioVideoLib_Tags_Id3v2Tag_GetFrame__1_System_String_">GetFrame&lt;T&gt;(string)</a></dt>
+    <dd><p>Gets the first frame of type T with a matching frame identifier.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GetFrames.html#AudioVideoLib_Tags_Id3v2Tag_GetFrames__1">GetFrames&lt;T&gt;()</a></dt>
+    <dd><p>Gets all frames of type T.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GetFrames.html#AudioVideoLib_Tags_Id3v2Tag_GetFrames__1_System_String_">GetFrames&lt;T&gt;(string)</a></dt>
+    <dd><p>Gets all frames of type T and with a matching frame identifier.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GetHashCode.html#AudioVideoLib_Tags_Id3v2Tag_GetHashCode">GetHashCode()</a></dt>
+    <dd><p>Serves as a hash function for a particular type.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GetSynchronizedData.html#AudioVideoLib_Tags_Id3v2Tag_GetSynchronizedData_System_Byte___System_Int64_System_Int64_">GetSynchronizedData(byte[], long, long)</a></dt>
+    <dd><p>Gets the synchronized data.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GetSynchsafeValue.html#AudioVideoLib_Tags_Id3v2Tag_GetSynchsafeValue_System_Int16_">GetSynchsafeValue(short)</a></dt>
+    <dd><p>Gets the synchsafe value in LSB format.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GetSynchsafeValue.html#AudioVideoLib_Tags_Id3v2Tag_GetSynchsafeValue_System_Int32_">GetSynchsafeValue(int)</a></dt>
+    <dd><p>Gets the synchsafe value in LSB format.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GetSynchsafeValue.html#AudioVideoLib_Tags_Id3v2Tag_GetSynchsafeValue_System_Int64_">GetSynchsafeValue(long)</a></dt>
+    <dd><p>Gets the synchsafe value in LSB format.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GetTextFrame.html#AudioVideoLib_Tags_Id3v2Tag_GetTextFrame_AudioVideoLib_Tags_Id3v2TextFrameIdentifier_">GetTextFrame(Id3v2TextFrameIdentifier)</a></dt>
+    <dd><p>Gets the <a class="xref" href="AudioVideoLib.Tags.Id3v2TextFrame.html">Id3v2TextFrame</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GetUnsynchedValue.html#AudioVideoLib_Tags_Id3v2Tag_GetUnsynchedValue_System_Byte___System_Int32_System_Int32_">GetUnsynchedValue(byte[], int, int)</a></dt>
+    <dd><p>Gets the unsynched value in LSB format.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GetUnsynchedValue.html#AudioVideoLib_Tags_Id3v2Tag_GetUnsynchedValue_System_Int32_">GetUnsynchedValue(int)</a></dt>
+    <dd><p>Gets the unsynched data in LSB format.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GetUnsynchedValue.html#AudioVideoLib_Tags_Id3v2Tag_GetUnsynchedValue_System_Int64_">GetUnsynchedValue(long)</a></dt>
+    <dd><p>Gets the unsynched data in LSB format.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GetUnsynchedValue.html#AudioVideoLib_Tags_Id3v2Tag_GetUnsynchedValue_System_Int64_System_Int32_">GetUnsynchedValue(long, int)</a></dt>
+    <dd><p>Gets the unsynched data in LSB format.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GetUnsynchedValue.html#AudioVideoLib_Tags_Id3v2Tag_GetUnsynchedValue_System_ReadOnlySpan_System_Byte__System_Int32_System_Int32_">GetUnsynchedValue(ReadOnlySpan&lt;byte&gt;, int, int)</a></dt>
+    <dd><p>Gets the unsynched value in LSB format.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GetUnsynchronizedData.html#AudioVideoLib_Tags_Id3v2Tag_GetUnsynchronizedData_System_Byte___System_Int64_System_Int64_">GetUnsynchronizedData(byte[], long, long)</a></dt>
+    <dd><p>Gets the unsynchronized data.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GetUrlLinkFrame.html#AudioVideoLib_Tags_Id3v2Tag_GetUrlLinkFrame_AudioVideoLib_Tags_Id3v2UrlLinkFrameIdentifier_">GetUrlLinkFrame(Id3v2UrlLinkFrameIdentifier)</a></dt>
+    <dd><p>Gets the <a class="xref" href="AudioVideoLib.Tags.Id3v2UrlLinkFrame.html">Id3v2UrlLinkFrame</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.GetUrlLinkFrames.html#AudioVideoLib_Tags_Id3v2Tag_GetUrlLinkFrames_AudioVideoLib_Tags_Id3v2UrlLinkFrameIdentifier_">GetUrlLinkFrames(Id3v2UrlLinkFrameIdentifier)</a></dt>
+    <dd><p>Gets all <a class="xref" href="AudioVideoLib.Tags.Id3v2UrlLinkFrame.html">Id3v2UrlLinkFrame</a>s.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.RemoveFrame.html#AudioVideoLib_Tags_Id3v2Tag_RemoveFrame_AudioVideoLib_Tags_Id3v2Frame_">RemoveFrame(Id3v2Frame?)</a></dt>
+    <dd><p>Removes the frame.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.RemoveFrames.html#AudioVideoLib_Tags_Id3v2Tag_RemoveFrames_System_Collections_Generic_IEnumerable_AudioVideoLib_Tags_Id3v2Frame__">RemoveFrames(IEnumerable&lt;Id3v2Frame&gt;)</a></dt>
+    <dd><p>Removes the frames.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.RemoveFrames.html#AudioVideoLib_Tags_Id3v2Tag_RemoveFrames__1">RemoveFrames&lt;T&gt;()</a></dt>
+    <dd><p>Removes all frames of type T.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.SetFrame.html#AudioVideoLib_Tags_Id3v2Tag_SetFrame_AudioVideoLib_Tags_Id3v2Frame_">SetFrame(Id3v2Frame)</a></dt>
+    <dd><p>Updates the first matching frame if found; else, adds a new frame.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.SetFrames.html#AudioVideoLib_Tags_Id3v2Tag_SetFrames_System_Collections_Generic_IEnumerable_AudioVideoLib_Tags_Id3v2Frame__">SetFrames(IEnumerable&lt;Id3v2Frame&gt;)</a></dt>
+    <dd><p>Updates a list of frames with a matching identifier if found; else, adds it.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.ToString.html#AudioVideoLib_Tags_Id3v2Tag_ToString">ToString()</a></dt>
+    <dd><p>Returns a string that represents the current object.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.WriteTo.html#AudioVideoLib_Tags_Id3v2Tag_WriteTo_System_IO_Stream_">WriteTo(Stream)</a></dt>
+    <dd><p>Writes the serialised <a class="xref" href="AudioVideoLib.Tags.Id3v2Tag.html">Id3v2Tag</a> to the supplied stream.</p>
+</dd>
+  </dl>
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/audiovideolib/AudioVideoLib/blob/master/AudioVideoLib/Tags/Id3v2Tag.Serialization.cs/#L11" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class VbrHeader | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class VbrHeader | AudioVideoLib ">
+      
+      <meta name="description" content="VBRHeader base class for VBR headers. VBR classes MUST derive from this class.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/prijkes/AudioVideoLib/new/master/apiSpec/new?filename=AudioVideoLib_Formats_VbrHeader.md&amp;value=---%0Auid%3A%20AudioVideoLib.Formats.VbrHeader%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AudioVideoLib.Formats.VbrHeader">
+
+
+
+  <h1 id="AudioVideoLib_Formats_VbrHeader" data-uid="AudioVideoLib.Formats.VbrHeader" class="text-break">
+Class VbrHeader  <a class="header-action link-secondary" title="View source" href="https://github.com/audiovideolib/AudioVideoLib/blob/master/AudioVideoLib/Formats/VbrHeader.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AudioVideoLib.html">AudioVideoLib</a>.<a class="xref" href="AudioVideoLib.Formats.html">Formats</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AudioVideoLib.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>VBRHeader base class for VBR headers. VBR classes MUST derive from this class.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class VbrHeader</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">VbrHeader</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="AudioVideoLib.Formats.VbriHeader.html">VbriHeader</a></div>
+      <div><a class="xref" href="AudioVideoLib.Formats.XingHeader.html">XingHeader</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.-ctor.html#AudioVideoLib_Formats_VbrHeader__ctor_AudioVideoLib_Formats_MpaFrame_AudioVideoLib_IO_StreamBuffer_System_Int64_AudioVideoLib_Formats_VbrHeaderType_">VbrHeader(MpaFrame, StreamBuffer, long, VbrHeaderType)</a></dt>
+    <dd><p>Initializes a new instance of the <a class="xref" href="AudioVideoLib.Formats.VbrHeader.html">VbrHeader</a> class.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.FileSize.html#AudioVideoLib_Formats_VbrHeader_FileSize">FileSize</a></dt>
+    <dd><p>Gets or sets the size of the file, in bytes, of the VBR header.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.FirstFrame.html#AudioVideoLib_Formats_VbrHeader_FirstFrame">FirstFrame</a></dt>
+    <dd><p>Gets or sets the frame which contains the VBR header.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.Flags.html#AudioVideoLib_Formats_VbrHeader_Flags">Flags</a></dt>
+    <dd><p>Gets or sets the flags set in the header, if applied.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.FrameCount.html#AudioVideoLib_Formats_VbrHeader_FrameCount">FrameCount</a></dt>
+    <dd><p>Gets or sets the frame count of the VBR header.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.FramesPerTableEntry.html#AudioVideoLib_Formats_VbrHeader_FramesPerTableEntry">FramesPerTableEntry</a></dt>
+    <dd><p>Gets or sets the amount of frames in a <a class="xref" href="AudioVideoLib.Formats.VbrHeader.Toc.html#AudioVideoLib_Formats_VbrHeader_Toc">Toc</a> table entry.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.HeaderType.html#AudioVideoLib_Formats_VbrHeader_HeaderType">HeaderType</a></dt>
+    <dd><p>Gets or sets the type of the VBR header. See <a class="xref" href="AudioVideoLib.Formats.VbrHeaderType.html">VbrHeaderType</a> for possible types.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.LameTag.html#AudioVideoLib_Formats_VbrHeader_LameTag">LameTag</a></dt>
+    <dd><p>Gets or sets the LAME tag, if found.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.Name.html#AudioVideoLib_Formats_VbrHeader_Name">Name</a></dt>
+    <dd><p>Gets or sets the name of the <a class="xref" href="AudioVideoLib.Formats.VbrHeader.html">VbrHeader</a> as it is found in the stream.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.Offset.html#AudioVideoLib_Formats_VbrHeader_Offset">Offset</a></dt>
+    <dd><p>Gets or sets the absolute offset of the <a class="xref" href="AudioVideoLib.Formats.VbrHeader.html">VbrHeader</a> in the firstFrame.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.Quality.html#AudioVideoLib_Formats_VbrHeader_Quality">Quality</a></dt>
+    <dd><p>Gets or sets the VBR quality of the file. From 0 - best quality to 100 - worst quality.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.TableEntries.html#AudioVideoLib_Formats_VbrHeader_TableEntries">TableEntries</a></dt>
+    <dd><p>Gets or sets the number of entries in the <a class="xref" href="AudioVideoLib.Formats.VbrHeader.Toc.html#AudioVideoLib_Formats_VbrHeader_Toc">Toc</a> table.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.TableEntrySize.html#AudioVideoLib_Formats_VbrHeader_TableEntrySize">TableEntrySize</a></dt>
+    <dd><p>Gets or sets the size of a table entry, in bytes, in the <a class="xref" href="AudioVideoLib.Formats.VbrHeader.Toc.html#AudioVideoLib_Formats_VbrHeader_Toc">Toc</a> table.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.TableLength.html#AudioVideoLib_Formats_VbrHeader_TableLength">TableLength</a></dt>
+    <dd><p>Gets or sets the total size of the <a class="xref" href="AudioVideoLib.Formats.VbrHeader.Toc.html#AudioVideoLib_Formats_VbrHeader_Toc">Toc</a> table, in bytes.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.TableScale.html#AudioVideoLib_Formats_VbrHeader_TableScale">TableScale</a></dt>
+    <dd><p>Gets or sets the table scale, in bytes, of the <a class="xref" href="AudioVideoLib.Formats.VbrHeader.Toc.html#AudioVideoLib_Formats_VbrHeader_Toc">Toc</a> table.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.Toc.html#AudioVideoLib_Formats_VbrHeader_Toc">Toc</a></dt>
+    <dd><p>Gets or sets the TOC table, used for seeking in the stream.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.Version.html#AudioVideoLib_Formats_VbrHeader_Version">Version</a></dt>
+    <dd><p>Gets or sets the version of the <a class="xref" href="AudioVideoLib.Formats.VbrHeader.html">VbrHeader</a>.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.FindHeader.html#AudioVideoLib_Formats_VbrHeader_FindHeader_AudioVideoLib_Formats_MpaFrame_">FindHeader(MpaFrame)</a></dt>
+    <dd><p>Find a <a class="xref" href="AudioVideoLib.Formats.VbrHeader.html">VbrHeader</a> in the supplied frame.
+A <a class="xref" href="AudioVideoLib.Formats.VbrHeader.html">VbrHeader</a> could follow the MPA header in the first frame.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.SeekPositionByPercent.html#AudioVideoLib_Formats_VbrHeader_SeekPositionByPercent_System_Single_">SeekPositionByPercent(float)</a></dt>
+    <dd><p>Seeks the position by percentage.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.SeekPositionByTime.html#AudioVideoLib_Formats_VbrHeader_SeekPositionByTime_System_Single_">SeekPositionByTime(float)</a></dt>
+    <dd><p>Seeks the position by time.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.SeekTimeByPosition.html#AudioVideoLib_Formats_VbrHeader_SeekTimeByPosition_System_Int32_">SeekTimeByPosition(int)</a></dt>
+    <dd><p>Seeks the time by position.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.VbrHeader.ToByteArray.html#AudioVideoLib_Formats_VbrHeader_ToByteArray">ToByteArray()</a></dt>
+    <dd><p>Places the <a class="xref" href="AudioVideoLib.Formats.VbrHeader.html">VbrHeader</a> into a byte array.</p>
+</dd>
+  </dl>
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/audiovideolib/AudioVideoLib/blob/master/AudioVideoLib/Formats/VbrHeader.cs/#L10" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

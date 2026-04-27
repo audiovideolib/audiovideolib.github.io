@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Extending | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Extending | AudioVideoLib ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/prijkes/AudioVideoLib/blob/master/docs/extending.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="extending">Extending</h1>
+
+<h2 id="add-a-new-tag-format-at-a-flat-byte-position">Add a new tag format at a flat byte position</h2>
+<p>For tags that live at the start or end of a file (like ID3v1 / APE /
+Lyrics3), implement <code>IAudioTagReader</code> and register it with
+<code>AudioTags</code>.</p>
+<pre><code class="lang-csharp">public sealed class MyCustomTagReader : IAudioTagReader
+{
+    public IAudioTagOffset? ReadFromStream(Stream stream, TagOrigin tagOrigin)
+    {
+        // Probe the bytes at the given origin; return null if not a match.
+        // On a match, build a MyCustomTag and return an AudioTagOffset.
+    }
+}
+
+public sealed class MyCustomTag : IAudioTag
+{
+    public bool Equals(IAudioTag? other) { /* ... */ }
+    public byte[] ToByteArray() { /* ... */ }
+}
+</code></pre>
+<p>Register at runtime:</p>
+<pre><code class="lang-csharp">var tags = new AudioTags();
+tags.AddReader&lt;MyCustomTagReader, MyCustomTag&gt;();
+tags.ReadTags(stream);
+</code></pre>
+<h2 id="add-a-new-container-walker">Add a new container walker</h2>
+<p>For container formats where metadata lives inside the structure (MP4,
+ASF, Matroska-style), implement <code>IMediaContainer</code>:</p>
+<pre><code class="lang-csharp">public sealed class MyContainerStream : IMediaContainer
+{
+    public long StartOffset { get; private set; }
+    public long EndOffset { get; private set; }
+    public long TotalDuration { get; /* ms */ }
+    public long TotalMediaSize { get; /* bytes */ }
+    public int MaxFrameSpacingLength { get; set; } = 0;
+
+    public bool ReadStream(Stream stream)
+    {
+        ArgumentNullException.ThrowIfNull(stream);
+        // Probe; return false if not our format.
+        // Otherwise walk the structure, populating your own properties.
+    }
+
+    public byte[] ToByteArray() =&gt; /* serialize */;
+}
+</code></pre>
+<p>Register with the <code>MediaContainers</code> factory — add your type to the
+dictionary in <code>AudioVideoLib/IO/MediaContainers.cs</code>:</p>
+<pre><code class="lang-csharp">private readonly Dictionary&lt;Type, Func&lt;IMediaContainer&gt;&gt; _supportedStreams = new()
+{
+    // ...
+    { typeof(MyContainerStream), () =&gt; new MyContainerStream() },
+};
+</code></pre>
+<h2 id="add-an-id3v2-frame-type">Add an ID3v2 frame type</h2>
+<p>Subclass <code>Id3v2Frame</code>, override the virtual members, and register its
+identifier in <code>Id3v2FrameHelpers</code>.</p>
+<pre><code class="lang-csharp">public sealed class Id3v2MyFrame : Id3v2Frame
+{
+    public Id3v2MyFrame() : base(Id3v2Version.Id3v240) { }
+
+    public override string? Identifier =&gt; &quot;MY01&quot;;
+
+    public override bool IsVersionSupported(Id3v2Version version) =&gt;
+        version &gt;= Id3v2Version.Id3v230;
+
+    public override byte[] Data
+    {
+        get =&gt; /* serialize your model to bytes */;
+        protected set =&gt; /* parse bytes into your model */;
+    }
+}
+</code></pre>
+<p>Match the existing frame subclasses in <code>AudioVideoLib/Tags/Id3v2*.cs</code>
+for the conventions on encoding handling, null-tolerance, and equality.</p>
+<h2 id="style-conventions">Style conventions</h2>
+<ul>
+<li>File-scoped namespace.</li>
+<li><code>is not null</code> / pattern matching over <code>!= null</code>.</li>
+<li>Expression-bodied members where natural.</li>
+<li><code>[]</code> collection expressions.</li>
+<li>Primary constructors for simple records / data classes.</li>
+<li>Readers tolerate malformed input — return <code>null</code> / <code>false</code> or raise
+a parse-error event; don't throw on bad bytes.</li>
+<li>Bounds-check all length fields against the enclosing container.</li>
+<li>Public API gets XML docs.</li>
+</ul>
+<h2 id="tests">Tests</h2>
+<p>Every format ships with an xUnit test file under
+<code>AudioVideoLib.Tests/</code>. The convention for new formats:</p>
+<ul>
+<li>Synthesize inputs inline with <code>BinaryWriter</code> / <code>MemoryStream</code> so
+tests don't depend on bundled binaries.</li>
+<li>Cover the happy path, the malformed-input path, and — if the format
+supports writing — at least one byte-identical round-trip assertion.</li>
+</ul>
+<p>See <code>Mp4MetaTagTests.cs</code>, <code>AsfMetadataTagTests.cs</code>, and
+<code>MatroskaTagTests.cs</code> for reference layouts.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/prijkes/AudioVideoLib/blob/master/docs/extending.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Mp4Stream — MP4 / M4A | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Mp4Stream — MP4 / M4A | AudioVideoLib ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/prijkes/AudioVideoLib/blob/master/docs/container-formats/mp4stream.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="mp4stream--mp4--m4a">Mp4Stream — MP4 / M4A</h1>
+
+<p>Iterative box walker (depth-capped at 16 to avoid stack blow-up).
+Handles 64-bit extended size (<code>size == 1</code>), &quot;to end of file&quot;
+(<code>size == 0</code>), full-box version/flags headers on <code>meta</code>, and the
+standard path <code>moov.udta.meta.ilst</code> for iTunes metadata. Surfaces:</p>
+<ul>
+<li><code>Boxes</code> — top-level atoms.</li>
+<li><code>Tag</code> (<code>Mp4MetaTag</code>) — strongly-typed ilst model.</li>
+<li><code>TotalDuration</code> from <code>moov.mvhd</code> (v0 or v1 duration / timescale).</li>
+</ul>
+<h2 id="on-disk-layout">On-disk layout</h2>
+<p>MP4 / M4A files follow the ISO/IEC 14496-12 base media file format
+specification, organised around boxes (also called atoms) — self-
+describing chunks of data with a 4-byte type, a 32-bit big-endian
+size field (or 64-bit extended size when the 32-bit field is <code>1</code>),
+and a payload. Boxes nest: a container box's payload is itself a
+sequence of child boxes.</p>
+<p>A typical file begins with an <code>ftyp</code> box declaring the major brand
+and compatible brand list, followed by two primary structural
+components: <code>moov</code> (the movie box) which holds all metadata, timing,
+and per-track descriptors as a tree of nested boxes; and <code>mdat</code> (the
+media data box) which holds the encoded audio / video samples. The
+relative order matters — files with <code>moov</code> before <code>mdat</code> (&quot;faststart&quot;
+layout) let players begin playback as soon as <code>moov</code> is read; files
+with <code>moov</code> after <code>mdat</code> (the typical post-encode layout) require the
+metadata tail to be reached before playback can start.</p>
+<p>iTunes-style metadata lives at <code>moov.udta.meta.ilst</code>. The <code>meta</code> box
+is a full-box (it has a 4-byte version+flags prefix before its
+children); <code>ilst</code> contains one child atom per metadata item, each with
+a 4-character identifier such as <code>©nam</code> (title) or <code>covr</code> (cover art).</p>
+<p>Access the parsed iTunes tag via <code>Mp4Stream.Tag</code> (an <code>Mp4MetaTag</code>);
+enumerate top-level boxes through <code>Mp4Stream.Boxes</code> to inspect raw
+offsets and sizes.</p>
+<p>For the ilst model itself (well-known atoms, free-form items, cover
+art) see <a href="../tag-formats/mp4-itunes.html">MP4 / iTunes ilst</a>.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/prijkes/AudioVideoLib/blob/master/docs/container-formats/mp4stream.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

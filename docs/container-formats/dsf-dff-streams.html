@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>DsfStream / DffStream | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="DsfStream / DffStream | AudioVideoLib ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/prijkes/AudioVideoLib/blob/master/docs/container-formats/dsf-dff-streams.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="dsfstream--dffstream">DsfStream / DffStream</h1>
+
+<p>DSD audio containers.</p>
+<ul>
+<li><strong>DSF</strong> (LE): DSD chunk (file size + metadata pointer), fmt chunk
+(format version / channel type / sample frequency / bits/sample /
+sample count / block size), data chunk. Optional ID3v2 at the
+metadata pointer.</li>
+<li><strong>DFF</strong> (BE): FRM8 form with FVER / PROP (itself nested with FS /
+CHNL / CMPR) / DSD / optional DIIN / COMT / ID3 sub-chunks.</li>
+</ul>
+<h2 id="on-disk-layout">On-disk layout</h2>
+<h3 id="dsf">DSF</h3>
+<p>Sony's DSF (DSD Stream File, 2005) is a little-endian chunked format
+opened by a 28-byte <code>DSD </code> chunk that carries the total file size and
+an absolute byte offset to optional ID3v2 metadata located elsewhere
+in the file. A <code>fmt </code> chunk follows with format parameters (format
+version, channel type, sample rate, bits per sample, sample count,
+block size per channel), then a <code>data</code> chunk holds the raw 1-bit DSD
+samples.</p>
+<p>The pointer-to-metadata design lets the ID3v2 block sit anywhere
+after the audio data without requiring contiguous layout, which
+simplifies in-place metadata edits — only the pointer field needs
+patching when the tag block grows or shrinks.</p>
+<p>Embedded ID3v2 metadata is reachable via <code>DsfStream.EmbeddedId3v2</code>.</p>
+<h3 id="dff">DFF</h3>
+<p>Philips's DFF (DSD Interchange File Format, 2004) is a big-endian IFF
+form: the file is a single <code>FRM8</code> chunk with form-type <code>DSD </code>,
+inside which the structural primitive is the IFF chunk (4-byte ID +
+8-byte BE size + payload, padded to even length).</p>
+<p>The form's children include <code>FVER</code> (format version), a nested <code>PROP</code>
+form holding sub-chunks <code>FS</code> (sample rate), <code>CHNL</code> (channel count and
+identifiers), and <code>CMPR</code> (compression descriptor); a <code>DSD </code> chunk
+carrying the audio payload; and optional metadata chunks <code>DIIN</code>
+(description info), <code>COMT</code> (comments), and <code>ID3 </code> (ID3v2 tag). The
+nested <code>PROP</code> form keeps sample rate and channel configuration
+logically grouped separate from the audio data.</p>
+<p>Embedded ID3v2 metadata is reachable via <code>DffStream.EmbeddedId3v2</code>.</p>
+<pre><code class="lang-csharp">foreach (var dsf in streams.OfType&lt;DsfStream&gt;())
+{
+    Console.WriteLine($&quot;DSF: {dsf.SampleRate} Hz, {dsf.Channels} ch, {dsf.BitsPerSample}-bit, {dsf.SampleCount} samples&quot;);
+    Console.WriteLine($&quot;  embedded ID3v2 title: {dsf.EmbeddedId3v2?.TrackTitle?.Values.FirstOrDefault()}&quot;);
+}
+
+foreach (var dff in streams.OfType&lt;DffStream&gt;())
+{
+    Console.WriteLine($&quot;DFF: {dff.SampleRate} Hz, {dff.Channels} ch ({string.Join(&quot;,&quot;, dff.ChannelIds)})&quot;);
+}
+</code></pre>
+<p>For the embedded-ID3v2 model itself see
+<a href="../tag-formats/dsf-dff.html">DSF / DFF</a>.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/prijkes/AudioVideoLib/blob/master/docs/container-formats/dsf-dff-streams.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

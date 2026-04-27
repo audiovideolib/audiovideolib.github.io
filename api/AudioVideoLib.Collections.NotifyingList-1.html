@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class NotifyingList&lt;T&gt; | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class NotifyingList&lt;T&gt; | AudioVideoLib ">
+      
+      <meta name="description" content="Represents a strongly typed list of objects that can be accessed by index, manipulate lists, and add events to observe changes to the list.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/prijkes/AudioVideoLib/new/master/apiSpec/new?filename=AudioVideoLib_Collections_NotifyingList_1.md&amp;value=---%0Auid%3A%20AudioVideoLib.Collections.NotifyingList%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AudioVideoLib.Collections.NotifyingList`1">
+
+
+
+  <h1 id="AudioVideoLib_Collections_NotifyingList_1" data-uid="AudioVideoLib.Collections.NotifyingList`1" class="text-break">
+Class NotifyingList&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/audiovideolib/AudioVideoLib/blob/master/AudioVideoLib/Collections/NotifyingList.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AudioVideoLib.html">AudioVideoLib</a>.<a class="xref" href="AudioVideoLib.Collections.html">Collections</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AudioVideoLib.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Represents a strongly typed list of objects that can be accessed by index, manipulate lists, and add events to observe changes to the list.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class NotifyingList&lt;T&gt;</code></pre>
+  </div>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of elements in the list.</p>
+</dd>
+  </dl>
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">NotifyingList&lt;T&gt;</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="AudioVideoLib.Tags.Id3v2FrameCollection-1.html">Id3v2FrameCollection&lt;T&gt;</a></div>
+      <div><a class="xref" href="AudioVideoLib.Tags.Id3v2TextList.html">Id3v2TextList</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.-ctor.html#AudioVideoLib_Collections_NotifyingList_1__ctor">NotifyingList()</a></dt>
+    <dd><p>Initializes a new instance of the <a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.html">NotifyingList&lt;T&gt;</a> class that is empty and has the default initial capacity.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.-ctor.html#AudioVideoLib_Collections_NotifyingList_1__ctor_System_Int32_">NotifyingList(int)</a></dt>
+    <dd><p>Initializes a new instance of the <a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.html">NotifyingList&lt;T&gt;</a> class that is empty and has the specified initial capacity.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.Capacity.html#AudioVideoLib_Collections_NotifyingList_1_Capacity">Capacity</a></dt>
+    <dd><p>Gets or sets the total number of elements the internal data structure can hold without resizing.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.Count.html#AudioVideoLib_Collections_NotifyingList_1_Count">Count</a></dt>
+    <dd><p>Gets the number of elements contained in the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.IsReadOnly.html#AudioVideoLib_Collections_NotifyingList_1_IsReadOnly">IsReadOnly</a></dt>
+    <dd><p>Gets a value indicating whether the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span> is read-only.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.Item.html#AudioVideoLib_Collections_NotifyingList_1_Item_System_Int32_">this[int]</a></dt>
+    <dd><p>Gets or sets the element at the specified index.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.Add.html#AudioVideoLib_Collections_NotifyingList_1_Add__0_">Add(T)</a></dt>
+    <dd><p>Adds an item to the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.AddRange.html#AudioVideoLib_Collections_NotifyingList_1_AddRange_System_Collections_Generic_IEnumerable__0__">AddRange(IEnumerable&lt;T&gt;)</a></dt>
+    <dd><p>Adds the elements of the specified collection to the end of the <a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.html">NotifyingList&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.AsReadOnly.html#AudioVideoLib_Collections_NotifyingList_1_AsReadOnly">AsReadOnly()</a></dt>
+    <dd><p>Returns a read-only <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> wrapper for the current collection.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.Clear.html#AudioVideoLib_Collections_NotifyingList_1_Clear">Clear()</a></dt>
+    <dd><p>Removes all items from the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.Contains.html#AudioVideoLib_Collections_NotifyingList_1_Contains__0_">Contains(T)</a></dt>
+    <dd><p>Determines whether the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span> contains a specific value.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.CopyTo.html#AudioVideoLib_Collections_NotifyingList_1_CopyTo__0___System_Int32_">CopyTo(T[], int)</a></dt>
+    <dd><p>Copies the elements of the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span> to an <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a>, starting at a particular <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a> index.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.FindIndex.html#AudioVideoLib_Collections_NotifyingList_1_FindIndex_System_Int32_System_Int32_System_Predicate__0__">FindIndex(int, int, Predicate&lt;T&gt;)</a></dt>
+    <dd><p>Searches for an element that matches the conditions defined by the specified predicate,
+and returns the zero-based index of the first occurrence within the range of elements in the <a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.html">NotifyingList&lt;T&gt;</a> that starts at the specified index and contains the specified number of elements.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.FindIndex.html#AudioVideoLib_Collections_NotifyingList_1_FindIndex_System_Int32_System_Predicate__0__">FindIndex(int, Predicate&lt;T&gt;)</a></dt>
+    <dd><p>Searches for an element that matches the conditions defined by the specified predicate,
+and returns the zero-based index of the first occurrence within the range of elements in the <a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.html">NotifyingList&lt;T&gt;</a> that extends from the specified index to the last element.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.FindIndex.html#AudioVideoLib_Collections_NotifyingList_1_FindIndex_System_Predicate__0__">FindIndex(Predicate&lt;T&gt;)</a></dt>
+    <dd><p>Searches for an element that matches the conditions defined by the specified predicate,
+and returns the zero-based index of the first occurrence within the entire <a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.html">NotifyingList&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.FindLastIndex.html#AudioVideoLib_Collections_NotifyingList_1_FindLastIndex_System_Int32_System_Int32_System_Predicate__0__">FindLastIndex(int, int, Predicate&lt;T&gt;)</a></dt>
+    <dd><p>Searches for an element that matches the conditions defined by the specified predicate,
+and returns the zero-based index of the last occurrence within the range of elements in the <a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.html">NotifyingList&lt;T&gt;</a> that contains the specified number of elements and ends at the specified index.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.FindLastIndex.html#AudioVideoLib_Collections_NotifyingList_1_FindLastIndex_System_Int32_System_Predicate__0__">FindLastIndex(int, Predicate&lt;T&gt;)</a></dt>
+    <dd><p>Searches for an element that matches the conditions defined by the specified predicate,
+and returns the zero-based index of the last occurrence within the range of elements in the <a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.html">NotifyingList&lt;T&gt;</a> that extends from the first element to the specified index.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.FindLastIndex.html#AudioVideoLib_Collections_NotifyingList_1_FindLastIndex_System_Predicate__0__">FindLastIndex(Predicate&lt;T&gt;)</a></dt>
+    <dd><p>Searches for an element that matches the conditions defined by the specified predicate, and returns the zero-based index of the last occurrence within the entire <a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.html">NotifyingList&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.GetEnumerator.html#AudioVideoLib_Collections_NotifyingList_1_GetEnumerator">GetEnumerator()</a></dt>
+    <dd><p>Returns an enumerator that iterates through the collection.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.IndexOf.html#AudioVideoLib_Collections_NotifyingList_1_IndexOf__0_">IndexOf(T)</a></dt>
+    <dd><p>Determines the index of a specific item in the <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.Insert.html#AudioVideoLib_Collections_NotifyingList_1_Insert_System_Int32__0_">Insert(int, T)</a></dt>
+    <dd><p>Inserts an item to the <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> at the specified index.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.OnItemAdd.html#AudioVideoLib_Collections_NotifyingList_1_OnItemAdd_AudioVideoLib_Collections_ListItemAddEventArgs__0__">OnItemAdd(ListItemAddEventArgs&lt;T&gt;)</a></dt>
+    <dd><p>Called when before an item is added.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.OnItemAdded.html#AudioVideoLib_Collections_NotifyingList_1_OnItemAdded_AudioVideoLib_Collections_ListItemAddedEventArgs__0__">OnItemAdded(ListItemAddedEventArgs&lt;T&gt;)</a></dt>
+    <dd><p>Called when an item has been added.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.OnItemRemove.html#AudioVideoLib_Collections_NotifyingList_1_OnItemRemove_AudioVideoLib_Collections_ListItemRemoveEventArgs__0__">OnItemRemove(ListItemRemoveEventArgs&lt;T&gt;)</a></dt>
+    <dd><p>Called when before an item is removed.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.OnItemRemoved.html#AudioVideoLib_Collections_NotifyingList_1_OnItemRemoved_AudioVideoLib_Collections_ListItemRemovedEventArgs__0__">OnItemRemoved(ListItemRemovedEventArgs&lt;T&gt;)</a></dt>
+    <dd><p>Called when an item has been removed.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.OnItemReplace.html#AudioVideoLib_Collections_NotifyingList_1_OnItemReplace_AudioVideoLib_Collections_ListItemReplaceEventArgs__0__">OnItemReplace(ListItemReplaceEventArgs&lt;T&gt;)</a></dt>
+    <dd><p>Called when before an item is replaced.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.OnItemReplaced.html#AudioVideoLib_Collections_NotifyingList_1_OnItemReplaced_AudioVideoLib_Collections_ListItemReplacedEventArgs__0__">OnItemReplaced(ListItemReplacedEventArgs&lt;T&gt;)</a></dt>
+    <dd><p>Called when an item has been replaced.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.Remove.html#AudioVideoLib_Collections_NotifyingList_1_Remove__0_">Remove(T)</a></dt>
+    <dd><p>Removes the first occurrence of a specific object from the <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;</span>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.RemoveAll.html#AudioVideoLib_Collections_NotifyingList_1_RemoveAll_System_Predicate__0__">RemoveAll(Predicate&lt;T&gt;)</a></dt>
+    <dd><p>Removes the all the elements that match the conditions defined by the specified predicate.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.RemoveAt.html#AudioVideoLib_Collections_NotifyingList_1_RemoveAt_System_Int32_">RemoveAt(int)</a></dt>
+    <dd><p>Removes the <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> item at the specified index.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.ToArray.html#AudioVideoLib_Collections_NotifyingList_1_ToArray">ToArray()</a></dt>
+    <dd><p>Copies the elements of the <a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.html">NotifyingList&lt;T&gt;</a> to a new array.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="events">Events
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.ItemAdd.html">ItemAdd</a></dt>
+    <dd><p>Occurs before an item is added to the list</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.ItemAdded.html">ItemAdded</a></dt>
+    <dd><p>Occurs after an item has been added to the list.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.ItemRemove.html">ItemRemove</a></dt>
+    <dd><p>Occurs before an item is removed from the list.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.ItemRemoved.html">ItemRemoved</a></dt>
+    <dd><p>Occurs after an item has been removed from the list.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.ItemReplace.html">ItemReplace</a></dt>
+    <dd><p>Occurs before an item is replaced in the list.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Collections.NotifyingList-1.ItemReplaced.html">ItemReplaced</a></dt>
+    <dd><p>Occurs after an item has been replaced in the list.</p>
+</dd>
+  </dl>
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/audiovideolib/AudioVideoLib/blob/master/AudioVideoLib/Collections/NotifyingList.cs/#L13" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
