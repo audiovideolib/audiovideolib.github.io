@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class WavPackBlockHeader | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class WavPackBlockHeader | AudioVideoLib ">
+      
+      <meta name="description" content="32-byte WavPack block header preamble. Layout per 3rdparty/WavPack/include/wavpack.h:69-76 (WavpackHeader struct, format &amp;quot;4LS2LLLLL&amp;quot;).">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/audiovideolib/AudioVideoLib/new/master/apiSpec/new?filename=AudioVideoLib_Formats_WavPackBlockHeader.md&amp;value=---%0Auid%3A%20AudioVideoLib.Formats.WavPackBlockHeader%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="AudioVideoLib.Formats.WavPackBlockHeader">
+
+
+
+  <h1 id="AudioVideoLib_Formats_WavPackBlockHeader" data-uid="AudioVideoLib.Formats.WavPackBlockHeader" class="text-break">
+Class WavPackBlockHeader  <a class="header-action link-secondary" title="View source" href="https://github.com/audiovideolib/AudioVideoLib/blob/master/AudioVideoLib/Formats/WavPackBlockHeader.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="AudioVideoLib.html">AudioVideoLib</a>.<a class="xref" href="AudioVideoLib.Formats.html">Formats</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>AudioVideoLib.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>32-byte WavPack block header preamble. Layout per
+<code>3rdparty/WavPack/include/wavpack.h:69-76</code> (<code>WavpackHeader</code> struct,
+format <code>&quot;4LS2LLLLL&quot;</code>).</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class WavPackBlockHeader</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">WavPackBlockHeader</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="AudioVideoLib_Formats_WavPackBlockHeader_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>WavPack files are a flat concatenation of blocks; every block begins with this
+header. The walker reads the header to discover block size (so it can seek to
+the next block) and to interpret the flags bitfield (sample rate index, channel
+count, bytes-per-sample). The 40-bit <a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.BlockIndex.html#AudioVideoLib_Formats_WavPackBlockHeader_BlockIndex">BlockIndex</a> and
+<a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.TotalSamples.html#AudioVideoLib_Formats_WavPackBlockHeader_TotalSamples">TotalSamples</a> fields combine the low 32-bit field with the high
+8-bit &quot;u8&quot; extension byte, matching the <code>GET_BLOCK_INDEX</code> /
+<code>GET_TOTAL_SAMPLES</code> macros in <code>wavpack.h:82-95</code>.</p>
+</div>
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.Size.html">Size</a></dt>
+    <dd><p>Size of the on-disk header in bytes (always 32).</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.BlockIndex.html#AudioVideoLib_Formats_WavPackBlockHeader_BlockIndex">BlockIndex</a></dt>
+    <dd><p>Gets the combined 40-bit block index per <code>GET_BLOCK_INDEX</code>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.BlockIndexHigh.html#AudioVideoLib_Formats_WavPackBlockHeader_BlockIndexHigh">BlockIndexHigh</a></dt>
+    <dd><p>Gets the high 8 bits of the 40-bit block index.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.BlockIndexLow.html#AudioVideoLib_Formats_WavPackBlockHeader_BlockIndexLow">BlockIndexLow</a></dt>
+    <dd><p>Gets the low 32 bits of the block-index field.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.BlockSamples.html#AudioVideoLib_Formats_WavPackBlockHeader_BlockSamples">BlockSamples</a></dt>
+    <dd><p>Gets the number of audio samples encoded in this block.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.BytesPerSample.html#AudioVideoLib_Formats_WavPackBlockHeader_BytesPerSample">BytesPerSample</a></dt>
+    <dd><p>Gets the bytes per sample (1-4) decoded from the <code>BYTES_STORED</code> field — <code>(flags &amp; 3) + 1</code>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.CkId.html#AudioVideoLib_Formats_WavPackBlockHeader_CkId">CkId</a></dt>
+    <dd><p>Gets the four-byte chunk ID; always <code>&quot;wvpk&quot;</code> for valid blocks.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.CkSize.html#AudioVideoLib_Formats_WavPackBlockHeader_CkSize">CkSize</a></dt>
+    <dd><p>Gets the block payload size in bytes — i.e., <code>ckSize</code>. The total on-disk block size
+is <code>CkSize + 8</code> because <code>ckSize</code> excludes the leading 8 bytes of the
+header (per the WavPack file-format documentation referenced in
+<code>wavpack.h:62-67</code>).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.Crc.html#AudioVideoLib_Formats_WavPackBlockHeader_Crc">Crc</a></dt>
+    <dd><p>Gets the block CRC.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.Flags.html#AudioVideoLib_Formats_WavPackBlockHeader_Flags">Flags</a></dt>
+    <dd><p>Gets the flags bitfield. See <code>wavpack.h:108-141</code> for bit definitions.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.IsDsd.html#AudioVideoLib_Formats_WavPackBlockHeader_IsDsd">IsDsd</a></dt>
+    <dd><p>Gets a value indicating whether the block is encoded DSD (<code>DSD_FLAG</code>, <code>wavpack.h:141</code>).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.IsFinalBlock.html#AudioVideoLib_Formats_WavPackBlockHeader_IsFinalBlock">IsFinalBlock</a></dt>
+    <dd><p>Gets a value indicating whether this is the final block of a multichannel segment (<code>FINAL_BLOCK</code>).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.IsFloat.html#AudioVideoLib_Formats_WavPackBlockHeader_IsFloat">IsFloat</a></dt>
+    <dd><p>Gets a value indicating whether the block stores IEEE 32-bit float samples (<code>FLOAT_DATA</code>, <code>wavpack.h:116</code>).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.IsHybrid.html#AudioVideoLib_Formats_WavPackBlockHeader_IsHybrid">IsHybrid</a></dt>
+    <dd><p>Gets a value indicating whether the block is from a hybrid-mode encoding (<code>HYBRID_FLAG</code>, <code>wavpack.h:112</code>).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.IsInitialBlock.html#AudioVideoLib_Formats_WavPackBlockHeader_IsInitialBlock">IsInitialBlock</a></dt>
+    <dd><p>Gets a value indicating whether this is the initial block of a multichannel segment (<code>INITIAL_BLOCK</code>).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.IsMono.html#AudioVideoLib_Formats_WavPackBlockHeader_IsMono">IsMono</a></dt>
+    <dd><p>Gets a value indicating whether the block represents mono audio (<code>MONO_FLAG</code>, <code>wavpack.h:111</code>).</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.SampleRate.html#AudioVideoLib_Formats_WavPackBlockHeader_SampleRate">SampleRate</a></dt>
+    <dd><p>Gets the sample rate in Hz, or <code>0</code> if the rate index is the reserved &quot;non-standard&quot; value (15).
+Decoded from the <code>SRATE_MASK</code> bits at <code>SRATE_LSB == 23</code> per
+<code>wavpack.h:131-132</code>; index table from <code>3rdparty/WavPack/src/common_utils.c:31-32</code>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.TotalSamples.html#AudioVideoLib_Formats_WavPackBlockHeader_TotalSamples">TotalSamples</a></dt>
+    <dd><p>Gets the combined 40-bit total-samples value, or <code>-1</code> if unknown
+(low 32 bits == <code>0xFFFFFFFF</code>) per <code>GET_TOTAL_SAMPLES</code>.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.TotalSamplesHigh.html#AudioVideoLib_Formats_WavPackBlockHeader_TotalSamplesHigh">TotalSamplesHigh</a></dt>
+    <dd><p>Gets the high 8 bits of the 40-bit total-samples field.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.TotalSamplesLow.html#AudioVideoLib_Formats_WavPackBlockHeader_TotalSamplesLow">TotalSamplesLow</a></dt>
+    <dd><p>Gets the low 32 bits of total samples; combined with <a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.TotalSamplesHigh.html#AudioVideoLib_Formats_WavPackBlockHeader_TotalSamplesHigh">TotalSamplesHigh</a> per
+<code>GET_TOTAL_SAMPLES</code> (<code>wavpack.h:94</code>). A value of <code>0xFFFFFFFF</code> in
+the low 32 bits signals &quot;unknown&quot; — surfaced as <a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.TotalSamples.html#AudioVideoLib_Formats_WavPackBlockHeader_TotalSamples">TotalSamples</a> == -1.</p>
+</dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.Version.html#AudioVideoLib_Formats_WavPackBlockHeader_Version">Version</a></dt>
+    <dd><p>Gets the stream version. Library handles 0x402..0x410 per <code>wavpack.h:146-147</code>.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.Parse.html#AudioVideoLib_Formats_WavPackBlockHeader_Parse_System_ReadOnlySpan_System_Byte__">Parse(ReadOnlySpan&lt;byte&gt;)</a></dt>
+    <dd><p>Parses the 32-byte preamble. Returns <code>null</code> if <code class="paramref">span</code> is
+shorter than <a class="xref" href="AudioVideoLib.Formats.WavPackBlockHeader.Size.html">Size</a> or its first four bytes are not the ASCII
+magic <code>&quot;wvpk&quot;</code>.</p>
+</dd>
+  </dl>
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/audiovideolib/AudioVideoLib/blob/master/AudioVideoLib/Formats/WavPackBlockHeader.cs/#L20" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

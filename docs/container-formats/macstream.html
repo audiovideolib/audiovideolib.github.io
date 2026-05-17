@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>MacStream | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="MacStream | AudioVideoLib ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/audiovideolib/AudioVideoLib/blob/master/docs/container-formats/macstream.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="macstream">MacStream</h1>
+
+<p>Walks a Monkey's Audio (<code>.ape</code>) container in version 3.98 or later — the
+fixed <code>APE_DESCRIPTOR</code>, the <code>APE_HEADER</code>, the seek table, and the
+resulting list of audio frames. <code>MacStream.Descriptor</code>,
+<code>MacStream.Header</code>, <code>MacStream.SeekEntries</code>, and <code>MacStream.Frames</code>
+expose the parsed model; the trailing APEv2 / ID3v1 tag footers are
+handled by the existing <code>AudioTags</code> scanner, not by the walker. The
+class is named <code>MacStream</code> — for Monkey's Audio Codec, the upstream
+project's own name — to keep it distinct from the unrelated
+<code>ApeTag</code> family.</p>
+<h2 id="on-disk-layout">On-disk layout</h2>
+<p>A 3.98+ Monkey's Audio file (per <code>3rdparty/MAC_1284_SDK/Source/</code>) is
+laid out as:</p>
+<ol>
+<li><strong><code>APE_DESCRIPTOR</code></strong> at the start of the audio span. Begins with one
+of two four-byte magic markers — <code>MAC </code> (ASCII, trailing space) for
+integer-PCM source, surfaced as <code>MacFormat.Integer</code>, or <code>MACF</code> for
+IEEE-float source, surfaced as <code>MacFormat.Float</code>. The walker
+dispatches on the magic and exposes the chosen variant through
+<code>MacStream.Format</code>. The descriptor self-describes its own size
+(<code>DescriptorBytes</code>, currently 52), the header size
+(<code>HeaderBytes</code>, currently 24), the seek-table size
+(<code>SeekTableBytes</code>), the optional preserved-WAV-header size
+(<code>HeaderDataBytes</code>), the audio span size split across
+<code>ApeFrameDataBytes</code> (low 32) and <code>ApeFrameDataBytesHigh</code> (high 32 —
+combined via <code>TotalApeFrameDataBytes</code>), the trailing junk size
+(<code>TerminatingDataBytes</code>), and a 16-byte file MD5.</li>
+<li><strong><code>APE_HEADER</code>.</strong> Compression level, format-flags bitfield (the
+walker recognises bit 5, <code>MAC_FORMAT_FLAG_CREATE_WAV_HEADER</code>,
+surfaced as <code>MacHeader.CreatesWavHeaderOnDecode</code>), blocks-per-frame,
+final-frame block count, total frame count, bits per sample,
+channel count, and sample rate.</li>
+<li><strong>Seek table.</strong> <code>SeekTableBytes / 4</code> little-endian uint32 file
+offsets, surfaced as <code>MacStream.SeekEntries</code>. Frame <code>i</code>'s start
+offset equals <code>SeekEntries[i].FileOffset</code>; frame <code>i</code>'s length runs
+to <code>SeekEntries[i+1].FileOffset</code> (or, for the last frame, to
+<code>SeekEntries[0].FileOffset + Descriptor.TotalApeFrameDataBytes</code>).</li>
+<li><strong>Preserved WAV header (optional).</strong> <code>Descriptor.HeaderDataBytes</code>
+bytes copied verbatim from the source <code>.wav</code>. Zero when
+<code>CreatesWavHeaderOnDecode</code> is set on the header — in that case the
+decoder synthesises a fresh RIFF wrapper, so no source bytes are
+carried along.</li>
+<li><strong>APE audio frames.</strong> <code>Descriptor.TotalApeFrameDataBytes</code> bytes of
+encoded audio, addressed by the seek table. Every frame except the
+last carries <code>Header.BlocksPerFrame</code> blocks; the last frame carries
+<code>Header.FinalFrameBlocks</code>.</li>
+<li><strong>Terminating data (optional).</strong> <code>Descriptor.TerminatingDataBytes</code>
+bytes of trailing junk preserved from the source WAV (typically
+the trailing <code>data</code> padding or a trailing <code>LIST INFO</code> chunk).</li>
+<li><strong>Optional APEv2 / ID3v1 tag footers</strong> trailing the audio span.
+Recognised by <code>AudioTags</code>, not by the walker.</li>
+</ol>
+<h2 id="inspecting-an-ape-stream">Inspecting an APE stream</h2>
+<pre><code class="lang-csharp">var ape = streams.OfType&lt;MacStream&gt;().First();
+
+Console.WriteLine($&quot;Format       : {ape.Format}&quot;);                  // Integer or Float
+Console.WriteLine($&quot;Sample rate  : {ape.Header!.SampleRate} Hz&quot;);
+Console.WriteLine($&quot;Channels     : {ape.Header.Channels}&quot;);
+Console.WriteLine($&quot;Bits/sample  : {ape.Header.BitsPerSample}&quot;);
+Console.WriteLine($&quot;Total frames : {ape.Header.TotalFrames}&quot;);
+Console.WriteLine($&quot;Compression  : {ape.Header.CompressionLevel}&quot;);
+
+foreach (var frame in ape.Frames)
+{
+    Console.WriteLine(
+        $&quot;  frame @{frame.StartOffset:X8}  len={frame.Length}  blocks={frame.BlockCount}&quot;);
+}
+</code></pre>
+<h2 id="save-semantics">Save semantics</h2>
+<p><code>MacStream.WriteTo</code> is a byte-for-byte passthrough. The walker holds an
+<code>ISourceReader</code> populated by <code>ReadStream</code>; on save the original audio
+container span is streamed verbatim to the destination. There is no
+audio re-encoding path, and <code>MacStream</code> does not touch the trailing
+APEv2 / ID3v1 footer regions — tag editing flows through <code>AudioTags</code>,
+which writes a new file the caller then re-parses. Callers must keep
+the source <code>Stream</code> alive between <code>ReadStream</code> and <code>WriteTo</code>; calling
+<code>WriteTo</code> after <code>Dispose</code> throws <code>InvalidOperationException</code> with the
+message
+<code>&quot;Source stream was detached or never read. WriteTo requires a live source.&quot;</code>.</p>
+<p>Pre-3.98 files (<code>APE_HEADER_OLD</code>, no descriptor) are not supported:
+<code>ReadStream</code> returns <code>false</code> for those, as it does for any file whose
+magic is neither <code>MAC </code> nor <code>MACF</code>.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/audiovideolib/AudioVideoLib/blob/master/docs/container-formats/macstream.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

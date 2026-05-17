@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>TtaStream | AudioVideoLib </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="TtaStream | AudioVideoLib ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/audiovideolib/AudioVideoLib/blob/master/docs/container-formats/ttastream.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="AudioVideoLib">
+            AudioVideoLib
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ttastream">TtaStream</h1>
+
+<p>Walks a TrueAudio (<code>.tta</code>) stream — the 22-byte TTA1 fixed header,
+the per-frame seek table, and the resulting list of audio frames.
+<code>TtaStream.Header</code>, <code>TtaStream.SeekTable</code>, and <code>TtaStream.Frames</code>
+expose the parsed model; tag editing for the surrounding APEv2 footer,
+ID3v1 footer, and ID3v2 header is handled via the existing <code>AudioTags</code>
+scanner, not on the walker itself.</p>
+<h2 id="on-disk-layout">On-disk layout</h2>
+<p>A TrueAudio file (per <code>3rdparty/libtta-c-2.3/libtta.c</code>) is laid out as:</p>
+<ol>
+<li><strong>Optional ID3v2 header</strong> at offset 0. Recognised and skipped by the
+outer container scanner before the walker is dispatched.</li>
+<li><strong>Fixed 22-byte TTA1 header.</strong> Four-byte magic <code>TTA1</code>, followed by
+five little-endian info fields — format (1 = simple, 2 = encrypted),
+channel count (&lt;=6), bits per sample (16-24), sample rate, and total
+samples — and a four-byte CRC32 over the preceding 18 bytes.</li>
+<li><strong>Seek table.</strong> One little-endian uint32 per frame giving the
+compressed frame length, followed by a single uint32 CRC32 over the
+table.</li>
+<li><strong>Audio frames.</strong> Each frame's start offset is fixed by the seek
+table; the first frame begins immediately after the seek-table CRC.
+Every frame except the last carries <code>256 * SampleRate / 245</code>
+samples; the last frame carries the remainder.</li>
+<li><strong>Optional APEv2 footer / ID3v1 footer</strong> trailing the audio data.
+Recognised by <code>AudioTags</code>, not by the walker.</li>
+</ol>
+<h2 id="inspecting-a-tta-stream">Inspecting a TTA stream</h2>
+<pre><code class="lang-csharp">var tta = streams.OfType&lt;TtaStream&gt;().First();
+
+var header = tta.Header!;
+Console.WriteLine($&quot;{header.SampleRate} Hz, {header.NumChannels} ch, &quot; +
+                  $&quot;{header.BitsPerSample}-bit, {header.TotalSamples} samples&quot;);
+
+Console.WriteLine($&quot;Frames: {tta.Frames.Count}&quot;);
+foreach (var frame in tta.Frames.Take(3))
+{
+    Console.WriteLine($&quot;  @{frame.StartOffset:X8}  len={frame.Length}  samples={frame.SampleCount}&quot;);
+}
+</code></pre>
+<h2 id="save-semantics">Save semantics</h2>
+<p><code>TtaStream.WriteTo</code> is a byte-for-byte passthrough. The walker holds an
+<code>ISourceReader</code> populated by <code>ReadStream</code>; on save the original audio
+container span is streamed verbatim to the destination. There is no
+audio re-encoding path. Callers must keep the source <code>Stream</code> alive
+between <code>ReadStream</code> and <code>WriteTo</code>; calling <code>WriteTo</code> after <code>Dispose</code>
+throws <code>InvalidOperationException</code> with the message
+<code>&quot;Source stream was detached or never read. WriteTo requires a live source.&quot;</code>.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/audiovideolib/AudioVideoLib/blob/master/docs/container-formats/ttastream.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          AudioVideoLib — .NET audio metadata library
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
